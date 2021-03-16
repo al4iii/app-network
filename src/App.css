@@ -4,40 +4,9 @@ margin: 0 auto;
 display: grid;
 grid-template-areas: 
 "header header "
-"nav content "
+"nav profile "
 "footer footer";
 grid-template-rows:  100px 1fr 100px;
 grid-template-columns: 2fr 10fr;
 grid-gap: 10px;
-}
-
-.header{
-  grid-area: header;
-  background-color: #f1ede8;
-  height: 100px;
-}
-
-.header img{
-  height: 100px;
-}
-
-.nav{
-  grid-area: nav;
-  background-color: #e5d7c2;
-}
-
-.content{
-  grid-area: content;
-  background-color:#e5d7c2;
-}
-.content img{
-  padding-left: 200px;
-  height: 200px;
-  width: 500px;
-
-}
-
-.footer{
-  grid-area: footer;
-  background-color: #f1ede8;
 }
