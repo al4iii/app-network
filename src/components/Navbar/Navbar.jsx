@@ -4,20 +4,30 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-      <div>
-        <a href="#">ProFile</a>
+      <div className={styles.navbar_link}>
+        <a href="#" className={styles.navbar_a}>
+          ProFile
+        </a>
       </div>
-      <div>
-        <a href="#">Users</a>
+      <div className={styles.navbar_link}>
+        <a href="#" className={styles.navbar_a}>
+          Users
+        </a>
       </div>
-      <div>
-        <a href="#">Music</a>
+      <div className={styles.navbar_link}>
+        <a href="#" className={styles.navbar_a}>
+          Music
+        </a>
       </div>
-      <div>
-        <a href="#">News</a>
+      <div className={styles.navbar_link}>
+        <a href="#" className={styles.navbar_a}>
+          News
+        </a>
       </div>
-      <div>
-        <a href="#">Setting</a>
+      <div className={styles.navbar_link}>
+        <a href="#" className={styles.navbar_a}>
+          Setting
+        </a>
       </div>
     </nav>
   );

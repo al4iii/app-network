@@ -5,18 +5,18 @@ import illustration from "./../../img/illustration.jpg";
 const Profile = () => {
   return (
     <div className={styles.profile}>
-        <img src={illustration} />
-        <div>ava + desc</div>
+      <img src={illustration} />
+      <div>ava + desc</div>
+      <div>
+        My post
         <div>
-          My post
-          <div>
-            new post:
-            <div>post 1</div>
-            <div>post 2</div>
-            <div>post 3</div>
-          </div>
+          new post:
+          <div>post 1</div>
+          <div>post 2</div>
+          <div>post 3</div>
         </div>
       </div>
+    </div>
   );
 };
 
