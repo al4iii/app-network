@@ -12,9 +12,5 @@
 
 .app {
     background-color: #eeeff0;
-}
-
-.app-wrapper-content {
-    grid-area: profile;
-    background-color: #eeeff0;
+    color: #50749b;
 }

@@ -5,7 +5,7 @@ import like from "./../../../../img/like.png";
 
 const Post = (props) => {
   return (
-    <div>
+    <div className={styles.posts}>
       <div className={styles.post}>
         <img src={avatar} alt="" className={styles.img} />
         <span className={styles.text}>{props.messege}</span>
