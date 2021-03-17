@@ -1,20 +1,20 @@
-.navbar{ 
+.navbar {
   grid-area: nav;
   width: 150px;
-  background-color:#eeeff0;
+  background-color: #eeeff0;
   padding: 10px;
-  display: grid; 
 }
 
-.navbar_a{
+.link {
+  height: 30px;
+  padding-top: 10px;
+}
+
+.link a {
   text-decoration: none;
   padding-left: 10px;
 }
 
-.navbar_link{
-  padding-top: 20px;
- }
-
-.navbar_link:hover{
+.link:hover {
   background-color: #cfd4d8;
 }

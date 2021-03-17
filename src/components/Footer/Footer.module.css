@@ -1,16 +1,16 @@
-.footer{
+.footer {
   width: 1024px;
   margin: 0 auto;
   height: 80px;
-  background-color:#eeeff0; 
+  background-color: #eeeff0;
   display: grid;
   grid-template-columns: 800px 40px 40px 40px 40px 1fr;
 }
 
-.footer_img{
+.img {
   margin-top: 20px;
 }
 
-.footer_p{
+.p {
   padding: 15px 0 0 50px;
 }

@@ -1,21 +1,14 @@
 import React from "react";
+import MyPosts from "./MyPosts/MyPosts";
 import styles from "./Profile.module.css";
 import illustration from "./../../img/illustration.jpg";
 
 const Profile = () => {
   return (
     <div className={styles.profile}>
-      <img src={illustration} />
+      <img src={illustration} className={styles.img} />
       <div>ava + desc</div>
-      <div>
-        My post
-        <div>
-          new post:
-          <div>post 1</div>
-          <div>post 2</div>
-          <div>post 3</div>
-        </div>
-      </div>
+      <MyPosts />
     </div>
   );
 };

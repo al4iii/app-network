@@ -1,0 +1,22 @@
+.img {
+  height: 50px;
+  border-radius: 30px;
+}
+
+.like img {
+  height: 20px;
+}
+
+.like {
+  margin-bottom: 15px;
+}
+
+.post {
+  margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 70px 1fr;
+}
+
+.text {
+  padding-top: 15px;
+}

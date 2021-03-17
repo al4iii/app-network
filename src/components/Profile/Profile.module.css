@@ -1,10 +1,9 @@
-.profile{
+.profile {
   grid-area: profile;
-  background-color:#eeeff0;
- 
+  background-color: #eeeff0;
 }
 
-.profile img{
+.img {
   padding-left: 200px;
   height: 200px;
   width: 500px;

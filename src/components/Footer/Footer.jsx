@@ -8,18 +8,18 @@ import linkedin from "./../../img/LinkedIn_icon.png";
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      <p className={styles.footer_p}>© Copyright 2021</p>
+      <p className={styles.p}>© Copyright 2021</p>
       <a href="#">
-        <img src={facebook} alt="facebook" className={styles.footer_img} />
+        <img src={facebook} alt="facebook" className={styles.img} />
       </a>
       <a href="#">
-        <img src={google} alt="gogle" className={styles.footer_img} />
+        <img src={google} alt="gogle" className={styles.img} />
       </a>
       <a href="#">
-        <img src={twitter} alt="twitter" className={styles.footer_img} />
+        <img src={twitter} alt="twitter" className={styles.img} />
       </a>
-      <a href="#">
-        <img src={linkedin} alt="linkedin" className={styles.footer_img} />
+      <a href="https://www.linkedin.com/in/aleksandr-danilin-b351b8201/">
+        <img src={linkedin} alt="linkedin" className={styles.img} />
       </a>
     </div>
   );

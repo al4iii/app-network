@@ -1,14 +1,16 @@
-.header{ 
+.header {
+  position: sticky;
+  top: 0;
   grid-area: header;
   background-color: #4b77a9;
-  height: 70px;   
+  height: 70px;
   display: grid;
   grid-template-columns: 1fr 1024px 1fr;
   border-bottom: 2px solid #fff;
   border-top: 2px solid #fff;
 }
 
-.header img{
+.img {
   height: 70px;
   padding-left: 50px;
   grid-column: 2/3;
