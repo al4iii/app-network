@@ -6,34 +6,34 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.link}>
-        <a href="/profile" className={styles.navbar_a}>
-          ProFile
-        </a>
+        <NavLink to="/profile" activeClassName={styles.active}>
+          Profile
+        </NavLink>
       </div>
       <div className={styles.link}>
-        <a href="/dialods" className={styles.navbar_a}>
+        <NavLink to="/dialods" activeClassName={styles.active}>
           Massages
-        </a>
+        </NavLink>
       </div>
       <div className={styles.link}>
-        <a href="/users" className={styles.navbar_a}>
-          Users
-        </a>
+        <NavLink to="/users" activeClassName={styles.active}>
+          Users{" "}
+        </NavLink>
       </div>
       <div className={styles.link}>
-        <a href="/music" className={styles.navbar_a}>
+        <NavLink to="/music" activeClassName={styles.active}>
           Music
-        </a>
+        </NavLink>
       </div>
       <div className={styles.link}>
-        <a href="/news" className={styles.navbar_a}>
+        <NavLink to="/news" activeClassName={styles.active}>
           News
-        </a>
+        </NavLink>
       </div>
       <div className={styles.link}>
-        <a href="/setting" className={styles.navbar_a}>
+        <NavLink to="/setting" activeClassName={styles.active}>
           Setting
-        </a>
+        </NavLink>
       </div>
     </nav>
   );

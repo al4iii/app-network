@@ -12,8 +12,14 @@
 .link a {
   text-decoration: none;
   padding-left: 10px;
+  color: #50749b;
 }
 
 .link:hover {
   background-color: #cfd4d8;
+}
+
+.active {
+  font-size: 16px;
+  font-weight: 700;
 }
