@@ -11,6 +11,11 @@ const Navbar = () => {
       </div>
       <div className={styles.link}>
         <a href="#" className={styles.navbar_a}>
+          Massages
+        </a>
+      </div>
+      <div className={styles.link}>
+        <a href="#" className={styles.navbar_a}>
           Users
         </a>
       </div>

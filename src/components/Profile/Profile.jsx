@@ -5,7 +5,7 @@ import illustration from "./../../img/illustration.jpg";
 
 const Profile = () => {
   return (
-    <div className={styles.profile}>
+    <div>
       <img src={illustration} className={styles.img} />
       <div>ava + desc</div>
       <MyPosts />
