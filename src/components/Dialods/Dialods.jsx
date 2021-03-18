@@ -18,21 +18,34 @@ const MessageItem = (props) => {
     </div>
   );
 };
-
 const Dialods = (props) => {
+  let dialogData = [
+    { id: 1, name: "Dima" },
+    { id: 2, name: "Alina" },
+    { id: 3, name: "Ninja" },
+    { id: 4, name: "Spider-man" },
+  ];
+  let messagesData = [
+    { id: 1, message: "hello" },
+    { id: 2, message: "How are you" },
+    { id: 3, message: "yoyo" },
+    { id: 4, message: "hello-man " },
+  ];
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>
-        <DialodItem name={"Dima"} id={1} active={styles.active} />
-        <DialodItem name={"Alina"} id={2} />
-        <DialodItem name={"Ninja"} id={3} />
-        <DialodItem name={"Spider-man"} id={4} />
+        <DialodItem name={dialogData[0].name} id={dialogData[0].id}
+          active={styles.active}
+        />
+        <DialodItem name={dialogData[1].name} id={dialogData[1].id} />
+        <DialodItem name={dialogData[2].name} id={dialogData[2].id} />
+        <DialodItem name={dialogData[3].name} id={dialogData[3].id} />
       </div>
       <div>
-        <MessageItem message={"hello"} />
-        <MessageItem message={"How are you"} />
-        <MessageItem message={"yoyo"} />
-        <MessageItem message={"hello-man "} />
+        <MessageItem message={messagesData[0].message} />
+        <MessageItem message={messagesData[1].message} />
+        <MessageItem message={messagesData[2].message} />
+        <MessageItem message={messagesData[3].message} />
       </div>
       <div className={styles.textarea}>
         <textarea></textarea>
