@@ -1,7 +1,7 @@
 .dialogs {
     display: grid;
-    grid-template-rows: 1fr 150px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3fr 1fr;
+    grid-template-columns: 200px 1fr;
 }
 
 .items {
@@ -15,6 +15,16 @@
 .textarea {
     grid-column: 2/3;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     flex-direction: column;
+}
+
+.message{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button{
+    margin-left: 120px;
 }

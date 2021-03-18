@@ -7,11 +7,9 @@ const MyPosts = (props) => {
     <Post messege={p.message} like={p.like} key={p.id} />
   ));
   return (
-    <div>
-      <div className={styles.post}>
-        <h3 className={styles.h3}>My post:</h3>
-        {postElemenst}
-      </div>
+    <div className={styles.post}>
+      <h3 className={styles.h3}>My post:</h3>
+      {postElemenst}
     </div>
   );
 };

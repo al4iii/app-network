@@ -14,10 +14,10 @@ const Dialods = (props) => {
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
-      <div>{messageslemenst}</div>
+      <div className={styles.message}>{messageslemenst}</div>
       <div className={styles.textarea}>
-        <textarea/>
-       <Button text={"Send"}/>
+        <textarea />
+        <div className={styles.button}><Button text={"Send"} /></div>
       </div>
     </div>
   );

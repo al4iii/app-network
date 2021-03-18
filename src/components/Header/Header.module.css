@@ -5,7 +5,7 @@
   background-color: #4b77a9;
   height: 70px;
   display: grid;
-  grid-template-columns: 1fr 1024px 1fr;
+  grid-template-columns: 1fr 1fr 4fr;
   border-bottom: 2px solid #fff;
   border-top: 2px solid #fff;
 }

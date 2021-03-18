@@ -1,10 +1,9 @@
 .footer {
-  width: 1024px;
   margin: 0 auto;
   height: 80px;
   background-color: #eeeff0;
   display: grid;
-  grid-template-columns: 800px 40px 40px 40px 40px 1fr;
+  grid-template-columns: 200px 1fr 40px 40px 40px 40px 1fr;
 }
 
 .img {
@@ -13,5 +12,6 @@
 }
 
 .p {
-  padding: 15px 0 0 50px;
+  padding: 15px 0 ;
+  grid-column: 2/3;
 }

@@ -8,8 +8,11 @@ const Post = (props) => {
     <div className={styles.posts}>
       <div className={styles.post}>
         <img src={avatar} alt="" className={styles.img} />
-        <span className={styles.text}>{props.messege}</span>        
-        <div className={styles.likes}><img src={like} alt="" className={styles.like}/> {props.like}  </div>     
+        <span className={styles.text}>{props.messege}</span>
+        <div className={styles.likes}>
+          <img src={like} alt="" className={styles.like} /> 
+         <span> {props.like}</span>
+        </div>
       </div>
     </div>
   );

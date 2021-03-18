@@ -2,10 +2,10 @@ let state = {
   profilePage: {
     posts: [
       { id: 1, message: "Hi, how are you?", like: 1 },
-      { id: 2, message: "Hi!", like: 55 },
-      { id: 3, message: "I am sexy!!", like: 144 },
+      { id: 2, message: "Hi!!", like: 55 },
+      { id: 3, message: "I'm sexy!!", like: 144 },
       { id: 4, message: "Have a good day", like: 15 },
-      { id: 5, message: "It my first post!!", like: 177 },
+      { id: 5, message: "It's my first post!!", like: 177 },
     ],
   },
   messagePage: {
