@@ -1,8 +1,9 @@
 .img {
-  padding-left: 200px;
+  padding-left: 100px;
   height: 200px;
   width: 500px;
 }
+
 .myPosts {
   display: grid;
   grid-template-rows: 200px 100px;
@@ -10,8 +11,8 @@
 
 .enter {
   display: grid;
-  grid-template-columns: 1fr 200px;
-  grid-template-rows: 1fr 200px;
+  grid-template-columns: 435px 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 .textarea {
@@ -20,8 +21,6 @@
 }
 
 .button {
-  margin: 10px;
   margin-left: 100px;
-  border-radius: 5px;
   grid-column: 2/3;
 }

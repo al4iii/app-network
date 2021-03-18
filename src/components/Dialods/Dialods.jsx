@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Dialods.module.css";
 import Message from "./Message/Message";
 import DialodItem from "./DialodItem/DialodItem";
+import Button from "./Button/Button";
 
 const Dialods = (props) => {
   let DialogElemenst = props.dialogs.map((d) => (
@@ -15,10 +16,8 @@ const Dialods = (props) => {
       <div className={styles.items}>{DialogElemenst}</div>
       <div>{messageslemenst}</div>
       <div className={styles.textarea}>
-        <textarea></textarea>
-        <div>
-          <button className={styles.button}>send</button>
-        </div>
+        <textarea/>
+       <Button text={"Send"}/>
       </div>
     </div>
   );
