@@ -8,37 +8,18 @@
     padding: 10px;
 }
 
-.dialog {
-    padding: 10px;
-    text-decoration: none;
-    color: #50749b;
-}
-
 .messages {
     padding: 5px;
-     
 }
 
-.message {
-    padding: 10px;
-    display: flex;
-    justify-content: flex-end;
-    
-}
-
-.active {
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.button {  
+.button {
     margin-top: 10px;
     border-radius: 5px;
-} 
+}
 
 .textarea {
     grid-column: 2/3;
-    display: flex;   
+    display: flex;
     align-items: flex-end;
     flex-direction: column;
-} 
+}

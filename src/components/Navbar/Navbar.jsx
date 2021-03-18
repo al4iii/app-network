@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className={styles.link}>
         <NavLink to="/users" activeClassName={styles.active}>
           <img src={users} alt="" className={styles.icon} />
-          Users{" "}
+          Users
         </NavLink>
       </div>
       <div className={styles.link}>

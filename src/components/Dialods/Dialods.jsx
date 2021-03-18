@@ -1,25 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import styles from "./Dialods.module.css";
+import Message from "./Message/Message";
+import DialodItem from "./DialodItem/DialodItem";
 
-const DialodItem = (props) => {
-  return (
-    <div className={styles.dialog + " " + props.active}>
-      <NavLink to={`/dialogs/${props.id}`} className={styles.dialog}>
-        {props.name}
-      </NavLink>
-    </div>
-  );
-};
-const MessageItem = (props) => {
-  return (
-    <div className={styles.messages}>
-      <div className={styles.message}>{props.message} </div>
-    </div>
-  );
-};
-
-const Dialods = (props) => {
+const Dialods = () => {
   let dialogs = [
     { id: 1, name: "Dima", active: "active" },
     { id: 2, name: "Alina", active: " " },
@@ -33,7 +17,7 @@ const Dialods = (props) => {
     { id: 4, message: "hello-man " },
   ];
   let DialogElemenst = dialogs.map((d) => ( <DialodItem name={d.name} key={d.id} styles={d.active} /> ));
-  let messageslemenst = messages.map((m) => ( <MessageItem message={m.message} key={m.id} /> ));
+  let messageslemenst = messages.map((m) => ( <Message message={m.message} key={m.id} /> ));
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
