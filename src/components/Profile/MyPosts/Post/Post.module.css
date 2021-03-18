@@ -1,7 +1,4 @@
-.img {
-  height: 50px;
-  border-radius: 30px;
-}
+
 
 .like img {
   height: 15px;
@@ -9,14 +6,25 @@
 
 .like {
   margin-bottom: 15px;
+  height: 15px;
 }
 
 .post {
   margin-bottom: 15px;
   display: grid;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: 1fr 70px 1fr;
 }
-
+.img {
+  height: 50px;
+  border-radius: 30px;
+  grid-column: 2/3;
+}
 .text {
   padding-top: 15px;
+  grid-column: 3/4;
+}
+
+.likes{
+  grid-column: 3/4;
+  margin-left: 10px;
 }

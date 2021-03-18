@@ -1,7 +1,7 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 200px 1fr;
-    color: #50749b
+    grid-template-rows: 1fr 150px;
+    grid-template-columns: 1fr 1fr;
 }
 
 .items {
@@ -10,17 +10,35 @@
 
 .dialog {
     padding: 10px;
+    text-decoration: none;
+    color: #50749b;
 }
 
 .messages {
-    padding: 10px;
+    padding: 5px;
+     
 }
 
 .message {
     padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    
 }
 
 .active {
     font-size: 14px;
     font-weight: 700;
 }
+
+.button {  
+    margin-top: 10px;
+    border-radius: 5px;
+} 
+
+.textarea {
+    grid-column: 2/3;
+    display: flex;   
+    align-items: flex-end;
+    flex-direction: column;
+} 

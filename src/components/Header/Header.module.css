@@ -11,7 +11,6 @@
 }
 
 .img {
-  height: 70px;
-  padding-left: 50px;
-  grid-column: 2/3;
+  height: 70px;  
+  grid-column: 2/3; 
 }

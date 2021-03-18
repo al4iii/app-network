@@ -18,7 +18,7 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className={styles.link}>
-        <NavLink to="/dialods" activeClassName={styles.active}>
+        <NavLink to="/dialogs" activeClassName={styles.active}>
           <img src={message} alt="" className={styles.icon} />
           Massages
         </NavLink>

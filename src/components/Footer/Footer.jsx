@@ -4,6 +4,7 @@ import facebook from "./../../img/Facebook_icon.png";
 import google from "./../../img/Google_icon.png";
 import twitter from "./../../img/Twitter_icon.png";
 import linkedin from "./../../img/LinkedIn_icon.png";
+// import twitter from "./../../img/git.png";
 
 const Footer = () => {
   return (

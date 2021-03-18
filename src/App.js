@@ -20,7 +20,7 @@ const App = () => {
           <Navbar />
           <div className={"app-wrapper-content"}>
             <Route path="/profile" component={Profile} />
-            <Route path="/dialods" component={Dialods} />
+            <Route path="/dialogs" component={Dialods} />
             <Route path="/users" component={Users} />
             <Route path="/music" component={Music} />
             <Route path="/setting" component={Setting} />
