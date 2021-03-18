@@ -4,7 +4,8 @@ import styles from "./Setting.module.css";
 const Setting = (props) => {
   return (
     <div>
-      <h4> Setting</h4>
+      <h3> Setting</h3>
+      <p>This section is under construction.</p>
     </div>
   );
 };

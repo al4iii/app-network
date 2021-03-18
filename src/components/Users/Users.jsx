@@ -5,6 +5,7 @@ const Users = (props) => {
   return (
     <div>
       <h4> Users</h4>
+      <p>This section is under construction.</p>
     </div>
   );
 };
