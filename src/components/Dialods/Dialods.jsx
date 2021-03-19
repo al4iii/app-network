@@ -15,13 +15,14 @@ const Dialods = (props) => {
   let newMessage = () => {   
     let text = newMessages.current.value;
     props.addMessage(text);
+    newMessages.current.value = ""
   };
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
       <div className={styles.message}>{messageslemenst}</div>
       <div className={styles.textarea}>
-        <textarea ref={newMessages} />
+        <textarea ref={newMessages} placeholder="enter message"/>
         <div className={styles.button}>
           <Button text={"Send"} onClick={newMessage} />
         </div>
