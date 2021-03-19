@@ -5,10 +5,9 @@ import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
   return (
-    <div>      
-      <ProfileInfo addPost={props.addPost } newPostText={props.newPostText}
-       chengeNewPostText = {props.chengeNewPostText}/>    
-      <MyPosts posts={props.posts} />
+    <div>
+      <ProfileInfo state={props.state} dispatch={props.dispatch} />
+      <MyPosts posts={props.state.posts} />
     </div>
   );
 };

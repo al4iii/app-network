@@ -5,15 +5,19 @@ import DialodItem from "./DialodItem/DialodItem";
 import Button from "./Button/Button";
 
 const Dialods = (props) => {
-  let DialogElemenst = props.dialogs.map((d) => (
+  let DialogElemenst = props.state.dialogs.map((d) => (
     <DialodItem name={d.name} key={d.id} styles={d.active} />
   ));
-  let messageslemenst = props.messages.map((m) => (
+  let messageslemenst = props.state.messages.map((m) => (
     <Message message={m.message} key={m.id} />
   ));
   let newMessages = React.createRef();
-  const newMessage = () => props.addMessage(newMessages.current.value);
-  const onMassageChecge = () =>  props.updateNewMassageText(newMessages.current.value);
+  const newMessage = () => props.dispatch({ type: "ADD_MESSAGE" });
+  const onMessageChange = () =>
+    props.dispatch({
+      type: "UPDATE_NEW_MESSAGE_TEXT",
+      messege: newMessages.current.value,
+    });
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
@@ -22,8 +26,8 @@ const Dialods = (props) => {
         <textarea
           ref={newMessages}
           placeholder="enter message"
-          onChange={onMassageChecge}
-          value={props.newMassageText}
+          onChange={onMessageChange}
+          value={props.state.newMassageText}
         />
         <div className={styles.button}>
           <Button text={"Send"} onClick={newMessage} />

@@ -10,18 +10,7 @@ const rerenderEntireTree = (state) => {
   ReactDOM.render(
     <BrowserRouter>
       <React.StrictMode>
-        <App
-          stare={store.state}
-          posts={store._state.profilePage.posts}
-          dialogs={store._state.messagePage.dialogs}
-          messages={store._state.messagePage.messages}
-          addPost={store.addPost.bind(store)}
-          addMessage={store.addMessage.bind(store)}
-          chengeNewPostText={store.chengeNewPostText.bind(store)}
-          newPostText={store._state.profilePage.newPostText}
-          updateNewMassageText={store.updateNewMassageText.bind(store)}
-          newMassageText={store._state.messagePage.newMassageText}
-        />
+        <App store={store.getState()} dispatch={store.dispatch.bind(store)} />
       </React.StrictMode>
     </BrowserRouter>,
     document.getElementById("root")

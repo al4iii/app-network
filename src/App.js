@@ -13,26 +13,21 @@ import News from "./components/News/News";
 
 const App = (props) => {
   return (
-      <div className="app">
-        <Header />
-        <div className="app-wrapper">
-          <Navbar />
-          <div className={"app-wrapper-content"}>
-            <Route path="/profile" render={() => <Profile posts={props.posts} 
-            addPost={props.addPost} newPostText={props.newPostText}
-            chengeNewPostText = {props.chengeNewPostText}/>} />
-            <Route path="/dialogs" render={() => (<Dialods dialogs={props.dialogs}             
-            messages={props.messages}  addMessage = {props.addMessage}
-            updateNewMassageText = {props.updateNewMassageText}
-            newMassageText={props.newMassageText}/>)} />
-            <Route path="/users" render={() => <Users />} />
-            <Route path="/music" render={() => <Music />} />
-            <Route path="/setting" render={() => <Setting />} />
-            <Route path="/news" render={() => <News />} />
-          </div>
+    <div className="app">
+      <Header />
+      <div className="app-wrapper">
+        <Navbar />
+        <div className={"app-wrapper-content"}>
+          <Route path="/profile" render={() => ( <Profile state={props.store.profilePage} dispatch={props.dispatch} />)} />
+          <Route path="/dialogs" render={() => ( <Dialods state={props.store.messagePage} dispatch={props.dispatch} />)} />
+          <Route path="/users" render={() => <Users />} />
+          <Route path="/music" render={() => <Music />} />
+          <Route path="/setting" render={() => <Setting />} />
+          <Route path="/news" render={() => <News />} />
         </div>
-        <Footer />
       </div>
+      <Footer />
+    </div>
   );
 };
 

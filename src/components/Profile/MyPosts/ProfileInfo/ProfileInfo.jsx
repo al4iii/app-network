@@ -5,8 +5,14 @@ import Button from "../../../Dialods/Button/Button";
 
 const ProfileInfo = (props) => {
   let newPost = React.createRef();
-  let addPost = () => props.addPost();
-  let onPosrChecge = () => props.chengeNewPostText(newPost.current.value);
+  let addPost = () => props.dispatch({ type: "ADD_POST" });
+  let onPostChecge = () => {
+    const action = {
+      type: "UPDATE_NEW_POST_TEXT",
+      post: newPost.current.value,
+    };
+    props.dispatch(action);
+  };
   return (
     <div className={styles.myPosts}>
       <img src={illustration} className={styles.img} />
@@ -15,8 +21,8 @@ const ProfileInfo = (props) => {
           <textarea
             ref={newPost}
             placeholder="enter text"
-            value={props.newPostText}
-            onChange={onPosrChecge}
+            value={props.state.newPostText}
+            onChange={onPostChecge}
           />
         </div>
         <div className={styles.button}>

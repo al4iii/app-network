@@ -8,7 +8,7 @@ let store = {
         { id: 4, message: "Have a good day", like: 15 },
         { id: 5, message: "It's my first post!!", like: 177 },
       ],
-      newPostText: "",
+      newPostText: "r",
     },
     messagePage: {
       dialogs: [
@@ -23,41 +23,41 @@ let store = {
         { id: 3, message: "yoyo" },
         { id: 4, message: "hello-man " },
       ],
-      newMassageText: "",
+      newMassageText: "yo",
     },
+  },
+  _callsubscriber() {
+    console.log("state was chengen");
   },
   getState() {
     return this._state;
   },
-  _callsubscriber() {},
-  addPost() {
-    let post = this._state.profilePage.newPostText;
-    let newId = this._state.profilePage.posts.length + 2;
-    let newPost = { id: newId, message: post, like: 0 };
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = "";
-    this._callsubscriber(this._state);
-  },
-  addMessage() {
-    debugger;
-    let message = this._state.messagePage.newMassageText;
-    let newId = this._state.messagePage.messages.length + 2;
-    let newMessage = { id: newId, message: message };
-    this._state.messagePage.messages.push(newMessage);
-    this._state.messagePage.newMassageText = "";
-    this._callsubscriber(this._state);
-  },
-  chengeNewPostText(post) {
-    debugger;
-    this._state.profilePage.newPostText = post;
-    this._callsubscriber(this._state);
-  },
-  updateNewMassageText(messege) {
-    this._state.messagePage.newMassageText = messege;
-    this._callsubscriber(this._state);
-  },
   subscribe(observer) {
     this._callsubscriber = observer;
+  },
+  dispatch(action) {
+    if (action.type === "ADD_POST") {
+      let post = this._state.profilePage.newPostText;
+      let newId = this._state.profilePage.posts.length + 2;
+      let newPost = { id: newId, message: post, like: 0 };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this._callsubscriber(this._state);
+    } else if (action.type === "ADD_MESSAGE") {
+      debugger;
+      let message = this._state.messagePage.newMassageText;
+      let newId = this._state.messagePage.messages.length + 2;
+      let newMessage = { id: newId, message: message };
+      this._state.messagePage.messages.push(newMessage);
+      this._state.messagePage.newMassageText = "";
+      this._callsubscriber(this._state);
+    } else if (action.type === "UPDATE_NEW_POST_TEXT") {
+      this._state.profilePage.newPostText = action.post;
+      this._callsubscriber(this._state);
+    } else if (action.type === "UPDATE_NEW_MESSAGE_TEXT") {
+      this._state.messagePage.newMassageText = action.messege;
+      this._callsubscriber(this._state);
+    }
   },
 };
 
