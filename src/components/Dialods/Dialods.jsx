@@ -11,13 +11,20 @@ const Dialods = (props) => {
   let messageslemenst = props.messages.map((m) => (
     <Message message={m.message} key={m.id} />
   ));
+  let newMessage = React.createRef();
+  let addMessage = () => {
+    let messege = newMessage.current.value;
+    alert(messege);
+  };
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
       <div className={styles.message}>{messageslemenst}</div>
       <div className={styles.textarea}>
-        <textarea />
-        <div className={styles.button}><Button text={"Send"} /></div>
+        <textarea ref={newMessage}/>
+        <div className={styles.button}>
+          <Button text={"Send"} onClick={addMessage} />
+        </div>
       </div>
     </div>
   );

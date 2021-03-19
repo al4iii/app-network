@@ -1,9 +1,5 @@
-.like img {
-  height: 15px;
-}
-
-.like {  
-  height: 15px;
+.like {
+  height: 13px;
   margin-right: 5px;
 }
 
@@ -12,17 +8,19 @@
   display: grid;
   grid-template-columns: 70px 1fr;
 }
+
 .img {
   height: 50px;
   border-radius: 30px;
   grid-column: 1/2;
 }
+
 .text {
   padding-top: 15px;
   grid-column: 2/3;
 }
 
-.likes{
+.likes {
   grid-column: 2/3;
   margin-left: 5px;
 }

@@ -5,7 +5,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialods from "./components/Dialods/Dialods";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Users from "./components/Users/Users";
 import Music from "./components/Music/Music";
 import Setting from "./components/Setting/Setting";
@@ -13,22 +13,13 @@ import News from "./components/News/News";
 
 const App = (props) => {
   return (
-    <BrowserRouter>
       <div className="app">
         <Header />
         <div className="app-wrapper">
           <Navbar />
           <div className={"app-wrapper-content"}>
-            <Route
-              path="/profile"
-              render={() => <Profile posts={props.posts} />}
-            />
-            <Route
-              path="/dialogs"
-              render={() => (
-                <Dialods dialogs={props.dialogs} messages={props.messages} />
-              )}
-            />
+            <Route path="/profile" render={() => <Profile posts={props.posts} />} />
+            <Route path="/dialogs" render={() => (<Dialods dialogs={props.dialogs} messages={props.messages} />)} />
             <Route path="/users" render={() => <Users />} />
             <Route path="/music" render={() => <Music />} />
             <Route path="/setting" render={() => <Setting />} />
@@ -37,7 +28,6 @@ const App = (props) => {
         </div>
         <Footer />
       </div>
-    </BrowserRouter>
   );
 };
 

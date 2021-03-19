@@ -11,6 +11,7 @@ const MyPosts = (props) => {
       <h3 className={styles.h3}>My post:</h3>
       {postElemenst}
     </div>
+    
   );
 };
 

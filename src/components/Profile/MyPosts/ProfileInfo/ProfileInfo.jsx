@@ -4,17 +4,21 @@ import illustration from "./../../../../img/illustration.jpg";
 import Button from "../../../Dialods/Button/Button";
 
 const ProfileInfo = (props) => {
+  let newPost = React.createRef();
+  let addPost = () => {
+    let text = newPost.current.value;
+    alert(text);
+  };
   return (
     <div className={styles.myPosts}>
       <img src={illustration} className={styles.img} />
       <div className={styles.enter}>
         <div className={styles.textarea}>
-          <textarea />
+          <textarea ref={newPost} />
         </div>
         <div className={styles.button}>
-        <Button text={"add post"}  />
+          <Button text={"add post"} onClick={addPost} />
         </div>
-        
       </div>
     </div>
   );
