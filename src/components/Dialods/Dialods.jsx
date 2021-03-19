@@ -12,17 +12,19 @@ const Dialods = (props) => {
     <Message message={m.message} key={m.id} />
   ));
   let newMessages = React.createRef();
-  let newMessage = () => {   
-    let text = newMessages.current.value;
-    props.addMessage(text);
-    newMessages.current.value = ""
-  };
+  const newMessage = () => props.addMessage(newMessages.current.value);
+  const onMassageChecge = () =>  props.updateNewMassageText(newMessages.current.value);
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
       <div className={styles.message}>{messageslemenst}</div>
       <div className={styles.textarea}>
-        <textarea ref={newMessages} placeholder="enter message"/>
+        <textarea
+          ref={newMessages}
+          placeholder="enter message"
+          onChange={onMassageChecge}
+          value={props.newMassageText}
+        />
         <div className={styles.button}>
           <Button text={"Send"} onClick={newMessage} />
         </div>

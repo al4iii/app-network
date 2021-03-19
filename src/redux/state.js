@@ -9,6 +9,7 @@ let state = {
       { id: 4, message: "Have a good day", like: 15 },
       { id: 5, message: "It's my first post!!", like: 177 },
     ],
+    newPostText: "",
   },
   messagePage: {
     dialogs: [
@@ -23,18 +24,35 @@ let state = {
       { id: 3, message: "yoyo" },
       { id: 4, message: "hello-man " },
     ],
+    newMassageText: ""
   },
 };
 
-export let addPost = (post) => {
-  let newPost = { id: 6, message: post, like: 5 };
+export let addPost = () => {
+  let post = state.profilePage.newPostText;
+  let newId = state.profilePage.posts.length + 2;
+  let newPost = { id: newId, message: post, like: 0 };
   state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = "";
   rerenderEntireTree(state);
 };
-export let addMessage = (newMessages) => {
-  let newMessage = { id: 5, message: newMessages };
+export let addMessage = () => {
+  let message = state.messagePage.newMassageText;
+  let newId = state.messagePage.messages.length + 2;
+  let newMessage = { id: newId, message: message };
   state.messagePage.messages.push(newMessage);
+  state.messagePage.newMassageText = "";
+  rerenderEntireTree(state);
+};
+export let chengeNewPostText = (post) => {
+  state.profilePage.newPostText = post;
+  rerenderEntireTree(state);
+};
+export let updateNewMassageText = (messege) => {
+  state.messagePage.newMassageText = messege;
   rerenderEntireTree(state);
 };
 
+
+window.state = state;
 export default state;
