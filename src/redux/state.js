@@ -24,4 +24,13 @@ let state = {
   },
 };
 
+export let addPost = (post) => {
+  let newPost = { id: 6, message: post, like: 5 };
+  state.profilePage.posts.push(newPost)
+};
+export let addMessage = (newMessages) => {
+   let newMessage = { id: 5, message: newMessages};
+  state.messagePage.messages.push(newMessage)
+};
+
 export default state;

@@ -4,11 +4,13 @@ import illustration from "./../../../../img/illustration.jpg";
 import Button from "../../../Dialods/Button/Button";
 
 const ProfileInfo = (props) => {
-  let newPost = React.createRef();
-  let addPost = () => {
+  let newPost = React.createRef(); 
+  let addPost = () => {    
     let text = newPost.current.value;
-    alert(text);
-  };
+    props.addPost(text)
+    text =""
+  } 
+  
   return (
     <div className={styles.myPosts}>
       <img src={illustration} className={styles.img} />

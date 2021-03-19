@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import state from "./redux/state";
+import state, { addPost, addMessage } from "./redux/state";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
@@ -12,6 +12,8 @@ ReactDOM.render(
       <App posts={state.profilePage.posts}
         dialogs={state.messagePage.dialogs}
         messages={state.messagePage.messages}
+        addPost= {addPost}
+        addMessage= {addMessage}
       />
     </React.StrictMode>
   </BrowserRouter>,
