@@ -3,6 +3,7 @@ import styles from "./Dialods.module.css";
 import Message from "./Message/Message";
 import DialodItem from "./DialodItem/DialodItem";
 import Button from "./Button/Button";
+import { addMessageAC, updateNewMessageAC } from "../../redux/state";
 
 const Dialods = (props) => {
   let DialogElemenst = props.state.dialogs.map((d) => (
@@ -12,12 +13,9 @@ const Dialods = (props) => {
     <Message message={m.message} key={m.id} />
   ));
   let newMessages = React.createRef();
-  const newMessage = () => props.dispatch({ type: "ADD_MESSAGE" });
+  const newMessage = () => props.dispatch(addMessageAC());
   const onMessageChange = () =>
-    props.dispatch({
-      type: "UPDATE_NEW_MESSAGE_TEXT",
-      messege: newMessages.current.value,
-    });
+    props.dispatch(updateNewMessageAC(newMessages));
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>

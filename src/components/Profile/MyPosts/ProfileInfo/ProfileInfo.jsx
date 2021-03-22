@@ -2,17 +2,12 @@ import React from "react";
 import styles from "./ProfileInfo.module.css";
 import illustration from "./../../../../img/illustration.jpg";
 import Button from "../../../Dialods/Button/Button";
+import { addPostAC, updateNewPostAC } from "../../../../redux/state";
 
 const ProfileInfo = (props) => {
-  let newPost = React.createRef();
-  let addPost = () => props.dispatch({ type: "ADD_POST" });
-  let onPostChecge = () => {
-    const action = {
-      type: "UPDATE_NEW_POST_TEXT",
-      post: newPost.current.value,
-    };
-    props.dispatch(action);
-  };
+  let newPost = React.createRef();  
+  let addPost = () => props.dispatch(addPostAC());
+  let onPostChecge = () => props.dispatch(updateNewPostAC(newPost));
   return (
     <div className={styles.myPosts}>
       <img src={illustration} className={styles.img} />
