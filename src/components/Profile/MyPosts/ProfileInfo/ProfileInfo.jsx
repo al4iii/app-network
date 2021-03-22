@@ -4,17 +4,15 @@ import illustration from "./../../../../img/illustration.jpg";
 import Button from "../../../Dialods/Button/Button";
 import { addPostAC, updateNewPostAC } from "../../../../redux/state";
 
-const ProfileInfo = (props) => {
-  let newPost = React.createRef();  
+const ProfileInfo = (props) => {  
   let addPost = () => props.dispatch(addPostAC());
-  let onPostChecge = () => props.dispatch(updateNewPostAC(newPost));
+  let onPostChecge = (e) => {props.dispatch(updateNewPostAC(e.target.value))};
   return (
     <div className={styles.myPosts}>
       <img src={illustration} className={styles.img} />
       <div className={styles.enter}>
         <div className={styles.textarea}>
-          <textarea
-            ref={newPost}
+          <textarea            
             placeholder="enter text"
             value={props.state.newPostText}
             onChange={onPostChecge}
