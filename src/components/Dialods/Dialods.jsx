@@ -13,8 +13,7 @@ const Dialods = (props) => {
     <Message message={m.message} key={m.id} />
   ));
   const newMessage = () => props.dispatch(sendMessageAC());
-  const onMessageChange = (e) =>
-    props.dispatch(updateNewMessageAC(e.target.value));
+  const onMessageChange = (e) => props.dispatch(updateNewMessageAC(e.target.value));
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
@@ -23,7 +22,7 @@ const Dialods = (props) => {
         <textarea
           placeholder="enter message"
           onChange={onMessageChange}
-          value={props.state.newMassageText}
+          value={props.state.newMessageText}
         />
         <div className={styles.button}>
           <Button text={"Send"} onClick={newMessage} />
