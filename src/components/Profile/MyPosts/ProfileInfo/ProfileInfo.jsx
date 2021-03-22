@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./ProfileInfo.module.css";
 import illustration from "./../../../../img/illustration.jpg";
 import Button from "../../../Dialods/Button/Button";
-import { addPostAC, updateNewPostAC } from "../../../../redux/state";
+import { addPostAC, updateNewPostAC } from "../../../../redux/profile-reduser";
+
 
 const ProfileInfo = (props) => {  
   let addPost = () => props.dispatch(addPostAC());

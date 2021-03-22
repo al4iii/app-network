@@ -3,10 +3,9 @@ import styles from "./Dialods.module.css";
 import Message from "./Message/Message";
 import DialodItem from "./DialodItem/DialodItem";
 import Button from "./Button/Button";
-import { sendMessageAC, updateNewMessageAC } from "../../redux/state";
+import { sendMessageAC, updateNewMessageAC } from "../../redux/dialogs-reduser";
 
 const Dialods = (props) => {
-  debugger;
   let DialogElemenst = props.state.dialogs.map((d) => (
     <DialodItem name={d.name} key={d.id} styles={d.active} />
   ));

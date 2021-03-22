@@ -4,6 +4,7 @@ import styles from "./Profile.module.css";
 import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
+
   return (
     <div>
       <ProfileInfo state={props.state} dispatch={props.dispatch} />
