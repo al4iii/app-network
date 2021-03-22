@@ -6,14 +6,15 @@ import Button from "./Button/Button";
 import { sendMessageAC, updateNewMessageAC } from "../../redux/dialogs-reduser";
 
 const Dialods = (props) => {
-  let DialogElemenst = props.state.dialogs.map((d) => (
+  debugger
+  let DialogElemenst = props.dialogs.map((d) => (
     <DialodItem name={d.name} key={d.id} styles={d.active} />
   ));
-  let messageslemenst = props.state.messages.map((m) => (
+  let messageslemenst = props.messages.map((m) => (
     <Message message={m.message} key={m.id} />
   ));
-  const newMessage = () => props.dispatch(sendMessageAC());
-  const onMessageChange = (e) => props.dispatch(updateNewMessageAC(e.target.value));
+  const onNewMessage = () => props.newMessage();
+  const onMessageChange = (e) => props.messageChange(e.target.value);
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
@@ -22,10 +23,10 @@ const Dialods = (props) => {
         <textarea
           placeholder="enter message"
           onChange={onMessageChange}
-          value={props.state.newMessageText}
+          value={props.newMessageText}
         />
         <div className={styles.button}>
-          <Button text={"Send"} onClick={newMessage} />
+          <Button text={"Send"} onClick={onNewMessage} />
         </div>
       </div>
     </div>

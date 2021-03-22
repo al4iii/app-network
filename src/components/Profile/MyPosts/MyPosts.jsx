@@ -3,7 +3,6 @@ import Post from "./Post/Post";
 import styles from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
-  debugger
   let postElemenst = props.posts.map((p) => (
     <Post
       messege={p.message}
