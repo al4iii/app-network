@@ -1,14 +1,14 @@
 import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import styles from "./Profile.module.css";
-import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 import ProfileInfoConteiner from "./MyPosts/ProfileInfo/ProfileInfoConteiner";
+import store from "../../redux/state";
 
-const Profile = (props) => {
+const Profile = () => {
   return (
     <div>
-      <ProfileInfoConteiner state={props.state} dispatch={props.dispatch} />
-      <MyPosts posts={props.state.posts} />
+      <ProfileInfoConteiner store={store} />
+      <MyPosts posts={store.getState().profilePage.posts} />
     </div>
   );
 };

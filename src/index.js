@@ -6,11 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import store from "./redux/state";
 
-const rerenderEntireTree = (state) => {
+const rerenderEntireTree = () => {
   ReactDOM.render(
     <BrowserRouter>
       <React.StrictMode>
-        <App store={store.getState()} dispatch={store.dispatch.bind(store)} />
+        <App />
       </React.StrictMode>
     </BrowserRouter>,
     document.getElementById("root")

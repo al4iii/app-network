@@ -4,10 +4,10 @@ import ProfileInfo from "./ProfileInfo";
 
 const ProfileInfoConteiner = (props) => {
   return (
-    <ProfileInfo
-      addPost={() => props.dispatch(addPostAC())}
-      postChecge={(text) => props.dispatch(updateNewPostAC(text))}
-      newPostText={props.state.newPostText}
+    <ProfileInfo      
+      addPost={() => props.store.dispatch(addPostAC())}
+      postChecge={(text) => props.store.dispatch(updateNewPostAC(text))}
+      newPostText={props.store.getState().profilePage.newPostText}
     />
   );
 };

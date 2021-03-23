@@ -11,15 +11,15 @@ import Setting from "./components/Setting/Setting";
 import News from "./components/News/News";
 import DialodsConteiner from "./components/Dialods/DialodsConteiner";
 
-const App = (props) => {
+const App = () => {
   return (
     <div className="app">
       <Header />
       <div className="app-wrapper">
         <Navbar />
         <div className={"app-wrapper-content"}>
-          <Route path="/profile" render={() => ( <Profile state={props.store.profilePage} dispatch={props.dispatch} />)} />
-          <Route path="/dialogs" render={() => ( <DialodsConteiner state={props.store.dialogsPage} dispatch={props.dispatch} />)} />
+          <Route path="/profile" render={() => ( <Profile/>)} />
+          <Route path="/dialogs" render={() => ( <DialodsConteiner />)} />
           <Route path="/users" render={() => <Users />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/setting" render={() => <Setting />} />

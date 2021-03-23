@@ -1,15 +1,16 @@
 import React from "react";
 import Dialods from "./Dialods";
-import { sendMessageAC, updateNewMessageAC } from "../../redux/dialogs-reduser";
+import {  sendMessageAC, updateNewMessageAC } from "../../redux/dialogs-reduser";
+import store from "../../redux/state";
 
 const DialodsConteiner = (props) => {
   return (
-    <Dialods
-      dialogs={props.state.dialogs}
-      messages={props.state.messages}
-      newMessageText={props.state.newMessageText}
-      newMessage={() => props.dispatch(sendMessageAC())}
-      messageChange={(text) => props.dispatch(updateNewMessageAC(text))}
+    <Dialods     
+      dialogs={store.getState().dialogsPage.dialogs}
+      messages={store.getState().dialogsPage.messages}
+      newMessageText={store.getState().dialogsPage.newMessageText}
+      newMessage={() => store.dispatch(sendMessageAC())}
+      messageChange={(text) => store.dispatch(updateNewMessageAC(text))}
     />
   );
 };
