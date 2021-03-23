@@ -1,15 +1,19 @@
 import React from "react";
-import MyPosts from "./MyPosts/MyPosts";
 import styles from "./Profile.module.css";
 import ProfileInfoConteiner from "./MyPosts/ProfileInfo/ProfileInfoConteiner";
-import store from "../../redux/state";
+import MyPosts from "./MyPosts/MyPosts";
+import StoreContext from "../../StoreContext";
 
 const Profile = () => {
   return (
-    <div>
-      <ProfileInfoConteiner store={store} />
-      <MyPosts posts={store.getState().profilePage.posts} />
-    </div>
+    <StoreContext.Consumer>
+      {(store) => (
+        <div>
+          <ProfileInfoConteiner  store={store}/>
+          <MyPosts posts={store.getState().profilePage.posts} />;
+        </div>
+      )}
+    </StoreContext.Consumer>
   );
 };
 

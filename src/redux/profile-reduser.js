@@ -12,7 +12,8 @@ let initialState = {
   newPostText: "",
 };
 
-const profileReduser = (state = initialState, action) => {
+const profileReduser = (state = initialState, action ={}) => {
+  debugger
   switch (action.type) {
     case ADD_POST:
       let post = state.newPostText;
