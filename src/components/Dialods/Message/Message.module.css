@@ -1,5 +1,9 @@
 .message {
     padding: 10px;
+    margin: 5px;
     display: flex;
     justify-content: flex-start;
+    background-color: #ccd6e2;
+    width: 250px;
+    border-radius: 7px;
 }

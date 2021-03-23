@@ -8,10 +8,6 @@
     padding: 10px;
 }
 
-.messages {
-    padding: 5px;
-}
-
 .textarea {
     grid-column: 2/3;
     display: flex;
@@ -19,12 +15,13 @@
     flex-direction: column;
 }
 
-.message{
+.messages {
+    padding: 5px;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.button{
+.button {
     margin-left: 120px;
 }

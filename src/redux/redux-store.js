@@ -3,8 +3,8 @@ import dialodsReduser from "./dialogs-reduser";
 import profileReduser from "./profile-reduser";
 
 let redusers = combineReducers({
-  profilePage: dialodsReduser,
-  dialogsPage: profileReduser,
+  profilePage: profileReduser,
+  dialogsPage: dialodsReduser,
 });
 
 let store = createStore(redusers);

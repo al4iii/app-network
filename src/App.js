@@ -3,7 +3,6 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-
 import { Route } from "react-router-dom";
 import Users from "./components/Users/Users";
 import Music from "./components/Music/Music";

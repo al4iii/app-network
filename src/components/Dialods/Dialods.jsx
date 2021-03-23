@@ -5,10 +5,11 @@ import DialodItem from "./DialodItem/DialodItem";
 import Button from "./Button/Button";
 
 const Dialods = (props) => {
+  debugger
   let DialogElemenst = props.dialogs.map((d) => (
     <DialodItem name={d.name} key={d.id} styles={d.active} />
   ));
-  let messageslemenst = props.messages.map((m) => (
+  let messagesElemenst = props.messages.map((m) => (
     <Message message={m.message} key={m.id} />
   ));
   const onNewMessage = () => props.newMessage();
@@ -16,7 +17,7 @@ const Dialods = (props) => {
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
-      <div className={styles.message}>{messageslemenst}</div>
+      <div className={styles.messages}>{messagesElemenst}</div>
       <div className={styles.textarea}>
         <textarea
           placeholder="enter message"

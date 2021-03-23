@@ -1,22 +1,24 @@
-import React from "react";
 import Dialods from "./Dialods";
 import { sendMessageAC, updateNewMessageAC } from "../../redux/dialogs-reduser";
-import StoreContext from "../../StoreContext";
+import { connect } from "react-redux";
 
-const DialodsConteiner = () => {
-  return (
-    <StoreContext.Consumer>
-      {(store) => (
-        <Dialods
-          dialogs={store.getState().dialogsPage.dialogs}
-          messages={store.getState().dialogsPage.messages}
-          newMessageText={store.getState().dialogsPage.newMessageText}
-          newMessage={() => store.dispatch(sendMessageAC())}
-          messageChange={(text) => store.dispatch(updateNewMessageAC(text))}
-        />
-      )}
-    </StoreContext.Consumer>
-  );
+let mapStateToPtops = (state) => {
+  return {
+    dialogs: state.dialogsPage.dialogs,
+    messages: state.dialogsPage.messages,
+    newMessageText: state.dialogsPage.newMessageText,
+  };
+};
+let mapDispatchToPtops = (dispatch) => {
+  return {
+    newMessage: () => {
+      dispatch(sendMessageAC());
+    },
+    messageChange: (text) => {
+      dispatch(updateNewMessageAC(text));
+    },
+  };
 };
 
+const DialodsConteiner = connect(mapStateToPtops, mapDispatchToPtops)(Dialods);
 export default DialodsConteiner;
