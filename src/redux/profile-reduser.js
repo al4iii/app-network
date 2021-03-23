@@ -12,18 +12,25 @@ let initialState = {
   newPostText: "",
 };
 
-const profileReduser = (state = initialState, action ={}) => {
+const profileReduser = (state = initialState, action = {}) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       let post = state.newPostText;
       let newId = state.posts.length + 2;
       let newPost = { id: newId, message: post, like: 0 };
-      state.newPostText ? state.posts.push(newPost) : (state.newPostText = "");
-      state.newPostText = "";
-      return state;
-    case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.post;
-      return state;
+      let stateCopy = { ...state };
+      stateCopy.posts = [...stateCopy.posts];
+      stateCopy.newPostText
+        ? stateCopy.posts.push(newPost)
+        : (stateCopy.newPostText = "");
+      stateCopy.newPostText = "";
+      return stateCopy;
+    }
+    case UPDATE_NEW_POST_TEXT: {
+      let stateCopy = { ...state };
+      stateCopy.newPostText = action.post;
+      return stateCopy;
+    }
     default:
       return state;
   }

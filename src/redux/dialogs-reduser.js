@@ -19,18 +19,24 @@ let initialState = {
 
 const dialodsReduser = (state = initialState, action) => {
   switch (action.type) {
-    case SEND_MESSAGE:
+    case SEND_MESSAGE: {
       let message = state.newMessageText;
       let newId = state.messages.length + 2;
       let newMessage = { id: newId, message: message };
+      let stateCopy = { ...state };
+      stateCopy.messages = [...state.messages]
       state.newMessageText
-        ? state.messages.push(newMessage)
-        : (state.newMessageText = "");
-      state.newMessageText = "";
-      return state;
-    case UPDATE_NEW_MESSAGE_TEXT:
-      state.newMessageText = action.messege;
-      return state;
+        ? stateCopy.messages.push(newMessage)
+        : (stateCopy.newMessageText = "");
+        stateCopy.newMessageText = "";
+      return stateCopy;
+    }
+    case UPDATE_NEW_MESSAGE_TEXT:{
+      let stateCopy = { ...state };
+      stateCopy.newMessageText = [...state.newMessageText ]
+      stateCopy.newMessageText = action.messege;
+      return stateCopy;
+    }     
     default:
       return state;
   }

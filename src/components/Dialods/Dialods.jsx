@@ -5,7 +5,6 @@ import DialodItem from "./DialodItem/DialodItem";
 import Button from "./Button/Button";
 
 const Dialods = (props) => {
-  debugger
   let DialogElemenst = props.dialogs.map((d) => (
     <DialodItem name={d.name} key={d.id} styles={d.active} />
   ));

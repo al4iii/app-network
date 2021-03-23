@@ -17,8 +17,5 @@ let mapDispatchToPtops = (dispatch) => {
     },
   };
 };
-const ProfileInfoConteiner = connect(
-  mapStateToPtops,
-  mapDispatchToPtops
-)(ProfileInfo);
+const ProfileInfoConteiner = connect( mapStateToPtops, mapDispatchToPtops)(ProfileInfo);
 export default ProfileInfoConteiner;
