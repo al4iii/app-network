@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import MyPosts from "./MyPosts";
 
 let mapStateToPtops = (state) => {
-  console.log(state.profilePage);
   return {
     posts: state.profilePage.posts,
   };

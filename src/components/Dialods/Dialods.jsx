@@ -19,6 +19,7 @@ const Dialods = (props) => {
       <div className={styles.messages}>{messagesElemenst}</div>
       <div className={styles.textarea}>
         <textarea
+          className={styles.form}
           placeholder="enter message"
           onChange={onMessageChange}
           value={props.newMessageText}

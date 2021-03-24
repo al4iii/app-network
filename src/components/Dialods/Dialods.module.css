@@ -23,5 +23,24 @@
 }
 
 .button {
-    margin-left: 120px;
+    margin-left: 230px;
+    margin-top: 10px;
+}
+
+.form {
+    display: block;
+    width: 40%;
+    padding: 0 5px;
+    margin: 25px 0 0 10px;
+    background: #ccd6e2;
+    line-height: 40px;
+    border-width: 0;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    resize: none;
+    border: 1px solid #000;
+}
+
+textarea:focus {
+    outline: none;
 }

@@ -6,13 +6,13 @@
 
 .myPosts {
   display: grid;
-  grid-template-rows: 200px 100px;
+  grid-template-rows: 200px 180px;
 }
 
 .enter {
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 2fr;
 }
 
 .textarea {
@@ -21,6 +21,24 @@
 }
 
 .button {
-  margin-left: 100px;
+  margin-left: 230px;
   grid-column: 2/3;
+}
+
+.form {
+  display: block;
+  width: 40%;
+  padding: 5px;
+  margin: 25px 0 0 35px;
+  background: #ccd6e2;
+  line-height: 25px;
+  border-width: 0;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+  border: 1px solid #000;
+}
+
+textarea:focus {
+  outline: none;
 }

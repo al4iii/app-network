@@ -11,8 +11,8 @@ const ProfileInfo = (props) => {
       <img src={illustration} className={styles.img} />
       <div className={styles.enter}>
         <div className={styles.textarea}>
-          <textarea
-            placeholder="enter text"
+          <textarea className={styles.form}
+            placeholder="enter post"
             value={props.newPostText}
             onChange={onPostChecge}
           />
