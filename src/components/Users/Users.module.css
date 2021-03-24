@@ -1,4 +1,36 @@
-.photo{
+.users {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.userPhoto {
     width: 150px;
     height: 150px;
+    display: grid;
+    justify-items: center;
+}
+
+.user {
+    margin-bottom: 5px;
+    background-color: #ccd6e2;
+    width: 400px;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 200px 1fr;
+}
+
+.button {
+    display: grid;
+    justify-items: center;
+}
+
+.user_info {
+    margin: 20px;
+}
+
+.item_info {
+    margin: 10px;
+    font-size: 15px;
 }

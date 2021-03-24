@@ -1,45 +1,29 @@
+import axios from "axios";
 import React from "react";
 import style from "./Users.module.css";
+import avatar from "./../../img/user-male.png";
 
 const Users = (props) => {
   if (props.users.length === 0) {
-    props.setUsers([
-      {
-        id: 1,
-        photoUrl: "https://img.icons8.com/bubbles/2x/user-male.png",
-        fullName: "al4i",
-        followed: true,
-        status: "i like sex",
-        location: { city: "Mogilev", contry: " Belarus" },
-      },
-      {
-        id: 2,
-        photoUrl: "https://img.icons8.com/bubbles/2x/user-male.png",
-        fullName: "sasha",
-        followed: false,
-        status: "i like cola",
-        location: { city: "Minsk", contry: " Belarus" },
-      },
-      {
-        id: 3,
-        photoUrl: "https://img.icons8.com/bubbles/2x/user-male.png",
-        fullName: "gora",
-        followed: true,
-        status: "i like study",
-        location: { city: "Gomel", contry: " Belarus" },
-      },
-    ]);
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        props.setUsers(response.data.items);
+      });
   }
-
   return (
-    <div>
+    <div className={style.users}>
       {props.users.map((u) => (
-        <div key={u.id}>
+        <div key={u.id} className={style.user}>
           <span>
             <div>
-              <img src={u.photoUrl} alt="foto" className={style.userPhoto} />
+              <img
+                src={u.photos.small || avatar}
+                alt="foto"
+                className={style.userPhoto}
+              />
             </div>
-            <div>
+            <div className={style.button}>
               {u.followed ? (
                 <button
                   onClick={() => {
@@ -59,15 +43,10 @@ const Users = (props) => {
               )}
             </div>
           </span>
-          <span>
-            <span>
-              <div> {u.fullName}</div>
-              <div>{u.status}</div>
-            </span>
-            <span>
-              <div> {u.location.contry}</div>
-              <div>{u.location.city}</div>
-            </span>
+          <span className={style.user_info}>
+            <div className={style.item_info}>Name: {u.name}</div>
+            <div className={style.item_info}>{u.status || "no status"}</div>
+            <div className={style.item_info}> id : {u.id}</div>
           </span>
         </div>
       ))}
