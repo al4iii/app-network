@@ -12,7 +12,7 @@ let initialState = {
   newPostText: "",
 };
 
-const profileReduser = (state = initialState, action = {}) => {
+const profileReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case ADD_POST:
       return state.newPostText
@@ -43,4 +43,4 @@ export const updateNewPostAC = (post) => ({
 });
 export const addPostAC = () => ({ type: ADD_POST });
 
-export default profileReduser;
+export default profileReducer;

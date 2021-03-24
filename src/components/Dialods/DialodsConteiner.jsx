@@ -20,5 +20,4 @@ let mapDispatchToPtops = (dispatch) => {
   };
 };
 
-const DialodsConteiner = connect(mapStateToPtops, mapDispatchToPtops)(Dialods);
-export default DialodsConteiner;
+export default connect(mapStateToPtops, mapDispatchToPtops)(Dialods);

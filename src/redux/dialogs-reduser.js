@@ -17,7 +17,7 @@ let initialState = {
   newMessageText: "",
 };
 
-const dialodsReduser = (state = initialState, action) => {
+const dialodsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
       return state.newMessageText
@@ -42,4 +42,4 @@ export const updateNewMessageAC = (messege) => ({
   messege: messege,
 });
 export const sendMessageAC = () => ({ type: SEND_MESSAGE });
-export default dialodsReduser;
+export default dialodsReducer;
