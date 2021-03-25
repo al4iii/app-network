@@ -5,11 +5,17 @@
     grid-gap: 10px;
 }
 
-.userPhoto {
+.userPhoto {    
     width: 150px;
-    height: 150px;
-    display: grid;
-    justify-items: center;
+    height: 150px; 
+    display: grid;      
+    justify-content: center;
+    align-content: center;
+}
+.user_img {    
+    width: 100px;
+    height: 100px;       
+    border-radius: 100px;   
 }
 
 .user {
@@ -33,4 +39,15 @@
 .item_info {
     margin: 10px;
     font-size: 15px;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
+
+.pagination{
+    display: grid; 
+    grid-template-columns: repeat(20, 1fr);       
+    justify-items: center;
+    justify-content: center;
 }
