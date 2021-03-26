@@ -1,11 +1,16 @@
 import { connect } from "react-redux";
-import { follow, setCurrentPages, setUsers,
-  unfollow, setTotalUsersCount, toggleIsFetching } from "../../redux/users-reduser";
+import {
+  follow,
+  setCurrentPages,
+  setUsers,
+  unfollow,
+  setTotalUsersCount,
+  toggleIsFetching,
+} from "../../redux/users-reduser";
 import * as axios from "axios";
 import Users from "./Users";
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
-
 
 class UsersConteiner extends React.Component {
   onPageChenged = (pageNumber) => {
@@ -60,5 +65,11 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps,
-  { follow, unfollow, setUsers, setCurrentPages, setTotalUsersCount, toggleIsFetching})(UsersConteiner);
+export default connect(mapStateToProps, {
+  follow,
+  unfollow,
+  setUsers,
+  setCurrentPages,
+  setTotalUsersCount,
+  toggleIsFetching,
+})(UsersConteiner);

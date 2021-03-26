@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ProfileInfo.module.css";
 import Button from "../../../Dialods/Button/Button";
 import Preloader from "../../../../common/Preloader/Preloader";
+import user from "./../../../../img/user-male.png";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -12,7 +13,7 @@ const ProfileInfo = (props) => {
   return (
     <div className={styles.myPosts}>
       <div className={styles.profile}>
-        <img src={props.profile.photos.large} className={styles.profile_img} />
+        <img src={props.profile.photos.large  || user} className={styles.profile_img} />
         <div className={styles.profile_info}>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>Full mame:</span>
