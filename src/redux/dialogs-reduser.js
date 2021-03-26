@@ -37,9 +37,6 @@ const dialodsReducer = (state = initialState, action) => {
   }
 };
 
-export const updateNewMessageAC = (messege) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT,
-  messege: messege,
-});
-export const sendMessageAC = () => ({ type: SEND_MESSAGE });
+export const messageChange = (messege) => ({type: UPDATE_NEW_MESSAGE_TEXT, messege});
+export const newMessage = () => ({ type: SEND_MESSAGE });
 export default dialodsReducer;

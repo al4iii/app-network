@@ -1,5 +1,5 @@
 import Dialods from "./Dialods";
-import { sendMessageAC, updateNewMessageAC } from "../../redux/dialogs-reduser";
+import { newMessage, messageChange } from "../../redux/dialogs-reduser";
 import { connect } from "react-redux";
 
 let mapStateToPtops = (state) => {
@@ -9,15 +9,5 @@ let mapStateToPtops = (state) => {
     newMessageText: state.dialogsPage.newMessageText,
   };
 };
-let mapDispatchToPtops = (dispatch) => {
-  return {
-    newMessage: () => {
-      dispatch(sendMessageAC());
-    },
-    messageChange: (text) => {
-      dispatch(updateNewMessageAC(text));
-    },
-  };
-};
 
-export default connect(mapStateToPtops, mapDispatchToPtops)(Dialods);
+export default connect(mapStateToPtops, { newMessage, messageChange })(Dialods);
