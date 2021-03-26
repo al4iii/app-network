@@ -11,6 +11,14 @@
 }
 
 .img {
-  height: 70px;  
-  grid-column: 2/3; 
+  height: 70px;
+  grid-column: 2/3;
+}
+
+.login_block {
+  color: #000;
+  display: grid;
+  justify-content: end;
+  align-content: center;
+  margin-right: 100px;
 }

@@ -7,10 +7,12 @@ import { withRouter } from "react-router";
 
 class ProfileConteiner extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId;
-    if (!userId) userId = 15148;
     axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/profile/${
+          this.props.match.params.userId || 15148
+        }`
+      )
       .then((response) => {
         this.props.setUserProfile(response.data);
       });

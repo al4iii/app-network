@@ -1,0 +1,15 @@
+.selectedPage {
+    font-weight: bold;
+}
+
+.currentPage:hover {
+    background-color: #cfd4d8;
+    cursor: pointer
+}
+
+.pagination {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    justify-items: center;
+    justify-content: center;
+}

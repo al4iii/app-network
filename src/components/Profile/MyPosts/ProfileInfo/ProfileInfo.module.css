@@ -58,10 +58,12 @@ textarea:focus {
 
 .profile_info {
   justify-self: start; 
+  width: 300px;
 }
 
 .profile_span {
   font-weight: 600;
+  width: 100px;
 }
 
 .profile_item {
