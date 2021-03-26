@@ -1,5 +1,6 @@
 const ADD_POST = "profile/ADD-POST";
 const UPDATE_NEW_POST_TEXT = "profile/UPDATE-NEW-POST-TEXT";
+const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
 
 let initialState = {
   posts: [
@@ -10,6 +11,7 @@ let initialState = {
     { id: 5, message: "It's my first post!!", like: 177 },
   ],
   newPostText: "",
+  profile: null,
 };
 
 const profileReducer = (state = initialState, action = {}) => {
@@ -32,12 +34,19 @@ const profileReducer = (state = initialState, action = {}) => {
     case UPDATE_NEW_POST_TEXT: {
       return { ...state, newPostText: action.post };
     }
+    case SET_USER_PROFILE: {
+      return { ...state, profile: action.profile };
+    }
     default:
       return state;
   }
 };
 
-export const postChecge = (post) => ({ type: UPDATE_NEW_POST_TEXT, post});
+export const postChecge = (post) => ({ type: UPDATE_NEW_POST_TEXT, post });
 export const addPost = () => ({ type: ADD_POST });
+export const setUserProfile = (profile) => ({
+  type: SET_USER_PROFILE,
+  profile,
+});
 
 export default profileReducer;

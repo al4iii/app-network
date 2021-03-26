@@ -6,7 +6,7 @@
 
 .myPosts {
   display: grid;
-  grid-template-rows: 200px 180px;
+  grid-template-rows: 300px 180px;
 }
 
 .enter {
@@ -41,4 +41,29 @@
 
 textarea:focus {
   outline: none;
+}
+
+.profile {
+  display: grid;
+  margin-top: 10px;
+  grid-template-columns: 1fr 2fr; 
+  justify-content: center;
+}
+
+.profile_img {
+  width: 200px;
+  border-radius: 100px;
+  justify-self: center; 
+}
+
+.profile_info {
+  justify-self: start; 
+}
+
+.profile_span {
+  font-weight: 600;
+}
+
+.profile_item {
+  margin: 10px;
 }

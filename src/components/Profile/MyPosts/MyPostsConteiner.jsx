@@ -6,8 +6,5 @@ let mapStateToPtops = (state) => {
     posts: state.profilePage.posts,
   };
 };
-let mapDispatchToPtops = (dispatch) => {
-  return {};
-};
-const MyPostsConteiner = connect(mapStateToPtops, mapDispatchToPtops)(MyPosts);
-export default MyPostsConteiner;
+
+export default connect(mapStateToPtops, {})(MyPosts);

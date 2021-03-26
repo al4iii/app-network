@@ -1,17 +1,38 @@
 import React from "react";
 import styles from "./ProfileInfo.module.css";
-import illustration from "./../../../../img/illustration.jpg";
 import Button from "../../../Dialods/Button/Button";
+import Preloader from "../../../../common/Preloader/Preloader";
 
-const ProfileInfo = (props) => { 
+const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />;
+  }
   let onAddPost = () => props.addPost();
   let onPostChecge = (e) => props.postChecge(e.target.value);
   return (
     <div className={styles.myPosts}>
-      <img src={illustration} className={styles.img} />
+      <div className={styles.profile}>
+        <img src={props.profile.photos.large} className={styles.profile_img} />
+        <div className={styles.profile_info}>
+          <div className={styles.profile_item}>
+            <span className={styles.profile_span}>Full mame:</span>
+            {props.profile.fullName}
+          </div>
+          <div className={styles.profile_item}>
+            <span className={styles.profile_span}>about me: </span>
+            {props.profile.aboutMe}
+          </div>
+          <div className={styles.profile_item}>
+            <span className={styles.profile_span}>id: </span>
+            {props.profile.userId}
+          </div>
+        </div>
+      </div>
+
       <div className={styles.enter}>
         <div className={styles.textarea}>
-          <textarea className={styles.form}
+          <textarea
+            className={styles.form}
             placeholder="enter post"
             value={props.newPostText}
             onChange={onPostChecge}
