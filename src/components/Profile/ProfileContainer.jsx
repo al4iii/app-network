@@ -4,18 +4,13 @@ import { connect } from "react-redux";
 import Profile from "./Profile";
 import { setUserProfile } from "../../redux/profile-reduser";
 import { withRouter } from "react-router";
+import { usersAPI } from "../../API/api";
 
 class ProfileConteiner extends React.Component {
   componentDidMount() {
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/profile/${
-          this.props.match.params.userId || 15148
-        }`
-      )
-      .then((response) => {
-        this.props.setUserProfile(response.data);
-      });
+    usersAPI.getUser(this.props.match.params.userId).then((response) => {
+      this.props.setUserProfile(response);
+    });
   }
   render() {
     return (
