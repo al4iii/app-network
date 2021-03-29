@@ -3,6 +3,7 @@ import styles from "./Users.module.css";
 import avatar from "./../../img/user-male.png";
 import { NavLink } from "react-router-dom";
 import Pagination from "../../common/Pagination/Pagination";
+import axios from "axios";
 
 const Users = (props) => {
   return (
@@ -30,18 +31,39 @@ const Users = (props) => {
                 {u.followed ? (
                   <button
                     onClick={() => {
-                      props.unfollow(u.id);
+                      axios
+                        .delete(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                          { withCredentials: true,
+                            headers: {
+                              "API-KEY": "5fbca2cc-88e1-4c18-b855-d03cb389add5",
+                            },
+                          }
+                        )
+                        .then((response) => response.data.resultCode == 0 && props.unfollow(u.id)
+                        );
                     }}
                   >
-                    follow
+                    Unfollow
                   </button>
                 ) : (
                   <button
                     onClick={() => {
-                      props.follow(u.id);
+                      axios
+                        .post(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                          {},
+                          {
+                            withCredentials: true,
+                            headers: {
+                              "API-KEY": "5fbca2cc-88e1-4c18-b855-d03cb389add5",
+                            },
+                          }
+                        )
+                        .then((response) => response.data.resultCode == 0 && props.follow(u.id));
                     }}
                   >
-                    unfollow
+                    Follow
                   </button>
                 )}
               </div>

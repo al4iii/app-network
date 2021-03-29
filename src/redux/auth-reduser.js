@@ -1,4 +1,5 @@
 const SET_USER_DATA = "auth/SET_USER_DATA";
+const SET_USER_AVATAR = "auth/SET_USER_AVATAR";
 
 let initialState = {
   isFetching: false,
@@ -6,6 +7,7 @@ let initialState = {
   login: null,
   email: null,
   isAuth: false,
+  avatar: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -16,6 +18,11 @@ const authReducer = (state = initialState, action) => {
         ...action.data,
         isAuth: true,
       };
+    case SET_USER_AVATAR:
+      return {
+        ...state,        
+        avatar: action.avatar,
+      };
     default:
       return state;
   }
@@ -25,5 +32,8 @@ export const setAuthUserData = (userId, login, email) => ({
   type: SET_USER_DATA,
   data: { userId, login, email },
 });
+export const setAuthUserAvatar = (avatar) => (
+  { type: SET_USER_AVATAR }, avatar
+);
 
 export default authReducer;
