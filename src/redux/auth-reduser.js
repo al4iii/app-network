@@ -1,3 +1,5 @@
+import { authAPI } from "../API/api";
+
 const SET_USER_DATA = "auth/SET_USER_DATA";
 const SET_USER_AVATAR = "auth/SET_USER_AVATAR";
 
@@ -36,4 +38,15 @@ export const setAuthUserAvatar = (avatar) => (
   { type: SET_USER_AVATAR }, avatar
 );
 
+
+export const auth = () => {
+  return (dispapch) => {
+    authAPI.getAuth().then((response) => {
+      if (response.resultCode === 0) {
+        let { id, login, email } = response.data;
+        dispapch(setAuthUserData(id, login, email));
+      }
+    });
+  };
+};
 export default authReducer;
