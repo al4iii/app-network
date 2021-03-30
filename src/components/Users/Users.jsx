@@ -3,9 +3,6 @@ import styles from "./Users.module.css";
 import avatar from "./../../img/user-male.png";
 import { NavLink } from "react-router-dom";
 import Pagination from "../../common/Pagination/Pagination";
-import axios from "axios";
-import { usersAPI } from "../../API/api";
-import Preloader from "../../common/Preloader/Preloader";
 
 const Users = (props) => {
   return (
@@ -31,29 +28,13 @@ const Users = (props) => {
               </div>
               <div className={styles.button}>
                 {u.followed ? (
-                  <button
-                    disabled={props.followingInProgress.some((id) => id == u.id)}
-                    onClick={() => {
-                      props.toggleFollow(true, u.id);
-                      usersAPI.setUnfollow(u.id).then((response) => {
-                        response.resultCode == 0 && props.unfollow(u.id);
-                        props.toggleFollow(false, u.id);
-                      });
-                    }}
-                  >
+                  <button disabled={props.followingInProgress.some((id) => id == u.id )}
+                    onClick={() => {props.unfollow(u.id)}}> 
                     Unfollow
                   </button>
                 ) : (
-                  <button
-                    disabled={props.followingInProgress.some((id) => id == u.id)}
-                    onClick={() => {
-                      props.toggleFollow(true, u.id);
-                      usersAPI.setFollow(u.id).then((response) => {
-                        response.resultCode == 0 && props.follow(u.id);
-                        props.toggleFollow(false, u.id);
-                      });
-                    }}
-                  >
+                  <button disabled={props.followingInProgress.some((id) => id == u.id )}
+                    onClick={() => { props.follow(u.id)}} >
                     Follow
                   </button>
                 )}

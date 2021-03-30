@@ -14,10 +14,10 @@ export const usersAPI = {
       .get(`users?page=${pageNumber}&count=${pageSize}`)
       .then((response) => response.data);
   },
-  setUnfollow: (id) => {
+  unfollow: (id) => {
     return instanse.delete(`follow/${id}`).then((response) => response.data);
   },
-  setFollow: (id) => {
+  follow: (id) => {
     return instanse.post(`follow/${id}`).then((response) => response.data);
   },
   getUser: (userId) => {
