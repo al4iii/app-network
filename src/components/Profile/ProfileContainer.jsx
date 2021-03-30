@@ -12,12 +12,11 @@ class ProfileConteiner extends React.Component {
     return <Profile {...this.props} />;
   }
 }
+
 let mapStateToProps = (state) => {
   return {
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
   };
 };
-export default withRouter(
-  connect(mapStateToProps, { setUserProfile, getUser })(ProfileConteiner)
-);
+
+export default withRouter( connect(mapStateToProps, { setUserProfile, getUser })(ProfileConteiner));
