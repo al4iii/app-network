@@ -3,6 +3,7 @@ import styles from "./Dialods.module.css";
 import Message from "./Message/Message";
 import DialodItem from "./DialodItem/DialodItem";
 import Button from "./Button/Button";
+import { Redirect } from "react-router";
 
 const Dialods = (props) => {
   let DialogElemenst = props.dialogs.map((d) => (
@@ -13,6 +14,8 @@ const Dialods = (props) => {
   ));
   const onNewMessage = () => props.newMessage();
   const onMessageChange = (e) => props.messageChange(e.target.value);
+  if (!props.isAuth) return <Redirect to="login" />;
+  
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
