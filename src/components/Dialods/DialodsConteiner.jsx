@@ -1,6 +1,7 @@
 import Dialods from "./Dialods";
 import { newMessage, messageChange } from "../../redux/dialogs-reduser";
 import { connect } from "react-redux";
+import { compose } from "redux";
 
 let mapStateToPtops = (state) => {
   return {
@@ -10,4 +11,6 @@ let mapStateToPtops = (state) => {
   };
 };
 
-export default connect(mapStateToPtops, { newMessage, messageChange })(Dialods);
+export default compose(connect(mapStateToPtops, { newMessage, messageChange }))(
+  Dialods
+);
