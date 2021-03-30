@@ -21,14 +21,10 @@ export const usersAPI = {
     return instanse.post(`follow/${id}`).then((response) => response.data);
   },
   getUser: (userId) => {
-    return instanse
-      .get(`profile/${userId || 15148}`)
-      .then((response) => response.data);
+    return instanse.get(`profile/${userId}`).then((response) => response.data);
   },
 };
 
 export const authAPI = {
-  getAuth: () => {
-    return instanse.get(`auth/me`).then((response) => response.data);
-  },
+  getAuth: () => instanse.get(`auth/me`).then((response) => response.data),
 };
