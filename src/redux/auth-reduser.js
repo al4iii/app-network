@@ -1,4 +1,5 @@
-import { authAPI } from "../API/api";
+import { authAPI, usersAPI } from "../API/api";
+import { setMyProfile } from "./profile-reduser";
 
 const SET_USER_DATA = "auth/SET_USER_DATA";
 const SET_USER_AVATAR = "auth/SET_USER_AVATAR";
@@ -40,12 +41,14 @@ export const setAuthUserAvatar = (avatar) => (
 
 
 export const auth = () => {
-  return (dispapch) => {
+  return (dispatch) => {
     authAPI.getAuth().then((response) => {
       if (response.resultCode === 0) {
         let { id, login, email } = response.data;
-        dispapch(setAuthUserData(id, login, email));
-      }
+        dispatch(setAuthUserData(id, login, email));       
+        usersAPI.getUser(id).then((response) => {                 
+          dispatch(setMyProfile(response.photos.small))});
+      }     
     });
   };
 };

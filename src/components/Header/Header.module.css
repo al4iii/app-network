@@ -22,3 +22,15 @@
   align-content: center;
   margin-right: 100px;
 }
+
+.profilePhoto{
+  width: 45px;
+  border-radius: 20px;   
+}
+
+.auth{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}

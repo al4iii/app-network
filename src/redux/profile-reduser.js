@@ -3,6 +3,7 @@ import { usersAPI } from "../API/api";
 const ADD_POST = "profile/ADD-POST";
 const UPDATE_NEW_POST_TEXT = "profile/UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
+const SET_MY_PROFILE_PHOTO = "profile/SET_MY_PROFILE_PHOTO";
 
 let initialState = {
   posts: [
@@ -14,6 +15,7 @@ let initialState = {
   ],
   newPostText: "",
   profile: null,
+  myProfilePhoto: null
 };
 
 const profileReducer = (state = initialState, action = {}) => {
@@ -39,6 +41,9 @@ const profileReducer = (state = initialState, action = {}) => {
     case SET_USER_PROFILE: {
       return { ...state, profile: action.profile };
     }
+    case SET_MY_PROFILE_PHOTO: {
+      return { ...state, myProfilePhoto: action.profile };
+    }
     default:
       return state;
   }
@@ -48,6 +53,10 @@ export const postChecge = (post) => ({ type: UPDATE_NEW_POST_TEXT, post });
 export const addPost = () => ({ type: ADD_POST });
 export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
+  profile,
+});
+export const setMyProfile = (profile) => ({
+  type: SET_MY_PROFILE_PHOTO,
   profile,
 });
 

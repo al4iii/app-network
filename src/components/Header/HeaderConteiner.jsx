@@ -19,6 +19,7 @@ let mapStateToProps = (state) => {
     isFetching: state.auth.isFetching,
     email: state.auth.email,
     avatar: state.auth.avatar,
+    profilePhoto: state.profilePage.myProfilePhoto
   };
 };
 

@@ -4,6 +4,7 @@ import MyPosts from "./MyPosts";
 let mapStateToPtops = (state) => {
   return {
     posts: state.profilePage.posts,
+    myProfilePhoto: state.profilePage.myProfilePhoto,
   };
 };
 
