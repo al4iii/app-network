@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./ProfileInfo.module.css";
 
 class ProfileStatus extends React.Component {
-    debugger
   state = {
     editMode: false,
     status: this.props.status,
@@ -29,17 +28,16 @@ class ProfileStatus extends React.Component {
   componentDidUpdate() {
     this.props.getStatus(this.props.userId);
   }
-
   render() {
     return (
       <div>
         {!this.state.editMode && (
           <div>
             <span
-              onDoubleClick={this.activateEditMode }
+              onDoubleClick={this.activateEditMode}
               className={styles.profile_span}
             >
-              Status: {this.props.status ||"no status"}
+              Status: {this.props.status || "no status"}
             </span>
           </div>
         )}
