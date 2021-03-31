@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
-import { addPost, postChecge } from "../../../../redux/profile-reduser";
+import { addPost, postChecge, getStatus, updateStatus } from "../../../../redux/profile-reduser";
 import ProfileInfo from "./ProfileInfo";
 
 let mapStateToPtops = (state) => {
   return {
     newPostText: state.profilePage.newPostText,
+    status: state.profilePage.status,
+    myId: state.auth.userId
   };
 };
 
-export default connect(mapStateToPtops, { addPost, postChecge })(ProfileInfo);
+export default connect(mapStateToPtops, { addPost, postChecge, getStatus, updateStatus })(ProfileInfo);

@@ -28,3 +28,11 @@ export const usersAPI = {
 export const authAPI = {
   getAuth: () => instanse.get(`auth/me`).then((response) => response.data),
 };
+export const profileAPI = {
+  getStatus: (userId) =>
+    instanse.get(`/profile/status/${userId}`).then((response) => response.data),
+  updateStatus: (status) =>
+    instanse
+      .put(`/profile/status`, { status: status })
+      .then((response) => response),
+};

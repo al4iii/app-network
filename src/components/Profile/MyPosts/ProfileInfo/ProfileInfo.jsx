@@ -6,6 +6,7 @@ import user from "./../../../../img/user-male.png";
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
+  
   if (!props.profile) {
     return <Preloader />;
   }
@@ -14,7 +15,10 @@ const ProfileInfo = (props) => {
   return (
     <div className={styles.myPosts}>
       <div className={styles.profile}>
-        <img src={props.profile.photos.large  || user} className={styles.profile_img} />
+        <img
+          src={props.profile.photos.large || user}
+          className={styles.profile_img}
+        />
         <div className={styles.profile_info}>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>Full mame:</span>
@@ -28,7 +32,13 @@ const ProfileInfo = (props) => {
             <span className={styles.profile_span}>id: </span>
             {props.profile.userId}
           </div>
-          <ProfileStatus status={"hello"}/>
+          <ProfileStatus
+            status={props.status}
+            getStatus={props.getStatus}
+            myId={props.myId}
+            userId={props.profile.userId}
+            updateStatus= {props.updateStatus}
+          />
         </div>
       </div>
       <div className={styles.enter}>
