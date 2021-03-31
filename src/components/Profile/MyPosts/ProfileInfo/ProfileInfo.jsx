@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./ProfileInfo.module.css";
-import Button from "../../../Dialods/Button/Button";
+import Button from "../../../../common/Button/Button";
 import Preloader from "../../../../common/Preloader/Preloader";
 import user from "./../../../../img/user-male.png";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -27,9 +28,9 @@ const ProfileInfo = (props) => {
             <span className={styles.profile_span}>id: </span>
             {props.profile.userId}
           </div>
+          <ProfileStatus status={"hello"}/>
         </div>
       </div>
-
       <div className={styles.enter}>
         <div className={styles.textarea}>
           <textarea

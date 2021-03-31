@@ -25,7 +25,7 @@ const Users = (props) => {
                     alt="foto"
                   />
                 </NavLink>
-              </div>
+              </div>              
               <div className={styles.button}>
                 {u.followed ? (
                   <button disabled={props.followingInProgress.some((id) => id == u.id )}

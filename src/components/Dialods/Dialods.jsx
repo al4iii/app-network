@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Dialods.module.css";
 import Message from "./Message/Message";
 import DialodItem from "./DialodItem/DialodItem";
-import Button from "./Button/Button";
+import Button from "../../common/Button/Button";
 import { Redirect } from "react-router";
 import withAuthRedirect from "../HOC/withAuthRedirect";
 
@@ -11,7 +11,11 @@ const Dialods = (props) => {
     <DialodItem name={d.name} key={d.id} styles={d.active} />
   ));
   let messagesElemenst = props.messages.map((m) => (
-    <Message message={m.message} key={m.id} />
+    <Message
+      message={m.message}
+      key={m.id}
+      myProfilePhoto={props.myProfilePhoto}
+    />
   ));
   const onNewMessage = () => props.newMessage();
   const onMessageChange = (e) => props.messageChange(e.target.value);
@@ -34,4 +38,4 @@ const Dialods = (props) => {
   );
 };
 
-export default withAuthRedirect(Dialods) ;
+export default withAuthRedirect(Dialods);
