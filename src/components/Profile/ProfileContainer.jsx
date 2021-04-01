@@ -9,8 +9,6 @@ import { compose } from "redux";
 class ProfileConteiner extends React.Component {
   componentDidMount() {
     this.props.getUser(this.props.match.params.userId || 15148);
-    
-
   }
   render() {
     return <Profile {...this.props} />;

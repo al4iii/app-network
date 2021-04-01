@@ -12,6 +12,6 @@ let mapStateToPtops = (state) => {
   };
 };
 
-export default compose(connect(mapStateToPtops, { newMessage, messageChange }))(
+export default compose(connect(mapStateToPtops, { newMessage }))(
   Dialods
 );

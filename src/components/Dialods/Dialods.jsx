@@ -5,6 +5,7 @@ import DialodItem from "./DialodItem/DialodItem";
 import Button from "../../common/Button/Button";
 import { Redirect } from "react-router";
 import withAuthRedirect from "../HOC/withAuthRedirect";
+import { Field, reduxForm } from "redux-form";
 
 const Dialods = (props) => {
   let DialogElemenst = props.dialogs.map((d) => (
@@ -17,25 +18,34 @@ const Dialods = (props) => {
       myProfilePhoto={props.myProfilePhoto}
     />
   ));
-  const onNewMessage = () => props.newMessage();
-  const onMessageChange = (e) => props.messageChange(e.target.value);
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
       <div className={styles.messages}>{messagesElemenst}</div>
-      <div className={styles.textarea}>
-        <textarea
-          className={styles.form}
-          placeholder="enter message"
-          onChange={onMessageChange}
-          value={props.newMessageText}
-        />
-        <div className={styles.button}>
-          <Button text={"Send"} onClick={onNewMessage} />
-        </div>
-      </div>
+      <AddMessegeFormRedux onSubmit={(values)=> props.newMessage(values.newMessageText)}/>
     </div>
   );
 };
 
-export default withAuthRedirect(Dialods);
+const AddMessegeForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div className={styles.textarea}>
+        <Field
+          component={"textarea"}
+          name={"newMessageText"}
+          placeholder="enter message"
+          className={styles.form}
+        />
+        <div className={styles.button}>
+          <Button text={"Send"} />
+        </div>
+      </div>
+    </form>
+  );
+};
+const AddMessegeFormRedux = reduxForm({ form: "dialogAddMessegeForm" })(
+  AddMessegeForm
+);
+
+export default Dialods;

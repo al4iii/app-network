@@ -4,14 +4,12 @@ import Button from "../../../../common/Button/Button";
 import Preloader from "../../../../common/Preloader/Preloader";
 import user from "./../../../../img/user-male.png";
 import ProfileStatus from "./ProfileStatus";
+import { Field, reduxForm } from "redux-form";
 
 const ProfileInfo = (props) => {
-  
   if (!props.profile) {
     return <Preloader />;
   }
-  let onAddPost = () => props.addPost();
-  let onPostChecge = (e) => props.postChecge(e.target.value);
   return (
     <div className={styles.myPosts}>
       <div className={styles.profile}>
@@ -37,25 +35,37 @@ const ProfileInfo = (props) => {
             getStatus={props.getStatus}
             myId={props.myId}
             userId={props.profile.userId}
-            updateStatus= {props.updateStatus}
+            updateStatus={props.updateStatus}
           />
         </div>
-      </div>
-      <div className={styles.enter}>
-        <div className={styles.textarea}>
-          <textarea
-            className={styles.form}
-            placeholder="enter post"
-            value={props.newPostText}
-            onChange={onPostChecge}
-          />
-        </div>
-        <div className={styles.button}>
-          <Button text={"add post"} onClick={onAddPost} />
-        </div>
+        <AddNewPostRedux
+          onSubmit={(value) => props.addPost(value.newPostText)}
+        />
       </div>
     </div>
   );
 };
+
+const AddNewPost = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div className={styles.enter}>
+        <div className={styles.textarea}>
+          <Field
+            className={styles.form}
+            placeholder="enter post"
+            name={"newPostText"}
+            component={"textarea"}
+          />
+        </div>
+        <div className={styles.button}>
+          <Button text={"add post"} />
+        </div>
+      </div>
+    </form>
+  );
+};
+
+const AddNewPostRedux = reduxForm({ form: "newPostText" })(AddNewPost);
 
 export default ProfileInfo;
