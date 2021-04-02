@@ -1,26 +1,31 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import styles from "./Login.module.css";
+import { authentication } from "../../redux/auth-reduser";
 
 const Login = (props) => {
-  const onSubmit = (formData) => {
-    console.log(formData);
-  };
   return (
     <div>
       <h3>Login</h3>
-      <LoginFReduxForm onSubmit={onSubmit} />
+      <LoginFReduxForm
+        onSubmit={(value) =>
+          props.authentication(value.email, value.password, value.rememberMe)
+        }
+      />
     </div>
   );
 };
-
-export default Login;
+let mapStateToProps = (state) => {
+  return {};
+};
+export default connect(mapStateToProps, { authentication })(Login);
 
 const LoginForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field placeholder={"login"} name={"login"} component={"input"} />
+        <Field placeholder={"login"} name={"email"} component={"input"} />
       </div>
       <div>
         <Field placeholder={"password"} name={"password"} component={"input"} />

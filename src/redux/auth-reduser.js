@@ -10,7 +10,7 @@ let initialState = {
   login: null,
   email: null,
   isAuth: false,
-  avatar: null
+  avatar: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -23,7 +23,7 @@ const authReducer = (state = initialState, action) => {
       };
     case SET_USER_AVATAR:
       return {
-        ...state,        
+        ...state,
         avatar: action.avatar,
       };
     default:
@@ -39,17 +39,36 @@ export const setAuthUserAvatar = (avatar) => (
   { type: SET_USER_AVATAR }, avatar
 );
 
-
 export const auth = () => {
   return (dispatch) => {
     authAPI.getAuth().then((response) => {
       if (response.resultCode === 0) {
         let { id, login, email } = response.data;
-        dispatch(setAuthUserData(id, login, email));       
-        usersAPI.getUser(id).then((response) => {                 
-          dispatch(setMyProfile(response.photos.small))});
-      }     
+        dispatch(setAuthUserData(id, login, email));
+        usersAPI.getUser(id).then((response) => {
+          dispatch(setMyProfile(response.photos.small));
+        });
+      }
     });
   };
 };
+export const getAuthMeData = () => async (dispatch) => {
+  let response = await authAPI.me();
+  if (response.resultCode === 0) {
+    let { id, login, email } = response.data;
+    dispatch(setAuthUserData(id, login, email, true));
+  }
+};
+export const authentication = (email, password, rememberMe) => {
+  return (dispatch) => {
+    authAPI.authentication(email, password, rememberMe).then((response) => {
+      debugger;
+      if(response.data.resultCode === 0 ){
+        dispatch(getAuthMeData()) 
+      }
+      
+    });
+  };
+};
+
 export default authReducer;
