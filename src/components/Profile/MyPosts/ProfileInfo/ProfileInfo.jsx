@@ -5,6 +5,13 @@ import Preloader from "../../../../common/Preloader/Preloader";
 import user from "./../../../../img/user-male.png";
 import ProfileStatus from "./ProfileStatus";
 import { Field, reduxForm } from "redux-form";
+import {
+  reaquired,
+  maxLengthCreater,
+} from "../../../../helpers/validators/validators";
+import { Textarea } from "../../../../common/FormsControls/FormsControls";
+
+const maxLength10 = maxLengthCreater(10);
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -39,7 +46,7 @@ const ProfileInfo = (props) => {
           />
         </div>
         <AddNewPostRedux
-          onSubmit={(value) => props.addPost(value.newPostText)}
+          onSubmit={(value) => props.addPosts(value.newPostText)}
         />
       </div>
     </div>
@@ -48,14 +55,15 @@ const ProfileInfo = (props) => {
 
 const AddNewPost = (props) => {
   return (
-    <form onSubmit={props.handleSubmit}>
-      <div className={styles.enter}>
+    <form onSubmit={props.handleSubmit} className={styles.enter}>
+      <div>
         <div className={styles.textarea}>
           <Field
             className={styles.form}
             placeholder="enter post"
             name={"newPostText"}
-            component={"textarea"}
+            component={Textarea}
+            validate={[reaquired, maxLength10]}
           />
         </div>
         <div className={styles.button}>
@@ -67,5 +75,4 @@ const AddNewPost = (props) => {
 };
 
 const AddNewPostRedux = reduxForm({ form: "newPostText" })(AddNewPost);
-
 export default ProfileInfo;

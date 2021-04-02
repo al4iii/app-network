@@ -6,6 +6,11 @@ import Button from "../../common/Button/Button";
 import { Redirect } from "react-router";
 import withAuthRedirect from "../HOC/withAuthRedirect";
 import { Field, reduxForm } from "redux-form";
+import { Textarea } from "../../common/FormsControls/FormsControls";
+import {
+  maxLengthCreater,
+  reaquired,
+} from "../../helpers/validators/validators";
 
 const Dialods = (props) => {
   let DialogElemenst = props.dialogs.map((d) => (
@@ -22,17 +27,22 @@ const Dialods = (props) => {
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
       <div className={styles.messages}>{messagesElemenst}</div>
-      <AddMessegeFormRedux onSubmit={(values)=> props.newMessage(values.newMessageText)}/>
+      <AddMessegeFormRedux
+        onSubmit={(values) => props.newMessages(values.newMessageText)}
+      />
     </div>
   );
 };
 
+const maxLength10 = maxLengthCreater(10);
+
 const AddMessegeForm = (props) => {
   return (
-    <form onSubmit={props.handleSubmit}>
-      <div className={styles.textarea}>
+    <form onSubmit={props.handleSubmit} className={styles.textarea} >
+      <div >
         <Field
-          component={"textarea"}
+          component={Textarea}
+          validate={[reaquired, maxLength10]}
           name={"newMessageText"}
           placeholder="enter message"
           className={styles.form}

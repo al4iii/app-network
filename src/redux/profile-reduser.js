@@ -1,3 +1,4 @@
+import { reset } from "redux-form";
 import { profileAPI, usersAPI } from "../API/api";
 
 const ADD_POST = "profile/ADD-POST";
@@ -25,7 +26,7 @@ const profileReducer = (state = initialState, action = {}) => {
         ...state,
         posts: [
           ...state.posts,
-          { id: state.posts.length + 2, message: action.newPost, like: 0 },
+          { id: state.posts.length + 1, message: action.newPost, like: 0 },
         ],
       };
     case SET_USER_PROFILE: {
@@ -43,6 +44,12 @@ const profileReducer = (state = initialState, action = {}) => {
 };
 
 export const addPost = (newPost) => ({ type: ADD_POST, newPost });
+export const addPosts = (newPost) => {
+  return (dispatch) => {
+    dispatch(addPost(newPost));
+    dispatch(reset("newPostText"));
+  };
+};
 export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,
@@ -67,7 +74,6 @@ export const getStatus = (userId) => {
   };
 };
 export const updateStatus = (status) => {
-  debugger;
   return (dispatch) => {
     profileAPI.updateStatus(status).then((response) => {
       if (response.data.resultCode === 0) {

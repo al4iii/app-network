@@ -10,9 +10,11 @@
 
 .textarea {
     grid-column: 2/3;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    grid-row: 2/3;
+    display: grid;
+    width: 200px;
+    align-self: center;
+    justify-self: center;
 }
 
 .messages {
@@ -23,16 +25,15 @@
    
 }
 
-.button {
-    margin-left: 230px;
+.button {   
     margin-top: 10px;
+    display: grid;
+    justify-content: end;
 }
-
-.form {
-    display: block;
-    width: 40%;
-    padding: 0 5px;
-    margin: 25px 0 0 10px;
+.form {    
+    grid-column: 2/3;
+    width: 230px;  
+    padding: 0 5px;    
     background: #ccd6e2;
     line-height: 40px;
     border-width: 0;

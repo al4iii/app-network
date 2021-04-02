@@ -1,3 +1,5 @@
+import { reset } from "redux-form";
+
 const SEND_MESSAGE = "dialog/SEND-MESSAGE";
 
 let initialState = {
@@ -30,4 +32,10 @@ const dialodsReducer = (state = initialState, action) => {
   }
 };
 export const newMessage = (message) => ({ type: SEND_MESSAGE, message });
+export const newMessages = (message) => {
+  return (dispatch) => {
+    dispatch(newMessage(message));
+    dispatch(reset("dialogAddMessegeForm"));
+  };
+};;
 export default dialodsReducer;
