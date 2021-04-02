@@ -23,14 +23,18 @@
   margin-right: 100px;
 }
 
-.profilePhoto{
+.profilePhoto {
   width: 45px;
-  border-radius: 20px;   
+  border-radius: 20px;
 }
 
-.auth{
+.auth {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-items: center;
+}
+
+.button {
+  grid-column: 2/3;
 }

@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import Header from "./Header";
-import { setAuthUserAvatar, auth } from "../../redux/auth-reduser";
+import { setAuthUserAvatar, auth, logout } from "../../redux/auth-reduser";
 
 class HeaderConteiner extends React.Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.auth();
   }
   render() {
@@ -19,8 +19,10 @@ let mapStateToProps = (state) => {
     isFetching: state.auth.isFetching,
     email: state.auth.email,
     avatar: state.auth.avatar,
-    profilePhoto: state.profilePage.myProfilePhoto
+    profilePhoto: state.profilePage.myProfilePhoto,
   };
 };
 
-export default connect(mapStateToProps, { setAuthUserAvatar, auth })( HeaderConteiner);
+export default connect(mapStateToProps, { setAuthUserAvatar, auth, logout })(
+  HeaderConteiner
+);

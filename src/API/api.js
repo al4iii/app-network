@@ -26,15 +26,14 @@ export const usersAPI = {
 };
 
 export const authAPI = {
-  getAuth: () => instanse.get(`auth/me`).then((response) => response.data),
-  authentication: (email, password, rememberMe = false) =>
+  login: (email, password, rememberMe = false) =>
     instanse
       .post(`auth/login`, { email, password, rememberMe })
       .then((response) => response),
-  me() {
-    return instanse.get(`auth/me`).then((response) => response.data);
-  },
+  logout: () => instanse.delete(`auth/login`).then((response) => response),
+  me: () => instanse.get(`auth/me`).then((response) => response.data),
 };
+
 export const profileAPI = {
   getStatus: (userId) =>
     instanse.get(`/profile/status/${userId}`).then((response) => response.data),

@@ -3,6 +3,7 @@ import { setMyProfile } from "./profile-reduser";
 
 const SET_USER_DATA = "auth/SET_USER_DATA";
 const SET_USER_AVATAR = "auth/SET_USER_AVATAR";
+const DEL_USER_AVATAR = "auth/DEL_USER_AVATAR";
 
 let initialState = {
   isFetching: false,
@@ -18,33 +19,37 @@ const authReducer = (state = initialState, action) => {
     case SET_USER_DATA:
       return {
         ...state,
-        ...action.data,
-        isAuth: true,
+        ...action.payload,
       };
     case SET_USER_AVATAR:
       return {
         ...state,
         avatar: action.avatar,
       };
+    case DEL_USER_AVATAR:
+      return {
+        ...state,
+        avatar: null,
+      };
     default:
       return state;
   }
 };
 
-export const setAuthUserData = (userId, login, email) => ({
+export const setAuthUserData = (userId, login, email, isAuth) => ({
   type: SET_USER_DATA,
-  data: { userId, login, email },
+  payload: { userId, login, email, isAuth },
 });
 export const setAuthUserAvatar = (avatar) => (
   { type: SET_USER_AVATAR }, avatar
 );
-
+export const delAuthUserAvatar = () => ({ type: DEL_USER_AVATAR });
 export const auth = () => {
   return (dispatch) => {
-    authAPI.getAuth().then((response) => {
+    authAPI.me().then((response) => {
       if (response.resultCode === 0) {
         let { id, login, email } = response.data;
-        dispatch(setAuthUserData(id, login, email));
+        dispatch(setAuthUserData(id, login, email, true));
         usersAPI.getUser(id).then((response) => {
           dispatch(setMyProfile(response.photos.small));
         });
@@ -59,14 +64,25 @@ export const getAuthMeData = () => async (dispatch) => {
     dispatch(setAuthUserData(id, login, email, true));
   }
 };
-export const authentication = (email, password, rememberMe) => {
+export const login = (email, password, rememberMe) => {
   return (dispatch) => {
-    authAPI.authentication(email, password, rememberMe).then((response) => {
-      debugger;
-      if(response.data.resultCode === 0 ){
-        dispatch(getAuthMeData()) 
+    authAPI.login(email, password, rememberMe).then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(getAuthMeData());
       }
-      
+    });
+  };
+};
+export const logout = () => {
+  debugger;
+  return (dispatch) => {
+    authAPI.logout().then((response) => {
+      debugger;
+      if (response.data.resultCode === 0) {
+        debugger;
+        dispatch(setAuthUserData(null, null, null, false));
+        dispatch(delAuthUserAvatar());
+      }
     });
   };
 };
