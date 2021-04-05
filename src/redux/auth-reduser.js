@@ -41,7 +41,7 @@ export const setAuthUserAvatar = (avatar) => (
 
 export const auth = () => {
   return (dispatch) => {
-    authAPI.me().then((response) => {
+    return authAPI.me().then((response) => {
       if (response.resultCode === 0) {
         let { id, login, email } = response.data;
         dispatch(setAuthUserData(id, login, email, true));
