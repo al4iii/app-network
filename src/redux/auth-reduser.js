@@ -1,9 +1,9 @@
+import { stopSubmit } from "redux-form";
 import { authAPI, usersAPI } from "../API/api";
 import { setMyProfile } from "./profile-reduser";
 
 const SET_USER_DATA = "auth/SET_USER_DATA";
 const SET_USER_AVATAR = "auth/SET_USER_AVATAR";
-const DEL_USER_AVATAR = "auth/DEL_USER_AVATAR";
 
 let initialState = {
   isFetching: false,
@@ -26,11 +26,6 @@ const authReducer = (state = initialState, action) => {
         ...state,
         avatar: action.avatar,
       };
-    case DEL_USER_AVATAR:
-      return {
-        ...state,
-        avatar: null,
-      };
     default:
       return state;
   }
@@ -43,7 +38,7 @@ export const setAuthUserData = (userId, login, email, isAuth) => ({
 export const setAuthUserAvatar = (avatar) => (
   { type: SET_USER_AVATAR }, avatar
 );
-export const delAuthUserAvatar = () => ({ type: DEL_USER_AVATAR });
+
 export const auth = () => {
   return (dispatch) => {
     authAPI.me().then((response) => {
@@ -69,6 +64,12 @@ export const login = (email, password, rememberMe) => {
     authAPI.login(email, password, rememberMe).then((response) => {
       if (response.data.resultCode === 0) {
         dispatch(getAuthMeData());
+      } else {
+        let messages =
+          response.data.messages.length > 0
+            ? response.data.messages[0]
+            : "common error";
+        dispatch(stopSubmit("login", { _error: messages }));
       }
     });
   };
@@ -79,9 +80,7 @@ export const logout = () => {
     authAPI.logout().then((response) => {
       debugger;
       if (response.data.resultCode === 0) {
-        debugger;
         dispatch(setAuthUserData(null, null, null, false));
-        dispatch(delAuthUserAvatar());
       }
     });
   };

@@ -24,6 +24,7 @@ const LoginForm = (props) => {
           validate={[reaquired]}
         />
       </div>
+      {props.error && <div className={styles.formSummaryError}>{props.error}</div>}
       <div>
         <Field type={"checkbox"} name={"rememberMe"} component={Input} />
         remember me
