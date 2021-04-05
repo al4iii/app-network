@@ -13,12 +13,13 @@ const Pagination = (props) => {
   return (
     <div className={styles.pagination}>
       {pages.map((p) => {
+        debugger;
         return (
           <span
             key={p}
-            onClick={(e) => props.onPageChenged(p)}
-            className={props.currentPage === p && styles.selectedPage}
+            onClick={() => props.onPageChenged(p)}
             className={styles.currentPage}
+            className={props.currentPage === p && styles.selectedPage}
           >
             {p}
           </span>
