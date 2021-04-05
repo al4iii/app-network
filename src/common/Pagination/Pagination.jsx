@@ -12,8 +12,7 @@ const Pagination = (props) => {
   }
   return (
     <div className={styles.pagination}>
-      {pages.map((p) => {
-        debugger;
+      {pages.map((p) => { 
         return (
           <span
             key={p}
