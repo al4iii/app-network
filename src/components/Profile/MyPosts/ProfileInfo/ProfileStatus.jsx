@@ -25,9 +25,6 @@ class ProfileStatus extends React.Component {
   componentDidMount() {
     this.props.getStatus(this.props.userId);
   }
-  componentDidUpdate() {
-    this.props.getStatus(this.props.userId);
-  }
   render() {
     return (
       <div>
@@ -66,3 +63,4 @@ class ProfileStatus extends React.Component {
 }
 
 export default ProfileStatus;
+

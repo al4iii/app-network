@@ -5,11 +5,10 @@ import Preloader from "../../../../common/Preloader/Preloader";
 import user from "./../../../../img/user-male.png";
 import ProfileStatus from "./ProfileStatus";
 import { Field, reduxForm } from "redux-form";
-import {
-  reaquired,
-  maxLengthCreater,
-} from "../../../../helpers/validators/validators";
+import { reaquired, maxLengthCreater } from "../../../../helpers/validators/validators";
 import { Textarea } from "../../../../common/FormsControls/FormsControls";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+
 
 const maxLength10 = maxLengthCreater(10);
 
@@ -37,7 +36,7 @@ const ProfileInfo = (props) => {
             <span className={styles.profile_span}>id: </span>
             {props.profile.userId}
           </div>
-          <ProfileStatus
+          <ProfileStatusWithHooks
             status={props.status}
             getStatus={props.getStatus}
             myId={props.myId}
