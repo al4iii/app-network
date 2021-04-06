@@ -2,9 +2,11 @@ import React from "react";
 import Post from "./Post/Post";
 import styles from "./MyPosts.module.css";
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
   let postElemenst = props.posts.map((p) => (
-    <Post messege={p.message} like={p.like} key={p.id} myProfilePhoto={props.myProfilePhoto} />
+    <Post messege={p.message} like={p.like}
+      key={p.id} myProfilePhoto={props.myProfilePhoto}
+    />
   ));
   return (
     <div className={styles.post}>
@@ -12,6 +14,5 @@ const MyPosts = (props) => {
       {postElemenst}
     </div>
   );
-};
-
+});
 export default MyPosts;
