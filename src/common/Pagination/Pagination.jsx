@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Pagination.module.css";
+import cn from "class-names"
 
 const Pagination = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -16,9 +17,8 @@ const Pagination = (props) => {
         return (
           <span
             key={p}
-            onClick={() => props.onPageChenged(p)}
-            className={styles.currentPage}
-            className={props.currentPage === p && styles.selectedPage}
+            onClick={() => props.onPageChenged(p)}            
+            className={cn(props.currentPage === p && styles.selectedPage,styles.currentPage )}
           >
             {p}
           </span>

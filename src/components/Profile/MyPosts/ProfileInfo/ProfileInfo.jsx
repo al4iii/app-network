@@ -3,12 +3,10 @@ import styles from "./ProfileInfo.module.css";
 import Button from "../../../../common/Button/Button";
 import Preloader from "../../../../common/Preloader/Preloader";
 import user from "./../../../../img/user-male.png";
-import ProfileStatus from "./ProfileStatus";
 import { Field, reduxForm } from "redux-form";
 import { reaquired, maxLengthCreater } from "../../../../helpers/validators/validators";
 import { Textarea } from "../../../../common/FormsControls/FormsControls";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
-
 
 const maxLength10 = maxLengthCreater(10);
 

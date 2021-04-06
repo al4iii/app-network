@@ -16,7 +16,7 @@ let initialState = {
   ],
   profile: null,
   myProfilePhoto: null,
-  status: "",
+  status: " ",
 };
 
 const profileReducer = (state = initialState, action = {}) => {
@@ -50,23 +50,17 @@ export const addPosts = (newPost) => {
     dispatch(reset("newPostText"));
   };
 };
-export const setUserProfile = (profile) => ({
-  type: SET_USER_PROFILE,
-  profile,
-});
-export const setMyProfile = (profile) => ({
-  type: SET_MY_PROFILE_PHOTO,
-  profile,
-});
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile});
+export const setMyProfile = (profile) => ({ type: SET_MY_PROFILE_PHOTO, profile});
 export const setStatus = (status) => ({ type: SET_STATUS, status });
 export const getUser = (userId) => {
-  return (dispatch) => {
+    return (dispatch) => {
     usersAPI.getUser(userId).then((response) => {
       dispatch(setUserProfile(response));
     });
   };
 };
-export const getStatus = (userId) => {
+export const getStatus = (userId) => { 
   return (dispatch) => {
     profileAPI.getStatus(userId).then((response) => {
       dispatch(setStatus(response));
