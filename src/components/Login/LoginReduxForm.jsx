@@ -1,35 +1,20 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
 import styles from "./Login.module.css";
-import { Input } from "../../common/FormsControls/FormsControls";
+import { reduxForm } from "redux-form";
+import { createField, Input } from "../../common/FormsControls/FormsControls";
 import { reaquired } from "../../helpers/validators/validators";
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {  
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
+      {createField("login", "email", [reaquired], Input)}
+      {createField("password", "password", [reaquired], Input, "password")}
+      {error && <div className={styles.formSummaryError}>{error}</div>}
+      {createField("", "rememberMe", [], Input, "checkbox")}
+      remember me
       <div>
-        <Field
-          placeholder={"login"}
-          name={"email"}
-          component={Input}
-          validate={[reaquired]}
-        />
+        <button>submit</button>
       </div>
-      <div>
-        <Field
-          placeholder={"password"}
-          type={"password"}
-          name={"password"}
-          component={Input}
-          validate={[reaquired]}
-        />
-      </div>
-      {props.error && <div className={styles.formSummaryError}>{props.error}</div>}
-      <div>
-        <Field type={"checkbox"} name={"rememberMe"} component={Input} />
-        remember me
-      </div>
-      <button>submit</button>
     </form>
   );
 };

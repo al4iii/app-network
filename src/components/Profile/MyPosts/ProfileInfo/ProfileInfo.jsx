@@ -10,49 +10,49 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const maxLength10 = maxLengthCreater(10);
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({profile,status,getStatus,myId,updateStatus,addPosts}) => {
+  if (!profile) {
     return <Preloader />;
   }
   return (
     <div className={styles.myPosts}>
       <div className={styles.profile}>
         <img
-          src={props.profile.photos.large || user}
+          src={profile.photos.large || user}
           className={styles.profile_img}
         />
         <div className={styles.profile_info}>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>Full mame:</span>
-            {props.profile.fullName}
+            {profile.fullName}
           </div>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>about me: </span>
-            {props.profile.aboutMe}
+            {profile.aboutMe}
           </div>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>id: </span>
-            {props.profile.userId}
+            {profile.userId}
           </div>
           <ProfileStatusWithHooks
-            status={props.status}
-            getStatus={props.getStatus}
-            myId={props.myId}
-            userId={props.profile.userId}
-            updateStatus={props.updateStatus}
+            status={status}
+            getStatus={getStatus}
+            myId={myId}
+            userId={profile.userId}
+            updateStatus={updateStatus}
           />
         </div>
         <AddNewPostRedux
-          onSubmit={(value) => props.addPosts(value.newPostText)}
+          onSubmit={(value) => addPosts(value.newPostText)}
         />
       </div>
     </div>
   );
 };
 
-const AddNewPost = (props) => {
+const AddNewPost = ({handleSubmit}) => {
   return (
-    <form onSubmit={props.handleSubmit} className={styles.enter}>
+    <form onSubmit={handleSubmit} className={styles.enter}>
       <div>
         <div className={styles.textarea}>
           <Field
@@ -72,4 +72,5 @@ const AddNewPost = (props) => {
 };
 
 const AddNewPostRedux = reduxForm({ form: "newPostText" })(AddNewPost);
+
 export default ProfileInfo;

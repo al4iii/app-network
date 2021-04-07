@@ -5,14 +5,14 @@ import dialodsReducer from "./dialogs-reduser";
 import profileReducer from "./profile-reduser";
 import appReducer from "./app-reduser";
 import usersReducer from "./users-reduser";
-import { reducer as formReducer } from "redux-form";
+import * as reduxForm from "redux-form";
 
 let redusers = combineReducers({
   profilePage: profileReducer,
   dialogsPage: dialodsReducer,
   usersPage: usersReducer,
   auth: authReducer,
-  form: formReducer,
+  form: reduxForm.reducer,
   app: appReducer,
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

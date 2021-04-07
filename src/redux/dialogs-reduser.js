@@ -37,5 +37,5 @@ export const newMessages = (message) => {
     dispatch(newMessage(message));
     dispatch(reset("dialogAddMessegeForm"));
   };
-};;
+};
 export default dialodsReducer;

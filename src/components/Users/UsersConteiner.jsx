@@ -2,21 +2,19 @@ import React from "react";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
 import { connect } from "react-redux";
-import {
-  setCurrentPages,
-  getUsersAC,
-  unfollow,
-  follow,
-} from "../../redux/users-reduser";
-import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount, getUsersSuperSelector } from "../../redux/users-selector";
+import { setCurrentPages, getUsersAC, unfollow, follow } from "../../redux/users-reduser";
+import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount,
+   getUsersSuperSelector } from "../../redux/users-selector";
 import { compose } from "redux";
 
 class UsersConteiner extends React.Component {
   componentDidMount() {
-    this.props.getUsersAC(this.props.currentPage, this.props.pageSize);
+    const { currentPage, pageSize } = this.props;
+    this.props.getUsersAC(currentPage, pageSize);
   }
   onPageChenged = (pageNumber) => {
-    this.props.getUsersAC(pageNumber, this.props.pageSize);
+    const { pageSize } = this.props;
+    this.props.getUsersAC(pageNumber, pageSize);
   };
   render() {
     return (
@@ -44,7 +42,7 @@ let mapStateToProps = (state) => {
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
     isFetching: getIsFetching(state),
-    followingInProgress:  getFollowingInProgress(state),
+    followingInProgress: getFollowingInProgress(state),
   };
 };
 

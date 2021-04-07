@@ -1,5 +1,5 @@
 import { reset } from "redux-form";
-import { profileAPI, usersAPI } from "../API/api";
+import * as api from "../API/api";
 
 const ADD_POST = "profile/ADD-POST";
 const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
@@ -51,42 +51,27 @@ const profileReducer = (state = initialState, action = {}) => {
 
 export const addPost = (newPost) => ({ type: ADD_POST, newPost });
 export const deletePost = (postId) => ({ type: DELETE_POST, postId });
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile});
+export const setMyProfile = (profile) => ({ type: SET_MY_PROFILE_PHOTO, profile});
+export const setStatus = (status) => ({ type: SET_STATUS, status });
+export const getUser = (userId) => async (dispatch) => {
+  let response = await api.usersAPI.getUser(userId);
+  dispatch(setUserProfile(response));
+};
+export const getStatus = (userId) => async (dispatch) => {
+  let response = await api.profileAPI.getStatus(userId);
+  dispatch(setStatus(response));
+};
+export const updateStatus = (status) => async (dispatch) => {
+  let response = await api.profileAPI.updateStatus(status);
+  if (response.data.resultCode === 0) {
+    dispatch(setStatus(status));
+  }
+};
 export const addPosts = (newPost) => {
   return (dispatch) => {
     dispatch(addPost(newPost));
     dispatch(reset("newPostText"));
-  };
-};
-export const setUserProfile = (profile) => ({
-  type: SET_USER_PROFILE,
-  profile,
-});
-export const setMyProfile = (profile) => ({
-  type: SET_MY_PROFILE_PHOTO,
-  profile,
-});
-export const setStatus = (status) => ({ type: SET_STATUS, status });
-export const getUser = (userId) => {
-  return (dispatch) => {
-    usersAPI.getUser(userId).then((response) => {
-      dispatch(setUserProfile(response));
-    });
-  };
-};
-export const getStatus = (userId) => {
-  return (dispatch) => {
-    profileAPI.getStatus(userId).then((response) => {
-      dispatch(setStatus(response));
-    });
-  };
-};
-export const updateStatus = (status) => {
-  return (dispatch) => {
-    profileAPI.updateStatus(status).then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(setStatus(status));
-      }
-    });
   };
 };
 
