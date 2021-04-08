@@ -22,9 +22,9 @@ class ProfileStatus extends React.Component {
     });
     this.props.updateStatus(this.state.status);
   };
-  componentDidMount() {
-    this.props.getStatus(this.props.userId);
-  }
+  // componentDidMount() {
+  //   this.props.getStatus(this.props.userId);
+  // }
   componentDidUpdate(prevProps) {
     if (prevProps.status != this.props.status) {
       this.setState({
