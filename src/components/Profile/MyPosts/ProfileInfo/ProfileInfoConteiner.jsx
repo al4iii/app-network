@@ -10,6 +10,4 @@ let mapStateToPtops = (state) => {
   };
 };
 
-export default connect(mapStateToPtops, { addPosts, getStatus, updateStatus })(
-  ProfileInfo
-);
+export default connect(mapStateToPtops, { addPosts, getStatus, updateStatus })( ProfileInfo );

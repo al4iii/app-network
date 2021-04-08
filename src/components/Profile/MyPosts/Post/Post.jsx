@@ -1,17 +1,17 @@
 import React from "react";
 import styles from "./Post.module.css";
-import like from "./../../../../img/like.png";
+import likes from "./../../../../img/like.png";
 import user from "./../../../../img/user-male.png";
 
-const Post = (props) => {
+const Post = ({ myProfilePhoto, messege, like }) => {
   return (
     <div className={styles.posts}>
       <div className={styles.post}>
-        <img src={props.myProfilePhoto || user} alt="" className={styles.img} />
-        <span className={styles.text}>{props.messege}</span>
+        <img src={myProfilePhoto || user} alt="" className={styles.img} />
+        <span className={styles.text}>{messege}</span>
         <div className={styles.likes}>
-          <img src={like} alt="" className={styles.like} /> 
-         <span> {props.like}</span>
+          <img src={likes} alt="" className={styles.like} />
+          <span> {like}</span>
         </div>
       </div>
     </div>

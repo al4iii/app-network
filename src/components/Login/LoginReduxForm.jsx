@@ -4,7 +4,7 @@ import { reduxForm } from "redux-form";
 import { createField, Input } from "../../common/FormsControls/FormsControls";
 import { reaquired } from "../../helpers/validators/validators";
 
-const LoginForm = ({ handleSubmit, error }) => {  
+const LoginForm = ({ handleSubmit, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       {createField("login", "email", [reaquired], Input)}

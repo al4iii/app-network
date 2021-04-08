@@ -22,18 +22,18 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-   
 }
 
-.button {   
+.button {
     margin-top: 10px;
     display: grid;
     justify-content: end;
 }
-.form {    
+
+.form {
     grid-column: 2/3;
-    width: 230px;  
-    padding: 0 5px;    
+    width: 230px;
+    padding: 0 5px;
     background: #ccd6e2;
     line-height: 40px;
     border-width: 0;

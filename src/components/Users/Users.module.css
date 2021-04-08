@@ -5,17 +5,18 @@
     grid-gap: 10px;
 }
 
-.userPhoto {    
+.userPhoto {
     width: 150px;
-    height: 150px; 
-    display: grid;      
+    height: 150px;
+    display: grid;
     justify-content: center;
     align-content: center;
 }
-.user_img {    
+
+.user_img {
     width: 100px;
-    height: 100px;       
-    border-radius: 100px;   
+    height: 100px;
+    border-radius: 100px;
 }
 
 .user {
@@ -45,9 +46,9 @@
     font-weight: bold;
 }
 
-.pagination{
-    display: grid; 
-    grid-template-columns: repeat(20, 1fr);       
+.pagination {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
     justify-items: center;
     justify-content: center;
 }

@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./Message.module.css";
 
-const Message = (props) => {
+const Message = ({ message, myProfilePhoto }) => {
   return (
     <div className={styles.messages}>
-      <div className={styles.message}>{props.message}</div>
+      <div className={styles.message}>{message}</div>
       <div className={styles.avatar}>
-        <img src={props.myProfilePhoto} alt="avatar" />
+        <img src={myProfilePhoto} alt="avatar" />
       </div>
     </div>
   );

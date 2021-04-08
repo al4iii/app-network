@@ -3,32 +3,23 @@ import styles from "./Dialods.module.css";
 import Message from "./Message/Message";
 import DialodItem from "./DialodItem/DialodItem";
 import Button from "../../common/Button/Button";
-import { Redirect } from "react-router";
-import withAuthRedirect from "../HOC/withAuthRedirect";
 import { Field, reduxForm } from "redux-form";
 import { Textarea } from "../../common/FormsControls/FormsControls";
-import {
-  maxLengthCreater,
-  reaquired,
-} from "../../helpers/validators/validators";
+import { maxLengthCreater, reaquired } from "../../helpers/validators/validators";
 
-const Dialods = (props) => {
-  let DialogElemenst = props.dialogs.map((d) => (
+const Dialods = ({ dialogs, messages, myProfilePhoto, newMessages }) => {
+  let DialogElemenst = dialogs.map((d) => (
     <DialodItem name={d.name} key={d.id} styles={d.active} />
   ));
-  let messagesElemenst = props.messages.map((m) => (
-    <Message
-      message={m.message}
-      key={m.id}
-      myProfilePhoto={props.myProfilePhoto}
-    />
+  let messagesElemenst = messages.map((m) => (
+    <Message message={m.message} key={m.id} myProfilePhoto={myProfilePhoto} />
   ));
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>
       <div className={styles.messages}>{messagesElemenst}</div>
       <AddMessegeFormRedux
-        onSubmit={(values) => props.newMessages(values.newMessageText)}
+        onSubmit={(values) => newMessages(values.newMessageText)}
       />
     </div>
   );
@@ -36,10 +27,10 @@ const Dialods = (props) => {
 
 const maxLength10 = maxLengthCreater(10);
 
-const AddMessegeForm = (props) => {
+const AddMessegeForm = ({ handleSubmit }) => {
   return (
-    <form onSubmit={props.handleSubmit} className={styles.textarea} >
-      <div >
+    <form onSubmit={handleSubmit} className={styles.textarea}>
+      <div>
         <Field
           component={Textarea}
           validate={[reaquired, maxLength10]}
@@ -54,8 +45,7 @@ const AddMessegeForm = (props) => {
     </form>
   );
 };
-const AddMessegeFormRedux = reduxForm({ form: "dialogAddMessegeForm" })(
-  AddMessegeForm
-);
+
+const AddMessegeFormRedux = reduxForm({ form: "dialogAddMessegeForm" })( AddMessegeForm );
 
 export default Dialods;

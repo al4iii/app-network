@@ -2,11 +2,12 @@ import React from "react";
 import styles from "./ProfileInfo.module.css";
 import Button from "../../../../common/Button/Button";
 import Preloader from "../../../../common/Preloader/Preloader";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import user from "./../../../../img/user-male.png";
 import { Field, reduxForm } from "redux-form";
 import { reaquired, maxLengthCreater } from "../../../../helpers/validators/validators";
 import { Textarea } from "../../../../common/FormsControls/FormsControls";
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+
 
 const maxLength10 = maxLengthCreater(10);
 
@@ -17,10 +18,7 @@ const ProfileInfo = ({profile,status,getStatus,myId,updateStatus,addPosts}) => {
   return (
     <div className={styles.myPosts}>
       <div className={styles.profile}>
-        <img
-          src={profile.photos.large || user}
-          className={styles.profile_img}
-        />
+        <img src={profile.photos.large || user} className={styles.profile_img} />
         <div className={styles.profile_info}>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>Full mame:</span>

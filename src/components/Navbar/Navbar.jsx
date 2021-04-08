@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import profile from "./../../img/profile.png";
 import message from "./../../img/imessage.png";
@@ -7,6 +6,7 @@ import users from "./../../img/users.png";
 import music from "./../../img/music.png";
 import news from "./../../img/news.png";
 import setting from "./../../img/settings.png";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (

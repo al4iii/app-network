@@ -25,7 +25,7 @@ class ProfileStatus extends React.Component {
   componentDidMount() {
     this.props.getStatus(this.props.userId);
   }
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.status != this.props.status) {
       this.setState({
         status: this.props.status,
@@ -70,4 +70,3 @@ class ProfileStatus extends React.Component {
 }
 
 export default ProfileStatus;
-

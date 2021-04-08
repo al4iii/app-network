@@ -6,7 +6,7 @@
 
 .myPosts {
   display: grid;
-  grid-template-rows: 300px 50px; 
+  grid-template-rows: 300px 50px;
 }
 
 .enter {
@@ -25,7 +25,6 @@
   margin-left: 200px;
   margin-top: 5px;
   grid-column: 2/3;
-
 }
 
 .form {

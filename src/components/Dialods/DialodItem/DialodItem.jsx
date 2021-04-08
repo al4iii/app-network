@@ -2,11 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./DialodItem.module.css";
 
-const DialodItem = (props) => {
+const DialodItem = ({ id, name }) => {
   return (
     <div className={styles.dialog}>
-      <NavLink to={`/dialogs/${props.id}`} className={styles.dialog}>
-        {props.name}
+      <NavLink to={`/dialogs/${id}`} className={styles.dialog}>
+        {name}
       </NavLink>
     </div>
   );

@@ -1,5 +1,5 @@
 import Dialods from "./Dialods";
-import { newMessages, messageChange } from "../../redux/dialogs-reduser";
+import { newMessages } from "../../redux/dialogs-reduser";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -8,10 +8,8 @@ let mapStateToPtops = (state) => {
     dialogs: state.dialogsPage.dialogs,
     messages: state.dialogsPage.messages,
     newMessageText: state.dialogsPage.newMessageText,
-    myProfilePhoto : state.profilePage.myProfilePhoto,
+    myProfilePhoto: state.profilePage.myProfilePhoto,
   };
 };
 
-export default compose(connect(mapStateToPtops, { newMessages }))(
-  Dialods
-);
+export default compose(connect(mapStateToPtops, { newMessages }))(Dialods);

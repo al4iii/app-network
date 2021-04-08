@@ -5,12 +5,9 @@ const ProfileStatusWithHooks = (props) => {
   props.getStatus(props.userId);
   let [editMode, setEditMode] = useState(false);
   let [status, setStatus] = useState(props.status);
-  useEffect(() => {
-    setStatus(props.status);
-  }, [props.status]);
+  useEffect(() => { setStatus(props.status) }, [props.status]);
   const activateMode = () => setEditMode(true);
-  const deactivateMode = () => {
-    setEditMode(false);
+  const deactivateMode = () => { setEditMode(false);
     props.updateStatus(status);
   };
   const onStatusChenge = (e) => setStatus(e.currentTarget.value);
