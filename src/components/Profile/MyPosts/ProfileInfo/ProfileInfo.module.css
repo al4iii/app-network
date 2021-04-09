@@ -82,3 +82,6 @@ textarea:focus {
   width: 300px;
   margin-left: 10px;
 }
+.profile_addPhoto{
+  grid-row: 2/3;
+}

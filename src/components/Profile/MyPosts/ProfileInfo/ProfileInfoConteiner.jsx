@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addPosts, getStatus, updateStatus } from "../../../../redux/profile-reduser";
+import { addPosts, getStatus, updateStatus, savePhoto } from "../../../../redux/profile-reduser";
 import ProfileInfo from "./ProfileInfo";
 
 let mapStateToPtops = (state) => {
@@ -10,4 +10,4 @@ let mapStateToPtops = (state) => {
   };
 };
 
-export default connect(mapStateToPtops, { addPosts, getStatus, updateStatus })( ProfileInfo );
+export default connect(mapStateToPtops, { addPosts, getStatus, updateStatus, savePhoto })( ProfileInfo );

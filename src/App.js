@@ -18,9 +18,7 @@ import { Provider } from "react-redux";
 import "./App.css";
 const News = React.lazy(() => import("./components/News/News"));
 const Music = React.lazy(() => import("./components/Music/Music"));
-const UsersConteiner = React.lazy(() =>
-  import("./components/Users/UsersConteiner")
-);
+const UsersConteiner = React.lazy(() => import("./components/Users/UsersConteiner"));
 
 class App extends React.Component {
   componentDidMount() {

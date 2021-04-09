@@ -37,8 +37,18 @@ export const authAPI = {
 export const profileAPI = {
   getStatus: (userId) =>
     instanse.get(`/profile/status/${userId}`).then((response) => response.data),
+  savePhoto: (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+    return instanse
+      .put(`/profile/photo`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((response) => response.data);
+  },
   updateStatus: (status) =>
     instanse
       .put(`/profile/status`, { status: status })
       .then((response) => response),
 };
+

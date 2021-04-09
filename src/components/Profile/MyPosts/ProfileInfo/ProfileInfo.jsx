@@ -8,17 +8,31 @@ import { Field, reduxForm } from "redux-form";
 import { reaquired, maxLengthCreater } from "../../../../helpers/validators/validators";
 import { Textarea } from "../../../../common/FormsControls/FormsControls";
 
-
 const maxLength10 = maxLengthCreater(10);
 
-const ProfileInfo = ({profile,status,getStatus,myId,updateStatus,addPosts}) => {
+const ProfileInfo = ({ profile, status, getStatus, myId, updateStatus, addPosts, isOwner, savePhoto}) => {
   if (!profile) {
     return <Preloader />;
   }
+  const onMailPhotoSelect = (e) => {
+    debugger;
+    if (e.target.files.length) {
+      savePhoto(e.target.files[0]);
+    }
+  };
+  
   return (
     <div className={styles.myPosts}>
       <div className={styles.profile}>
-        <img src={profile.photos.large || user} className={styles.profile_img} />
+        <img
+          src={profile.photos.large || user}
+          className={styles.profile_img}
+        />
+        {isOwner && (
+          <div className={styles.profile_addPhoto}>
+            <input type="file" onChange={onMailPhotoSelect} />
+          </div>
+        )}
         <div className={styles.profile_info}>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>Full mame:</span>
@@ -40,15 +54,13 @@ const ProfileInfo = ({profile,status,getStatus,myId,updateStatus,addPosts}) => {
             updateStatus={updateStatus}
           />
         </div>
-        <AddNewPostRedux
-          onSubmit={(value) => addPosts(value.newPostText)}
-        />
+        <AddNewPostRedux onSubmit={(value) => addPosts(value.newPostText)} />
       </div>
     </div>
   );
 };
 
-const AddNewPost = ({handleSubmit}) => {
+const AddNewPost = ({ handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className={styles.enter}>
       <div>

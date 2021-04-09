@@ -10,10 +10,10 @@ let initialState = {
     { id: 4, name: "Spider-man", active: " " },
   ],
   messages: [
-    { id: 1, message: "hello" },
-    { id: 2, message: "How are you" },
+    { id: 1, message: "hello!!" },
+    { id: 2, message: "How are you?" },
     { id: 3, message: "yoyo" },
-    { id: 4, message: "hello-man " },
+    { id: 4, message: "hello man) " },
   ],
 };
 
