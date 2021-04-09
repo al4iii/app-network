@@ -9,7 +9,7 @@ import Login from "./components/Login/Login";
 import Preloader from "./common/Preloader/Preloader";
 import store from "./redux/redux-store";
 import withSuspense from "./components/HOC/withSuspense";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { auth } from "./redux/auth-reduser";
 import { initializeApp } from "./redux/app-reduser";
@@ -18,7 +18,9 @@ import { Provider } from "react-redux";
 import "./App.css";
 const News = React.lazy(() => import("./components/News/News"));
 const Music = React.lazy(() => import("./components/Music/Music"));
-const UsersConteiner = React.lazy(() => import("./components/Users/UsersConteiner"));
+const UsersConteiner = React.lazy(() =>
+  import("./components/Users/UsersConteiner")
+);
 
 class App extends React.Component {
   componentDidMount() {
@@ -34,7 +36,10 @@ class App extends React.Component {
           <div className="app-wrapper">
             <Navbar />
             <div className={"app-wrapper-content"}>
-              <Route path="/profile/:userId?" render={() => <ProfileConteiner />} />
+              <Route
+                path="/profile/:userId?"
+                render={() => <ProfileConteiner />}
+              />
               <Route path="/dialogs" render={() => <DialodsConteiner />} />
               <Route path="/news" render={withSuspense(News)} />
               <Route path="/music" render={withSuspense(Music)} />
@@ -61,13 +66,13 @@ let AppContainer = compose(
 
 const MainApp = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <React.StrictMode>
         <Provider store={store}>
           <AppContainer />
         </Provider>
       </React.StrictMode>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
