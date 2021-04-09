@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "./Profile";
-import withAuthRedirect from "../HOC/withAuthRedirect";
+import withAuthRedirect from "../HOC/withSuspense";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { compose } from "redux";
