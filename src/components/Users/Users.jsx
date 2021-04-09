@@ -7,7 +7,7 @@ const Users = ({ currentPage, onPageChenged, pageSize, totalUsersCount,
   users, followingInProgress, unfollow, follow}) => {
   return (
     <div>
-      <Pagination totalUsersCount={totalUsersCount}
+      <Pagination totalItemsCount={totalUsersCount}
         pageSize={pageSize}
         onPageChenged={onPageChenged}
         currentPage={currentPage}

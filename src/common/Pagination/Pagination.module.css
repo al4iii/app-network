@@ -1,16 +1,22 @@
 .pagination {
     display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    justify-items: center;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 5px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 5px;
     justify-content: center;
 }
 
 .selectedPage {
     font-weight: 700;
-    background-color: #ffffff;
 }
 
 .currentPage:hover {
     background-color: #cfd4d8;
     cursor: pointer
+}
+
+.pageNumber {
+    margin-top: 3px;
 }
