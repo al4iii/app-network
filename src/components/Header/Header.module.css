@@ -4,6 +4,7 @@
   grid-area: header;
   background-color: #4b77a9;
   height: 70px;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 4fr;
   border-bottom: 2px solid #fff;

@@ -1,9 +1,9 @@
 .footer {
   margin: 0 auto;
-  height: 80px;
+  height: 85px;
   background-color: #eeeff0;
   display: grid;
-  grid-template-columns: 200px 1fr 40px 40px 40px 40px 1fr;
+  grid-template-columns: 1fr 40px 40px 40px 40px 1fr;
 }
 
 .img {
@@ -12,6 +12,7 @@
 }
 
 .p {
-  padding: 15px 0;
-  grid-column: 2/3;
+  padding: 15px;
+  grid-column: 1/2;
+  margin: 5;
 }

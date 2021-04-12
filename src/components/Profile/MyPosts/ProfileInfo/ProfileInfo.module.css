@@ -6,7 +6,7 @@
 
 .myPosts {
   display: grid;
-  grid-template-rows: 300px 50px;
+  grid-template-rows: 1fr 50px;
 }
 
 .enter {
@@ -48,7 +48,7 @@ textarea:focus {
 .profile {
   display: grid;
   margin-top: 10px;
-  grid-template-columns: 200px 2fr;
+  grid-template-columns: 200px 2fr; 
   justify-content: center;
 }
 
@@ -60,7 +60,7 @@ textarea:focus {
 
 .profile_info {
   justify-self: start;
-  margin-left: 15px;
+  margin-left: 25px;
   width: 300px;
 }
 
