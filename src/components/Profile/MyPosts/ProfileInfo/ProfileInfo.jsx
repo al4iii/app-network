@@ -7,21 +7,21 @@ import AddNewPostRedux from "./AddNewPost";
 import ProfileData from "./ProfileData";
 import ProfileDataFormReduxForm from "./ProfileDataForm";
 
-
 const ProfileInfo = ({ profile, status, getStatus, myId, updateStatus, addPosts, isOwner, savePhoto, saveProfile }) => {
   let [editMode, setEditMode] = useState(false);
   if (!profile) {
     return <Preloader />;
   }
-  const onMailPhotoSelect = (e) => {
+  const onMailPhotoSelect = (e) => {    
     if (e.target.files.length) {
       savePhoto(e.target.files[0]);
     }
   };
   const onSubmit = (formData) => {
-    saveProfile(formData).then(()=> {setEditMode(false)})    
+    saveProfile(formData).then(() => {
+      setEditMode(false);
+    });
   };
-
   return (
     <div className={styles.myPosts}>
       <div className={styles.profile}>
@@ -31,7 +31,7 @@ const ProfileInfo = ({ profile, status, getStatus, myId, updateStatus, addPosts,
         />
         {isOwner && (
           <div className={styles.profile_addPhoto}>
-            <input type="file" onChange={onMailPhotoSelect} />
+            <input type="file"onChange={onMailPhotoSelect} />              
           </div>
         )}
         {isOwner && (
@@ -44,12 +44,17 @@ const ProfileInfo = ({ profile, status, getStatus, myId, updateStatus, addPosts,
           />
         )}
         {editMode ? (
-          <ProfileDataFormReduxForm initialValues={profile} profile={profile} goToExitEditMode={()=>setEditMode(false)} onSubmit={onSubmit}/>
+          <ProfileDataFormReduxForm
+            initialValues={profile}
+            profile={profile}
+            goToExitEditMode={() => setEditMode(false)}
+            onSubmit={onSubmit}
+          />
         ) : (
           <ProfileData
             profile={profile}
             isOwner={isOwner}
-            goToEditMode={()=>setEditMode(true)}
+            goToEditMode={() => setEditMode(true)}
           />
         )}
         <AddNewPostRedux onSubmit={(value) => addPosts(value.newPostText)} />
@@ -57,8 +62,5 @@ const ProfileInfo = ({ profile, status, getStatus, myId, updateStatus, addPosts,
     </div>
   );
 };
-
-
-
 
 export default ProfileInfo;

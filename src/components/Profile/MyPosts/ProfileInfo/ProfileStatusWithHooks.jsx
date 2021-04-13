@@ -12,7 +12,7 @@ const ProfileStatusWithHooks = (props) => {
   };
   const onStatusChenge = (e) => setStatus(e.currentTarget.value);
   return (
-    <div>
+    <div  className={styles.status}>
       {!editMode && (
         <div className={styles.status}>
           <span className={styles.profile_span}>

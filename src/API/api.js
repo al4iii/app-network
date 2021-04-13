@@ -26,12 +26,17 @@ export const usersAPI = {
 };
 
 export const authAPI = {
-  login: (email, password, rememberMe = false) =>
+  login: (email, password, rememberMe = false, captcha = null) =>
     instanse
-      .post(`auth/login`, { email, password, rememberMe })
+      .post(`auth/login`, { email, password, rememberMe, captcha })
       .then((response) => response),
   logout: () => instanse.delete(`auth/login`).then((response) => response),
   me: () => instanse.get(`auth/me`).then((response) => response.data),
+};
+
+export const securityAPI = {
+  getCaptchaUrl: () =>
+    instanse.get(`security/get-captcha-url`).then((response) => response),
 };
 
 export const profileAPI = {
@@ -47,13 +52,10 @@ export const profileAPI = {
       .then((response) => response.data);
   },
   saveProfile: (profile) => {
-    return instanse
-      .put(`/profile`, profile)
-      .then((response) => response.data);
+    return instanse.put(`/profile`, profile).then((response) => response.data);
   },
   updateStatus: (status) =>
     instanse
       .put(`/profile/status`, { status: status })
       .then((response) => response),
 };
-

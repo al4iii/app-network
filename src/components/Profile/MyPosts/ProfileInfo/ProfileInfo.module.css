@@ -49,6 +49,7 @@ textarea:focus {
   display: grid;
   margin-top: 10px;
   grid-template-columns: 200px 2fr; 
+  grid-template-rows: 20px 3fr 1fr; 
   justify-content: center;
 }
 
@@ -56,12 +57,15 @@ textarea:focus {
   width: 200px;
   border-radius: 100px;
   justify-self: center;
+  grid-row: 2/3;
 }
 
 .profile_info {
   justify-self: start;
   margin-left: 25px;
   width: 300px;
+  grid-column: 2/3;
+  grid-row: 2/3;
 }
 
 .profile_span {
@@ -81,7 +85,10 @@ textarea:focus {
   font-weight: 600;
   width: 300px;
   margin-left: 10px;
+  grid-column: 2/3;
+  margin-left: 17px;
+
 }
 .profile_addPhoto{
-  grid-row: 2/3;
+  grid-row: 3/4;
 }

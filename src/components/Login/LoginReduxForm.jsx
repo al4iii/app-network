@@ -4,11 +4,13 @@ import { reduxForm } from "redux-form";
 import { createField, Input } from "../../common/FormsControls/FormsControls";
 import { reaquired } from "../../helpers/validators/validators";
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
   return (
     <form onSubmit={handleSubmit}>
       {createField("login", "email", [reaquired], Input)}
       {createField("password", "password", [reaquired], Input, "password")}
+      {captchaUrl && <img src={captchaUrl} />}
+      {captchaUrl && createField("symbol from img", "captcha", [reaquired], Input, "", {})}
       {error && <div className={styles.formSummaryError}>{error}</div>}
       {createField("", "rememberMe", [], Input, "checkbox")}
       remember me
