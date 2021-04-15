@@ -8,12 +8,8 @@ import { Textarea } from "../../common/FormsControls/FormsControls";
 import { maxLengthCreater, reaquired } from "../../helpers/validators/validators";
 
 const Dialods = ({ dialogs, messages, myProfilePhoto, newMessages }) => {
-  let DialogElemenst = dialogs.map((d) => (
-    <DialodItem name={d.name} key={d.id} styles={d.active} />
-  ));
-  let messagesElemenst = messages.map((m) => (
-    <Message message={m.message} key={m.id} myProfilePhoto={myProfilePhoto} />
-  ));
+  let DialogElemenst = dialogs.map((d) => (<DialodItem name={d.name} key={d.id} styles={d.active} />));
+  let messagesElemenst = messages.map((m) => (<Message message={m.message} key={m.id} myProfilePhoto={myProfilePhoto} />));
   return (
     <div className={styles.dialogs}>
       <div className={styles.items}>{DialogElemenst}</div>

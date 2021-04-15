@@ -11,6 +11,7 @@
 
 .enter {
   grid-column: 2/3;
+  grid-row: 3/4;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -39,6 +40,7 @@
   font-family: 'Roboto', sans-serif;
   resize: none;
   border: 1px solid #000;
+ 
 }
 
 textarea:focus {
@@ -51,6 +53,7 @@ textarea:focus {
   grid-template-columns: 200px 2fr; 
   grid-template-rows: 20px 3fr 1fr; 
   justify-content: center;
+  
 }
 
 .profile_img {
