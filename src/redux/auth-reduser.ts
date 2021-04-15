@@ -7,16 +7,17 @@ const SET_USER_AVATAR = "auth/SET_USER_AVATAR";
 const GET_CAPTCHA_URL_SUCCESS = "auth/GET_CAPTCHA_URL_SUCCESS";
 
 let initialState = {
-  isFetching: false,
-  userId: null,
-  login: null,
-  email: null,
+  isFetching: false as boolean,
+  userId: null as number | null,
+  login: null as string | null,
+  email: null as string | null,
   isAuth: false,
-  avatar: null,
-  captchaUrl: null,
+  avatar: null as string | null,
+  captchaUrl: null as string | null,
 };
+export type initialStateType = typeof initialState;
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action: any): initialStateType => {
   switch (action.type) {
     case SET_USER_DATA:
       return {
@@ -26,44 +27,76 @@ const authReducer = (state = initialState, action) => {
     case SET_USER_DATA:
     case GET_CAPTCHA_URL_SUCCESS:
       return {
-        ...state,
+        ...state,        
         ...action.payload,
       };
     default:
       return state;
   }
 };
-
-export const setAuthUserAvatar = (avatar) => (
-  { type: SET_USER_AVATAR }, avatar
-);
-export const getCaptchaUrlSuccess = (captchaUrl) => ({
+type setAuthUserAvatarType = {
+  type: typeof SET_USER_AVATAR;
+  avatar: string;
+};
+export const setAuthUserAvatar = (avatar: string): setAuthUserAvatarType => ({
+  type: SET_USER_AVATAR,
+  avatar,
+});
+type getCaptchaUrlSuccessType = {
+  type: typeof GET_CAPTCHA_URL_SUCCESS;
+  payload: { captchaUrl: string };
+};
+export const getCaptchaUrlSuccess = (
+  captchaUrl: string
+): getCaptchaUrlSuccessType => ({
   type: GET_CAPTCHA_URL_SUCCESS,
   payload: { captchaUrl },
 });
-export const setAuthUserData = (userId, login, email, isAuth) => ({
+type setAuthUserDataPayloadType = {
+  userId: number | null;
+  login: string | null;
+  email: string | null;
+  isAuth: boolean;
+};
+
+type setAuthUserDataType = {
+  type: typeof SET_USER_DATA;
+  payload: setAuthUserDataPayloadType;
+};
+export const setAuthUserData = (
+  userId: number | null,
+  login: string | null,
+  email: string | null,
+  isAuth: boolean
+): setAuthUserDataType => ({
   type: SET_USER_DATA,
   payload: { userId, login, email, isAuth },
 });
-export const auth = () => async (dispatch) => {
+
+export const auth = () => async (dispatch: any) => {
   let response = await authAPI.me();
   if (response.resultCode === 0) {
     let { id, login, email } = response.data;
     dispatch(setAuthUserData(id, login, email, true));
-    usersAPI.getUser(id).then((response) => {
+    usersAPI.getUser(id).then((response: any) => {
       dispatch(profileReduser.setMyProfile(response.photos.small));
     });
   }
 };
-export const getAuthMeData = () => async (dispatch) => {
+export const getAuthMeData = () => async (dispatch: any) => {
   let response = await authAPI.me();
   if (response.resultCode === 0) {
     let { id, login, email } = response.data;
     dispatch(setAuthUserData(id, login, email, true));
   }
 };
-export const login = (email, password, rememberMe,captcha) => async (dispatch) => {
-  let response = await authAPI.login(email, password, rememberMe,captcha);
+export const login = (
+  email: string,
+  password: string,
+  rememberMe: boolean,
+  captcha: string
+) => async (dispatch: any) => {
+  let response = await authAPI.login(email, password, rememberMe, captcha);
   if (response.data.resultCode === 0) {
     dispatch(getAuthMeData());
   } else {
@@ -78,11 +111,11 @@ export const login = (email, password, rememberMe,captcha) => async (dispatch) =
     dispatch(stopSubmit("login", { _error: messages }));
   }
 };
-export const getCaptchaUrl = () => async (dispatch) => {
+export const getCaptchaUrl = () => async (dispatch: any) => {
   const response = await securityAPI.getCaptchaUrl();
   dispatch(getCaptchaUrlSuccess(response.data.url));
 };
-export const logout = () => async (dispatch) => {
+export const logout = () => async (dispatch: any) => {
   let response = await authAPI.logout();
   if (response.data.resultCode === 0) {
     dispatch(setAuthUserData(null, null, null, false));
