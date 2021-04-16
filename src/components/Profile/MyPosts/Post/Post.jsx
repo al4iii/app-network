@@ -3,8 +3,6 @@ import styles from "./Post.module.css";
 import likes from "./../../../../img/like.png";
 import user from "./../../../../img/user-male.png";
 
-
-
 const Post = ({ myProfilePhoto, messege, like }) => {
   return (
     <div className={styles.posts}>
