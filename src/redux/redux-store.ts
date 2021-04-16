@@ -5,9 +5,9 @@ import dialodsReducer from "./dialogs-reduser";
 import profileReducer from "./profile-reduser";
 import usersReducer from "./users-reduser";
 import * as reduxForm from "redux-form";
-import appReducer from "./app-reduser.ts";
+import appReducer from "./app-reduser";
 
-let redusers = combineReducers({
+let rootRedusers = combineReducers({
   profilePage: profileReducer,
   dialogsPage: dialodsReducer,
   usersPage: usersReducer,
@@ -15,7 +15,12 @@ let redusers = combineReducers({
   form: reduxForm.reducer,
   app: appReducer,
 });
+
+type rootRedusersType = typeof rootRedusers;
+export type AppStateType = ReturnType<rootRedusersType>;
+//@ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(redusers, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore( rootRedusers,  composeEnhancers(applyMiddleware(thunk)));
+//@ts-ignore
 window.store = store;
 export default store;

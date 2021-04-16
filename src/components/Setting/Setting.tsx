@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Setting.module.css";
 
-const Setting = (props) => {
+const Setting = () => {
   return (
     <div>
       <h3> Setting</h3>
