@@ -77,7 +77,7 @@ export const securityAPI = {
 
 export const profileAPI = {
   getStatus: (userId: number) =>
-    instanse.get(`/profile/status/${userId}`).then((response) => response),
+    instanse.get(`/profile/status/${userId}`).then((response) => response.data),
   savePhoto: (file: any) => {
     const formData = new FormData();
     formData.append("image", file);
