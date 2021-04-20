@@ -2,7 +2,8 @@
     display: grid;
     width: 300px;
     margin: 0 auto;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 5px;
     justify-content: center;

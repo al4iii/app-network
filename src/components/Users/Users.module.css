@@ -1,6 +1,7 @@
 .users {
     margin-top: 5px;
     display: grid;
+   
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
 }
@@ -20,9 +21,10 @@
 }
 
 .user {
-    margin-bottom: 5px;
-    background-color: #ccd6e2;
-    width: 400px;
+    border-radius: 52px;
+    background: linear-gradient(315deg, #dae5f2, #b8c1cb);
+    box-shadow: -7px -7px 10px #858b93, 7px 7px 10px #ffffff;
+    
     display: grid;
     grid-template-columns: 150px 1fr;
     grid-template-rows: 200px 1fr;
