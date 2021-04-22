@@ -1,0 +1,12 @@
+.to_do {
+    background-color: #ccd6e2;
+    color: black;
+    display: inline-block;
+    width: 93%;
+    padding: 3%;
+    box-shadow: 2px 0 2px 0 black;
+}
+
+.right {
+    float: right;
+}

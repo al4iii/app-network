@@ -15,6 +15,7 @@ import { initializeApp } from "./redux/app-reduser";
 import { compose } from "redux";
 import { Provider } from "react-redux";
 import "./App.css";
+import MyToDoList from "./components/MyToDoList/MyToDoList";
 const News = React.lazy(() => import("./components/News/News"));
 const Music = React.lazy(() => import("./components/Music/Music"));
 const UsersConteiner = React.lazy(() => import("./components/Users/UsersConteiner"));
@@ -41,6 +42,7 @@ class App extends React.Component {
                 <Route path="/music" render={withSuspense(Music)} />
                 <Route path="/users" render={withSuspense(UsersConteiner)} />
                 <Route path="/setting" render={() => <Setting />} />
+                <Route path="/todolist" render={() => <MyToDoList />} />
                 <Route path="/login" render={() => <Login />} />  
                 <Route path="/" render={() => <ProfileConteiner />} />
                 <Route path="*" render={() => <div> 404 NOT FOUND</div>} />  

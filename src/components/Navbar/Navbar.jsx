@@ -6,6 +6,8 @@ import users from "./../../img/users.png";
 import music from "./../../img/music.png";
 import news from "./../../img/news.png";
 import setting from "./../../img/settings.png";
+import todolist from "./../../img/iconfinder_ic_clipboard_5803966.png";
+
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -39,6 +41,12 @@ const Navbar = () => {
         <NavLink to="/news" activeClassName={styles.active}>
           <img src={news} alt="" className={styles.icon} />
           News
+        </NavLink>
+      </div>
+      <div className={styles.link}>
+        <NavLink to="/todolist" activeClassName={styles.active}>
+          <img src={todolist} alt="" className={styles.icon_todolist} />
+          My to do list
         </NavLink>
       </div>
       <div className={styles.link}>
