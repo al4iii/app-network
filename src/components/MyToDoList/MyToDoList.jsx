@@ -6,15 +6,10 @@ import TaskIndicator from "./components/TaskIndicator/TaskIndicator";
 
 
 class MyToDoList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      lists: [
-        { task: "Keep calm and carry on", id: 1 },        
-      ],
-      input: "",
-    };
-  }
+  state = {
+    lists: [ { task: "Keep calm and carry on", id: 1 } ],
+    input: "",
+  };
   handleChange = (e) => {
     this.setState({ input: e.target.value });
   };
