@@ -1,5 +1,6 @@
 import { reset, stopSubmit } from "redux-form";
-import * as api from "../API/api";
+import { profileAPI } from "../API/ProfileAPI";
+import { usersAPI } from "../API/UserAPI";
 import { photosType, postsType, profileType } from "../types/types";
 
 const ADD_POST = "profile/ADD-POST";
@@ -70,18 +71,18 @@ type setPhotoSuccsesType ={type: typeof SET_PHOTO, photo: photosType }
 export const setPhotoSuccses = (photo: photosType):setPhotoSuccsesType => ({ type: SET_PHOTO, photo });
 
 export const getUser = (userId: number) => async (dispatch: any) => {
-  let response = await api.usersAPI.getUser(userId);
+  let response = await profileAPI.getUser(userId);
   dispatch(setUserProfile(response));
 };
 export const getStatus = (userId: number) => async (dispatch: any) => {
-  let response = await api.profileAPI.getStatus(userId);
+  let response = await profileAPI.getStatus(userId);
   dispatch(setStatus(response));
 };
 export const updateStatus = (status: string) => async (dispatch: any) => {
-  let response = await api.profileAPI.updateStatus(status);
-  if (response.data.resultCode === 0) {
+  let response =  profileAPI.updateStatus(status);
+  console.log(response)
     dispatch(setStatus(status));
-  }
+   
 };
 export const addPosts = (newPost: string) => {
   return (dispatch: any) => {
@@ -90,18 +91,15 @@ export const addPosts = (newPost: string) => {
   };
 };
 export const savePhoto = (file: any) => async (dispatch: any) => {
-  let response = await api.profileAPI.savePhoto(file);
+  let response = await profileAPI.savePhoto(file);
   if (response.resultCode === 0) {
     dispatch(setPhotoSuccses(response.data.photos.large));
   }
 };
 export const saveProfile = (profile: profileType) => async (
-  dispatch: any,
-  getState: any
-) => {
-  debugger;
+  dispatch: any,  getState: any) => {  
   const userId = getState().auth.userId;
-  const response = await api.profileAPI.saveProfile(profile);
+  const response = await profileAPI.saveProfile(profile);
   if (response.resultCode === 0) {
     dispatch(getUser(userId));
   } else {

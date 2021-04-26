@@ -4,7 +4,7 @@ import styles from "./InputForm.module.css";
 const InputForm = (props) => {
   return (
     <div className={styles.input_form}>
-      <form onSubmit={props.onSubmit} id="myForm">
+      <form onSubmit={props.onSubmit} id="myForm" className={styles.formik}>
         <input
           className={styles.input}
           type="text"

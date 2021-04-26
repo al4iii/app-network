@@ -3,7 +3,7 @@
     margin-bottom: 2%;
 }
 
-form {
+.formik {
     height: 40px;
     display: flex;
     padding: 10px;

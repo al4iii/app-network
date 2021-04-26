@@ -6,3 +6,4 @@ export const updateObjectInArray = ( items, itemsId, objPropName, newObjProps ) 
     return u;
   });
 };
+

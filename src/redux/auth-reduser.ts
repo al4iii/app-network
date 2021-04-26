@@ -1,5 +1,8 @@
 import { stopSubmit } from "redux-form";
-import { authAPI, ResultCode, ResultCodeWithCaptcha, securityAPI, usersAPI } from "../API/api";
+import { ResultCode, ResultCodeWithCaptcha } from "../API/api";
+import { authAPI } from "../API/AuthAPI";
+import { securityAPI } from "../API/SecurityAPI";
+import { profileAPI } from "../API/ProfileAPI";
 import * as profileReduser from "./profile-reduser";
 
 const SET_USER_DATA = "auth/SET_USER_DATA";
@@ -78,7 +81,7 @@ export const auth = () => async (dispatch: any) => {
   if (response.resultCode === 0) {
     let { id, login, email } = response.data;
     dispatch(setAuthUserData(id, login, email, true));
-    usersAPI.getUser(id).then((response: any) => {
+    profileAPI.getUser(id).then((response: any) => {
       dispatch(profileReduser.setMyProfile(response.photos.small));
     });
   }
@@ -100,7 +103,6 @@ export const login = (
   if (response.resultCode === ResultCode.Success) {
     dispatch(getAuthMeData());
   } else {
-    debugger;
     if (response.resultCode === ResultCodeWithCaptcha.CaptchaIsRequired) {
       dispatch(getCaptchaUrl());
     }

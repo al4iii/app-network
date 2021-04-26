@@ -13,14 +13,23 @@ const Header = ({ isAuth, profilePhoto, login, logout }) => {
       <div className={styles.login_block}>
         {isAuth ? (
           <div className={styles.auth}>
-            <img src={profilePhoto || user} alt="profilePhoto" className={styles.profilePhoto} />
+            <img
+              src={profilePhoto || user}
+              alt="profilePhoto"
+              className={styles.profilePhoto}
+            />
             {login}
             <button onClick={logout} className={styles.button}>
               Log out
             </button>
           </div>
         ) : (
-          <NavLink to={"/login"}>Login</NavLink>
+          <div>
+            <NavLink to={"/login"}>Sing In</NavLink>
+            <button className={styles.button}>
+              <a href="https://social-network.samuraijs.com/signUp">Sing Up</a>
+            </button>
+          </div>
         )}
       </div>
     </div>

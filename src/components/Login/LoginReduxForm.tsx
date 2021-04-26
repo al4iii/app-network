@@ -3,6 +3,7 @@ import styles from "./Login.module.css";
 import { InjectedFormProps, reduxForm } from "redux-form";
 import { createField, Input } from "../../common/FormsControls/FormsControls";
 import { reaquired } from "../../helpers/validators/validators";
+import { NavLink } from "react-router-dom";
 
 type LoginFormOwnType = {
   captchaUrl: string | null;
@@ -31,8 +32,10 @@ const LoginForm: React.FC<
       remember me
       <div>
         <button>submit</button>
-      </div>
+      </div>         
     </form>
+    
+
   );
 };
 
