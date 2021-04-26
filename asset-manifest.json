@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/app-network/static/css/main.689c7409.chunk.css",
-    "main.js": "/app-network/static/js/main.2245b3da.chunk.js",
-    "main.js.map": "/app-network/static/js/main.2245b3da.chunk.js.map",
-    "runtime-main.js": "/app-network/static/js/runtime-main.c7fae570.js",
-    "runtime-main.js.map": "/app-network/static/js/runtime-main.c7fae570.js.map",
-    "static/js/2.cb74ce51.chunk.js": "/app-network/static/js/2.cb74ce51.chunk.js",
-    "static/js/2.cb74ce51.chunk.js.map": "/app-network/static/js/2.cb74ce51.chunk.js.map",
+    "main.css": "/app-network/static/css/main.86443359.chunk.css",
+    "main.js": "/app-network/static/js/main.33b63bd6.chunk.js",
+    "main.js.map": "/app-network/static/js/main.33b63bd6.chunk.js.map",
+    "runtime-main.js": "/app-network/static/js/runtime-main.f2f111c2.js",
+    "runtime-main.js.map": "/app-network/static/js/runtime-main.f2f111c2.js.map",
+    "static/js/2.486b2218.chunk.js": "/app-network/static/js/2.486b2218.chunk.js",
+    "static/js/2.486b2218.chunk.js.map": "/app-network/static/js/2.486b2218.chunk.js.map",
     "static/css/3.3692e0d6.chunk.css": "/app-network/static/css/3.3692e0d6.chunk.css",
     "static/js/3.5492823f.chunk.js": "/app-network/static/js/3.5492823f.chunk.js",
     "static/js/3.5492823f.chunk.js.map": "/app-network/static/js/3.5492823f.chunk.js.map",
     "static/css/4.3ce5ae77.chunk.css": "/app-network/static/css/4.3ce5ae77.chunk.css",
-    "static/js/4.5a32044e.chunk.js": "/app-network/static/js/4.5a32044e.chunk.js",
-    "static/js/4.5a32044e.chunk.js.map": "/app-network/static/js/4.5a32044e.chunk.js.map",
+    "static/js/4.1dbaf814.chunk.js": "/app-network/static/js/4.1dbaf814.chunk.js",
+    "static/js/4.1dbaf814.chunk.js.map": "/app-network/static/js/4.1dbaf814.chunk.js.map",
     "static/css/5.afd7172b.chunk.css": "/app-network/static/css/5.afd7172b.chunk.css",
     "static/js/5.8548a91b.chunk.js": "/app-network/static/js/5.8548a91b.chunk.js",
     "static/js/5.8548a91b.chunk.js.map": "/app-network/static/js/5.8548a91b.chunk.js.map",
@@ -22,9 +22,9 @@
     "static/css/3.3692e0d6.chunk.css.map": "/app-network/static/css/3.3692e0d6.chunk.css.map",
     "static/css/4.3ce5ae77.chunk.css.map": "/app-network/static/css/4.3ce5ae77.chunk.css.map",
     "static/css/5.afd7172b.chunk.css.map": "/app-network/static/css/5.afd7172b.chunk.css.map",
-    "static/css/main.689c7409.chunk.css.map": "/app-network/static/css/main.689c7409.chunk.css.map",
-    "static/js/2.cb74ce51.chunk.js.LICENSE.txt": "/app-network/static/js/2.cb74ce51.chunk.js.LICENSE.txt",
-    "static/js/4.5a32044e.chunk.js.LICENSE.txt": "/app-network/static/js/4.5a32044e.chunk.js.LICENSE.txt",
+    "static/css/main.86443359.chunk.css.map": "/app-network/static/css/main.86443359.chunk.css.map",
+    "static/js/2.486b2218.chunk.js.LICENSE.txt": "/app-network/static/js/2.486b2218.chunk.js.LICENSE.txt",
+    "static/js/4.1dbaf814.chunk.js.LICENSE.txt": "/app-network/static/js/4.1dbaf814.chunk.js.LICENSE.txt",
     "static/media/ACDC Recovered - Highway to Hell.155b771f.mp3": "/app-network/static/media/ACDC Recovered - Highway to Hell.155b771f.mp3",
     "static/media/Go-Logo.10000c8c.png": "/app-network/static/media/Go-Logo.10000c8c.png",
     "static/media/imessage.7ac58b26.png": "/app-network/static/media/imessage.7ac58b26.png",
@@ -35,9 +35,9 @@
     "static/media/users.f8e563b0.png": "/app-network/static/media/users.f8e563b0.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.c7fae570.js",
-    "static/js/2.cb74ce51.chunk.js",
-    "static/css/main.689c7409.chunk.css",
-    "static/js/main.2245b3da.chunk.js"
+    "static/js/runtime-main.f2f111c2.js",
+    "static/js/2.486b2218.chunk.js",
+    "static/css/main.86443359.chunk.css",
+    "static/js/main.33b63bd6.chunk.js"
   ]
 }
