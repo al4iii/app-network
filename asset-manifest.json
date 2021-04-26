@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/app-network/static/css/main.f5925315.chunk.css",
-    "main.js": "/app-network/static/js/main.0455a641.chunk.js",
-    "main.js.map": "/app-network/static/js/main.0455a641.chunk.js.map",
+    "main.css": "/app-network/static/css/main.689c7409.chunk.css",
+    "main.js": "/app-network/static/js/main.2245b3da.chunk.js",
+    "main.js.map": "/app-network/static/js/main.2245b3da.chunk.js.map",
     "runtime-main.js": "/app-network/static/js/runtime-main.c7fae570.js",
     "runtime-main.js.map": "/app-network/static/js/runtime-main.c7fae570.js.map",
     "static/js/2.cb74ce51.chunk.js": "/app-network/static/js/2.cb74ce51.chunk.js",
@@ -22,7 +22,7 @@
     "static/css/3.3692e0d6.chunk.css.map": "/app-network/static/css/3.3692e0d6.chunk.css.map",
     "static/css/4.3ce5ae77.chunk.css.map": "/app-network/static/css/4.3ce5ae77.chunk.css.map",
     "static/css/5.afd7172b.chunk.css.map": "/app-network/static/css/5.afd7172b.chunk.css.map",
-    "static/css/main.f5925315.chunk.css.map": "/app-network/static/css/main.f5925315.chunk.css.map",
+    "static/css/main.689c7409.chunk.css.map": "/app-network/static/css/main.689c7409.chunk.css.map",
     "static/js/2.cb74ce51.chunk.js.LICENSE.txt": "/app-network/static/js/2.cb74ce51.chunk.js.LICENSE.txt",
     "static/js/4.5a32044e.chunk.js.LICENSE.txt": "/app-network/static/js/4.5a32044e.chunk.js.LICENSE.txt",
     "static/media/ACDC Recovered - Highway to Hell.155b771f.mp3": "/app-network/static/media/ACDC Recovered - Highway to Hell.155b771f.mp3",
@@ -37,7 +37,7 @@
   "entrypoints": [
     "static/js/runtime-main.c7fae570.js",
     "static/js/2.cb74ce51.chunk.js",
-    "static/css/main.f5925315.chunk.css",
-    "static/js/main.0455a641.chunk.js"
+    "static/css/main.689c7409.chunk.css",
+    "static/js/main.2245b3da.chunk.js"
   ]
 }
