@@ -1,15 +1,7 @@
+import { DialogType, MessagesType } from './../types/types';
 import { reset } from "redux-form";
+import { InferActionTypes } from "./redux-store";
 
-const SEND_MESSAGE = "dialog/SEND-MESSAGE";
-type DialogType = {
-  id: number;
-  name: string;
-  active: string;
-};
-type MessagesType = {
-  id: number
-  message: string  
-};
 let initialState = {
   dialogs: [
     { id: 1, name: "Dima", active: "active" },
@@ -25,11 +17,9 @@ let initialState = {
   ] as Array<MessagesType>,
 };
 
-export type initialStateType = typeof initialState;
-
-const dialodsReducer = (state = initialState, action: any ) => {
+const dialodsReducer = (state = initialState, action: ActionsType ) => {
   switch (action.type) {
-    case SEND_MESSAGE:
+    case "dialog/SEND_MESSAGE":
       return {
         ...state,
         messages: [
@@ -42,13 +32,18 @@ const dialodsReducer = (state = initialState, action: any ) => {
   }
 };
 
-type newMessageType ={type: typeof SEND_MESSAGE, message: string}
-export const newMessage = (message: string): newMessageType => ({ type: SEND_MESSAGE, message });
+export const actions= {
+  newMessage :(message: string) => ({ type: "dialog/SEND_MESSAGE", message } as const ),
+}
 
 export const newMessages = (message: string) => {
   return (dispatch: any) => {
-    dispatch(newMessage(message));
+    dispatch(actions.newMessage(message));
     dispatch(reset("dialogAddMessegeForm"));
   };
 };
+
 export default dialodsReducer;
+
+export type initialStateType = typeof initialState;
+type ActionsType = InferActionTypes<typeof actions>

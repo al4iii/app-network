@@ -1,7 +1,6 @@
 import React from "react";
 import { reduxForm } from "redux-form";
 import { createField, Input, Textarea } from "../../../../common/FormsControls/FormsControls";
-import { Contact } from "./ProfileData";
 import styles from "./ProfileInfo.module.css";
 
 const ProfileDataForm = ({ handleSubmit, profile, goToExitEditMode, isOwner, error }) => {

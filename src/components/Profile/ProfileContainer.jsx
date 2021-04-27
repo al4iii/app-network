@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { compose } from "redux";
 import { getProfile, getUserId } from "../../redux/profile-selector";
-import { setUserProfile, getUser, getStatus } from "../../redux/profile-reduser";
+import { getUser, getStatus, actions } from "../../redux/profile-reduser";
 
 class ProfileConteiner extends React.Component {
   refreshProfile = () => {
@@ -30,6 +30,7 @@ let mapStateToProps = (state) => {
     userId: getUserId(state),
   };
 };
+const setUserProfile = actions.setUserProfile
 
 export default compose(
   withAuthRedirect,

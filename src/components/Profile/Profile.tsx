@@ -1,5 +1,4 @@
 import { FC } from "react";
-import styles from "./Profile.module.css";
 import ProfileInfoConteiner from "./MyPosts/ProfileInfo/ProfileInfoConteiner";
 import MyPostsConteiner from "./MyPosts/MyPostsConteiner";
 import { profileType } from "../../types/types";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./ProfileInfo.module.css";
 import Preloader from "../../../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
@@ -25,10 +25,7 @@ const ProfileInfo = ({ profile, status, getStatus, myId, updateStatus, addPosts,
   return (
     <div className={styles.myPosts}>
       <div className={styles.profile}>
-        <img
-          src={profile.photos.large || user}
-          className={styles.profile_img}
-        />
+        <img src={profile.photos.large || user} className={styles.profile_img} alt={"photos"} />
         {isOwner && (
           <div className={styles.profile_addPhoto}>
             <input type="file"onChange={onMailPhotoSelect} />              

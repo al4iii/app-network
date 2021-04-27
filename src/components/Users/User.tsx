@@ -11,25 +11,40 @@ type PropsType = {
   follow: (id: number) => void;
 };
 
-const User:FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) => {
+const User: FC<PropsType> = ({
+  user,
+  followingInProgress,
+  unfollow,
+  follow,
+}) => {
   return (
     <div className={styles.user}>
       <span>
         <div className={styles.userPhoto}>
           <NavLink to={`/profile/${user.id}`}>
-            <img className={styles.user_img} src={user.photos.small || avatar} alt="foto" />
+            <img
+              className={styles.user_img}
+              src={user.photos.small || avatar}
+              alt="foto"
+            />
           </NavLink>
         </div>
         <div className={styles.button}>
           {user.followed ? (
-            <button disabled={followingInProgress.some((id) => id == user.id)}
-              onClick={() => {unfollow(user.id)}}
+            <button
+              disabled={followingInProgress.some((id) => id === user.id)}
+              onClick={() => {
+                unfollow(user.id);
+              }}
             >
               Unfollow
             </button>
           ) : (
-            <button disabled={followingInProgress.some((id) => id == user.id)}
-              onClick={() => {follow(user.id)}}
+            <button
+              disabled={followingInProgress.some((id) => id === user.id)}
+              onClick={() => {
+                follow(user.id);
+              }}
             >
               Follow
             </button>

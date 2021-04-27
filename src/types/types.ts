@@ -33,4 +33,13 @@ export type userType = {
   followed: boolean;
 };
 
+export type DialogType = {
+  id: number;
+  name: string;
+  active: string;
+};
 
+export type MessagesType = {
+  id: number
+  message: string  
+};

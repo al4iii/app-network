@@ -19,7 +19,7 @@ const ControlPanel = ({ play, isPlaying, duration, currentTime }) => {
     }
     if (parseInt(hours, 10) > 0) {
       return `${parseInt(hours, 10)}h ${min}m ${sec}s`;
-    } else if (min == 0) {
+    } else if (min === 0) {
       return `00m ${sec}s`;
     } else {
       return `${min}m ${sec}s`;

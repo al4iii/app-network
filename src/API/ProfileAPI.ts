@@ -5,11 +5,10 @@ type SavePhotoResponceDataType = {
   photos: photosType
 }
 
-
 export const profileAPI = {
   getStatus: (userId: number) =>
     instanse.get<string>(`/profile/status/${userId}`).then((response) => response.data),
-  savePhoto: (file: any) => {
+  savePhoto: (file: File) => {
     const formData = new FormData();
     formData.append("image", file);
     return instanse
