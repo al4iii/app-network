@@ -2,19 +2,16 @@ import Dialods from "./Dialods";
 import { actions } from "../../redux/dialogs-reduser";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import { AppStateType } from "../../redux/redux-store";
 
-let mapStateToPtops = (state) => {
+let mapStateToPtops = (state:AppStateType) => {
   return {
     dialogs: state.dialogsPage.dialogs,
     messages: state.dialogsPage.messages,
-    newMessageText: state.dialogsPage.newMessageText,
     myProfilePhoto: state.profilePage.myProfilePhoto,
   };
 };
-let mapDispatchToPtops = () => {
-  return {
-    newMessages: actions.newMessages,
-  };
-};
 
-export default compose(connect(mapStateToPtops, mapDispatchToPtops))(Dialods);
+const newMessages = actions.newMessage
+
+export default compose<React.ComponentType>(connect(mapStateToPtops, {newMessages}))(Dialods);
