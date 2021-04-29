@@ -1,31 +1,38 @@
 import React from "react";
-import { reduxForm } from "redux-form";
-import { createField, Input, Textarea } from "../../../../common/FormsControls/FormsControls";
+import { InjectedFormProps, reduxForm } from "redux-form";
+import { createField, GetStringKeys, Input, Textarea } from "../../../../common/FormsControls/FormsControls";
+import { profileType } from "../../../../types/types";
 import styles from "./ProfileInfo.module.css";
 
-const ProfileDataForm = ({ handleSubmit, profile, goToExitEditMode, isOwner, error }) => {
+type PropsType ={  
+  isOwner: boolean  
+  profile: profileType  
+}
+type PropsTypeKeys = GetStringKeys<profileType>
+
+const ProfileDataForm:React.FC<InjectedFormProps<profileType,PropsType> & PropsType> = ({ handleSubmit, profile, isOwner, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       {!isOwner && (
         <form className={styles.profile_info}>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>
-              Full name: {createField("Full mame", "fullName", [], Input)}
+              Full name: {createField<PropsTypeKeys>("Full mame", "fullName", [], Input)}
             </span>
           </div>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>
               Look for a job:
-              {createField("", "lookingForAJob", [], Input, "checkbox")}
+              {createField<PropsTypeKeys>("", "lookingForAJob", [], Input, "checkbox")}
             </span>
           </div>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>My professional skills:</span>
-            {createField( "enter your skill", "lookingForAJobDescription", [], Textarea, "" )}
+            {createField<PropsTypeKeys>( "enter your skill", "lookingForAJobDescription", [], Textarea, "" )}
           </div>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>About me:</span>
-            {createField("enter about me", "aboutMe", [], Textarea, "")}
+            {createField<PropsTypeKeys>("enter about me", "aboutMe", [], Textarea, "")}
           </div>
           <div className={styles.profile_item}>
         <span className={styles.profile_span}>Contact: </span>
@@ -52,6 +59,6 @@ const ProfileDataForm = ({ handleSubmit, profile, goToExitEditMode, isOwner, err
   );
 };
 
-const ProfileDataFormReduxForm = reduxForm({ form: "editProfile" })( ProfileDataForm);
+const ProfileDataFormReduxForm = reduxForm<profileType, PropsType>({ form: "editProfile" })(ProfileDataForm);
 
 export default ProfileDataFormReduxForm;

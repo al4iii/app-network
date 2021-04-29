@@ -23,6 +23,8 @@ export type profileType = {
   fullName: string;
   contacts: contactsType;
   photos: photosType;
+  aboutMe: string
+  isOwner: boolean
 };
 
 export type userType = {
@@ -31,6 +33,7 @@ export type userType = {
   status: string;
   photos: photosType;
   followed: boolean;
+  isOwner: boolean
 };
 
 export type DialogType = {

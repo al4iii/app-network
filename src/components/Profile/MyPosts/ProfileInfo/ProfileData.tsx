@@ -1,7 +1,14 @@
 import React from "react";
+import { contactsType, profileType } from "../../../../types/types";
 import styles from "./ProfileInfo.module.css";
 
-const ProfileData = ({ profile, isOwner, goToEditMode }) => {
+type PropsType = {
+  profile: profileType
+  isOwner: boolean
+  goToEditMode: ()=> void
+}
+
+const ProfileData: React.FC<PropsType> = ({ profile, isOwner, goToEditMode }) => {
   return (
     <div className={styles.profile_info}>
       <div className={styles.profile_item}>
@@ -30,11 +37,7 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
         <span className={styles.profile_span}>Contact: </span>
         {Object.keys(profile.contacts).map((key) => {
           return (
-            <Contact
-              key={key}
-              contactTitle={key}
-              contactValue={profile.contacts[key]}
-            />
+            <Contact key={key} contactTitle={key} contactValue={profile.contacts[key as keyof contactsType]} />
           );
         })}
       </div>
@@ -49,10 +52,14 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
   );
 };
 
-export const Contact = ({ contactTitle, contactValue }) => {
+type PropsContactType = {
+  contactTitle: string
+  contactValue: string | null
+}
+export const Contact: React.FC<PropsContactType> = ({ contactTitle, contactValue }) => {
   return (
     <div>
-      <span className={styles.profile_span}> {contactTitle}</span>:{" "}
+      <span className={styles.profile_span}> {contactTitle}</span>:
       {contactValue}
     </div>
   );
