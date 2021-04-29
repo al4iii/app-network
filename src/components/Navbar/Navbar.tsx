@@ -7,10 +7,9 @@ import music from "./../../img/music.png";
 import news from "./../../img/news.png";
 import setting from "./../../img/settings.png";
 import todolist from "./../../img/iconfinder_ic_clipboard_5803966.png";
-
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar:React.FC = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.link}>

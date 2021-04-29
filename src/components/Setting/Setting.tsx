@@ -1,6 +1,8 @@
 import React from "react";
 
-const Setting = () => {
+type PropsType={}
+
+const Setting:React.FC<PropsType> = () => {
   return (
     <div>
       <h3> Setting</h3>

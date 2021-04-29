@@ -19,7 +19,6 @@ type mapDispatchToPropsType = {
   ) => void;
 };
 
-
 const Login: React.FC<mapStateToPropsType & mapDispatchToPropsType> = ({ login, isAuth, captchaUrl,}) => {
   if (isAuth) {
     return <Redirect to={"/profile"} />;

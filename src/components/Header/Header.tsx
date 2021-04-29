@@ -4,7 +4,16 @@ import logo from "./../../img/Go-Logo.png";
 import user from "./../../img/user-male.png";
 import { NavLink } from "react-router-dom";
 
-const Header = ({ isAuth, profilePhoto, login, logout }) => {
+export type MapPropsType = {
+  isAuth: boolean;
+  profilePhoto: string;
+  login: string | null
+} 
+export type DispatchPropsType = {
+  logout: () => void;
+};
+
+const Header:React.FC<MapPropsType & DispatchPropsType> = ({ isAuth, profilePhoto, login, logout }) => {
   return (
     <div className={styles.header}>
       <NavLink to={"/profile"} className={styles.img}>

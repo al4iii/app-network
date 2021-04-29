@@ -3,7 +3,13 @@ import styles from "./Post.module.css";
 import likes from "./../../../../img/like.png";
 import user from "./../../../../img/user-male.png";
 
-const Post = ({ myProfilePhoto, messege, like }) => {
+type PropsType ={
+  myProfilePhoto: string
+  messege: string
+  like: number
+}
+
+const Post:React.FC<PropsType> = ({ myProfilePhoto, messege, like }) => {
   return (
     <div className={styles.posts}>
       <div className={styles.post}>

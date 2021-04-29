@@ -2,12 +2,25 @@ import React from "react";
 import Profile from "./Profile";
 import withAuthRedirect from "../HOC/withSuspense";
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import { RouteComponentProps, withRouter } from "react-router";
 import { compose } from "redux";
 import { getProfile, getUserId } from "../../redux/profile-selector";
 import { getUser, getStatus, actions } from "../../redux/profile-reduser";
+import { AppStateType } from "../../redux/redux-store";
 
-class ProfileConteiner extends React.Component {
+type MapPropsType = ReturnType<typeof mapStateToProps>
+export type DistatchType = {
+  setUserProfile:(userId: number)=> void
+  getUser:(userId: number)=> void
+  getStatus:(userId: number)=> void
+  addPosts: ()=> void
+}
+type PathParamsType = {
+  userId: string,
+}
+type PropsType = MapPropsType & DistatchType & RouteComponentProps<PathParamsType>
+
+class ProfileConteiner extends React.Component <PropsType>{
   refreshProfile = () => {
     this.props.getUser(this.props.match.params.userId || this.props.userId);
   };
@@ -24,7 +37,7 @@ class ProfileConteiner extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
   return {   
     profile: getProfile(state),
     userId: getUserId(state),

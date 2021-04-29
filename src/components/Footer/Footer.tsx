@@ -5,7 +5,9 @@ import google from "./../../img/Google_icon.png";
 import twitter from "./../../img/Twitter_icon.png";
 import linkedin from "./../../img/LinkedIn_icon.png";
 
-const Footer = () => {
+type PropsType={}
+
+const Footer:React.FC<PropsType> = () => {
   return (
     <div className={styles.footer}>
       <p className={styles.p}>© Copyright 2021</p>
