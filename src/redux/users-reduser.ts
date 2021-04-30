@@ -104,6 +104,6 @@ export const follow = (id: number): ThunkType => async (dispatch) => {
 
 export default usersReducer;
 
-type initialStateType = typeof initialState;
+export type initialStateType = typeof initialState;
 type ActionsTypes = InferActionTypes<typeof actions>;
 type ThunkType = BaseThunkType<ActionsTypes>;

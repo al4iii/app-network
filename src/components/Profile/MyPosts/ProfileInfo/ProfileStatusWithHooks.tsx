@@ -1,16 +1,24 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import styles from "./ProfileInfo.module.css";
 
-const ProfileStatusWithHooks = (props: any) => {
-  props.getStatus(props.userId);
+type PropsType ={
+  getStatus: (userId:number)=> void
+  userId: number
+  status: string
+  updateStatus: (status:string)=> void
+}
+
+const ProfileStatusWithHooks:React.FC<PropsType> = ({getStatus,userId,updateStatus,...props}) => {
+  debugger
+  getStatus(userId);
   let [editMode, setEditMode] = useState(false);
   let [status, setStatus] = useState(props.status);
   useEffect(() => { setStatus(props.status) }, [props.status]);
   const activateMode = () => setEditMode(true);
   const deactivateMode = () => { setEditMode(false);
-    props.updateStatus(status);
+    updateStatus(status);
   };
-  const onStatusChenge = (e:  ChangeEvent<HTMLInputElement>) => setStatus(e.currentTarget.value);
+  const onStatusChenge = (e: ChangeEvent<HTMLInputElement> ) => setStatus(e.currentTarget.value);
   return (
     <div  className={styles.status}>
       {!editMode && (

@@ -7,6 +7,7 @@ import AddNewPostRedux, { AddNewPostFormType } from "./AddNewPost";
 import ProfileData from "./ProfileData";
 import ProfileDataFormReduxForm from "./ProfileDataForm";
 import { profileType } from "../../../../types/types";
+import ProfileStatus from "./ProfileStatus";
 
 type PropsType = {
   profile: profileType
@@ -44,7 +45,7 @@ const ProfileInfo: React.FC<PropsType> = ({ profile, status, getStatus, myId, up
           </div>
         )}
         {isOwner && ( <ProfileStatusWithHooks status={status}
-            getStatus={getStatus} myId={myId} userId={profile.userId} updateStatus={updateStatus}
+            getStatus={getStatus} userId={profile.userId} updateStatus={updateStatus}
           />
         )}
         {editMode ? ( <ProfileDataFormReduxForm isOwner={isOwner} initialValues={profile} profile={profile} onSubmit={onSubmit} />

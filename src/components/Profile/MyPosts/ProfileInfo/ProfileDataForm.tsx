@@ -52,8 +52,7 @@ const ProfileDataForm:React.FC<InjectedFormProps<profileType,PropsType> & PropsT
           <div>
             <button>save</button>
           </div>
-        )}
-        
+        )}        
       </div>
     </form>
   );
