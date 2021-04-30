@@ -13,7 +13,7 @@ type PropsTypeKeys = GetStringKeys<profileType>
 const ProfileDataForm:React.FC<InjectedFormProps<profileType,PropsType> & PropsType> = ({ handleSubmit, profile, isOwner, error }) => {
   return (
     <form onSubmit={handleSubmit}>
-      {!isOwner && (
+      {isOwner && (
         <form className={styles.profile_info}>
           <div className={styles.profile_item}>
             <span className={styles.profile_span}>
@@ -48,7 +48,7 @@ const ProfileDataForm:React.FC<InjectedFormProps<profileType,PropsType> & PropsT
       )}
       <div>
       {error && <div>{error}</div>}
-        {!isOwner && (
+        {isOwner && (
           <div>
             <button>save</button>
           </div>
