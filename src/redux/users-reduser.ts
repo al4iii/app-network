@@ -3,7 +3,7 @@ import { updateObjectInArray } from "../helpers/validators/objects-helpers";
 import { InferActionTypes, BaseThunkType } from "./redux-store";
 import { usersAPI } from "../API/UserAPI";
 
-let initialState = {
+let initialState = { 
   users: [] as Array<userType>,
   pageSize: 100 as number,
   totalUsersCount: 0 as number,
@@ -11,12 +11,15 @@ let initialState = {
   isFetching: true as boolean,
   followingInProgress: [] as Array<number>, //array of users ids
   filter: {
-    term: "" ,
+    term: "" as string,
     friend: null as null | boolean,
   },
 };
 
-const usersReducer = ( state = initialState, action: ActionsTypes): initialStateType => {
+const usersReducer = (
+  state = initialState,
+  action: ActionsTypes
+): initialStateType => {
   switch (action.type) {
     case "user/FOLLOW":
       return {
@@ -52,9 +55,8 @@ const usersReducer = ( state = initialState, action: ActionsTypes): initialState
         ...state,
         isFetching: action.isFetching,
       };
-    case "user/SET_FILTER":        
-      return {...state,
-         filter: action.payload}
+    case "user/SET_FILTER":
+      return { ...state, filter: action.payload };
     case "user/TOGGLE_IS_FOLLOWING_PROGRESS":
       return {
         ...state,
@@ -74,7 +76,7 @@ export const actions = {
   setUsers: (users: Array<userType>) =>
     ({ type: "user/SET_USERS", users } as const),
   setFilter: (filter: FilterType) =>
-    ({ type: "user/SET_FILTER", payload: {filter} } as const),
+    ({ type: "user/SET_FILTER", payload: filter } as const),
   setCurrentPages: (currentPage: number) =>
     ({ type: "user/SET_CURRENT_PAGE", currentPage } as const),
   setTotalUsersCount: (totalCount: number) =>
@@ -84,12 +86,20 @@ export const actions = {
   toggleFollow: (isFetching: boolean, id: number) =>
     ({ type: "user/TOGGLE_IS_FOLLOWING_PROGRESS", isFetching, id } as const),
 };
-export const getUsersAC = (page: number, pageSize: number, filter: FilterType): ThunkType => async (
-  dispatch) => {
+export const getUsersAC = (
+  page: number,
+  pageSize: number,
+  filter: FilterType
+): ThunkType => async (dispatch) => {
   dispatch(actions.toggleIsFetching(true));
   dispatch(actions.setCurrentPages(page));
   dispatch(actions.setFilter(filter));
-  let response = await usersAPI.getUsers(page, pageSize, filter.term, filter.friend);
+  let response = await usersAPI.getUsers(
+    page,
+    pageSize,
+    filter.term,
+    filter.friend
+  );
   dispatch(actions.setUsers(response.items));
   dispatch(actions.setTotalUsersCount(response.totalCount));
   dispatch(actions.toggleIsFetching(false));
