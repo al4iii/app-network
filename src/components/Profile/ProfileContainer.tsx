@@ -12,8 +12,12 @@ type MapPropsType = ReturnType<typeof mapStateToProps>
 export type DistatchType = {
   setUserProfile:(userId: number)=> void
   getUser:(userId: number)=> void
-  getStatus:(userId: number)=> void
+  getStatus:()=> void
   addPosts: ()=> void
+  saveProfile: ()=> Promise<any>
+  updateStatus: ()=> void
+  savePhoto: ()=> void
+  
 }
 type PathParamsType = {
   userId: string,

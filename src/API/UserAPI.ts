@@ -8,9 +8,11 @@ export type FollowUnfollowResponseType = {
 };
 
 export const usersAPI = {
-  getUsers: (pageNumber: number = 1, pageSize: number) => {
+  getUsers: (pageNumber: number = 1, pageSize: number, term: string= "", friend: null| boolean= null) => {
     return instanse
-      .get<GetItemsType>(`users?page=${pageNumber}&count=${pageSize}`)
+      .get<GetItemsType>(`users?page=${pageNumber}&count=${pageSize}&term=${term}` +
+        (friend === null ? "" : `&friend=${friend}`)
+      )
       .then((response) => response.data);
   },
   unfollow: (id: number) => {

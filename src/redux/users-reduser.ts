@@ -10,6 +10,10 @@ let initialState = {
   currentPage: 1 as number,
   isFetching: true as boolean,
   followingInProgress: [] as Array<number>, //array of users ids
+  filter: {
+    term: "" ,
+    friend: null as null | boolean,
+  },
 };
 
 const usersReducer = ( state = initialState, action: ActionsTypes): initialStateType => {
@@ -48,6 +52,9 @@ const usersReducer = ( state = initialState, action: ActionsTypes): initialState
         ...state,
         isFetching: action.isFetching,
       };
+    case "user/SET_FILTER":        
+      return {...state,
+         filter: action.payload}
     case "user/TOGGLE_IS_FOLLOWING_PROGRESS":
       return {
         ...state,
@@ -66,6 +73,8 @@ export const actions = {
     ({ type: "user/UNFOLLOW", userId } as const),
   setUsers: (users: Array<userType>) =>
     ({ type: "user/SET_USERS", users } as const),
+  setFilter: (filter: FilterType) =>
+    ({ type: "user/SET_FILTER", payload: {filter} } as const),
   setCurrentPages: (currentPage: number) =>
     ({ type: "user/SET_CURRENT_PAGE", currentPage } as const),
   setTotalUsersCount: (totalCount: number) =>
@@ -75,12 +84,12 @@ export const actions = {
   toggleFollow: (isFetching: boolean, id: number) =>
     ({ type: "user/TOGGLE_IS_FOLLOWING_PROGRESS", isFetching, id } as const),
 };
-export const getUsersAC = (page: number, pageSize: number): ThunkType => async (
-  dispatch
-) => {
+export const getUsersAC = (page: number, pageSize: number, filter: FilterType): ThunkType => async (
+  dispatch) => {
   dispatch(actions.toggleIsFetching(true));
   dispatch(actions.setCurrentPages(page));
-  let response = await usersAPI.getUsers(page, pageSize);
+  dispatch(actions.setFilter(filter));
+  let response = await usersAPI.getUsers(page, pageSize, filter.term, filter.friend);
   dispatch(actions.setUsers(response.items));
   dispatch(actions.setTotalUsersCount(response.totalCount));
   dispatch(actions.toggleIsFetching(false));
@@ -105,5 +114,6 @@ export const follow = (id: number): ThunkType => async (dispatch) => {
 export default usersReducer;
 
 export type initialStateType = typeof initialState;
+export type FilterType = typeof initialState.filter;
 type ActionsTypes = InferActionTypes<typeof actions>;
 type ThunkType = BaseThunkType<ActionsTypes>;
