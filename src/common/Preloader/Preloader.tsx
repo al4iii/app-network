@@ -7,7 +7,7 @@ type PropsType={}
 const Preloader:React.FC<PropsType> = () => {
   return (
     <div className={styles.loader}>
-      <img src={loader} />
+      <img src={loader} alt={"loader"}/>
     </div>
   );
 };

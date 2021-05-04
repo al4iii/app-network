@@ -17,7 +17,7 @@ const Header:React.FC<MapPropsType & DispatchPropsType> = ({ isAuth, profilePhot
   return (
     <div className={styles.header}>
       <NavLink to={"/profile"} className={styles.img}>
-        <img src={logo} className={styles.img} />
+        <img src={logo} className={styles.img} alt={"logo"}/>
       </NavLink>
       <div className={styles.login_block}>
         {isAuth ? (

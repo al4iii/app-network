@@ -1,28 +1,39 @@
-import { FC } from "react";
 import styles from "./Users.module.css";
 import Pagination from "../../common/Pagination/Pagination";
 import User from "./User";
 import UsersSearchForm from "./UsersSearchForm";
-import { userType } from "../../types/types";
-import { FilterType } from "../../redux/users-reduser";
+import { FC, useEffect } from "react";
+import { FilterType, getUsersAC } from "../../redux/users-reduser";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount, getUsers, getUsersFilter } from "./../../redux/users-selector";
 
-type PropsType = {
-  currentPage: number;
-  onPageChenged: (pageNumber: number) => void;
-  pageSize: number;
-  totalUsersCount: number;
-  users: Array<userType>;
-  followingInProgress: Array<number>;
-  unfollow: (id: number) => void;
-  follow: (id: number) => void;
-  onFilterChanged: (filter:FilterType)=> void
-};
-
-const Users: FC<PropsType> = ({ currentPage, onPageChenged, pageSize, totalUsersCount, users, followingInProgress,
-  unfollow, follow, onFilterChanged}) => {
+type PropsType = {};
+export const Users: FC<PropsType> = (props) => {
+  const totalUsersCount = useSelector(getTotalUsersCount);
+  const currentPage = useSelector(getCurrentPage);
+  const pageSize = useSelector(getPageSize);
+  const filter = useSelector(getUsersFilter);
+  const users = useSelector(getUsers);
+  const followingInProgress = useSelector(getFollowingInProgress);
+  const dispatch = useDispatch();
+  const onPageChenged = (pageNumber: number) => {
+    dispatch(getUsersAC(pageNumber, pageSize, filter));
+  };
+  const onFilterChanged = (filter: FilterType) => {
+    dispatch(getUsersAC(1, pageSize, filter));
+  };
+  const follow = (id: number) => {
+    dispatch(follow(id));
+  };
+  const unfollow = (id: number) => {
+    dispatch(unfollow(id));
+  };
+  useEffect(() => {
+    dispatch(getUsersAC(currentPage, pageSize, filter));
+  }, []);
   return (
     <div>
-      <UsersSearchForm onFilterChanged={onFilterChanged}/>
+      <UsersSearchForm onFilterChanged={onFilterChanged} />
       <Pagination
         totalItemsCount={totalUsersCount}
         pageSize={pageSize}
@@ -43,5 +54,3 @@ const Users: FC<PropsType> = ({ currentPage, onPageChenged, pageSize, totalUsers
     </div>
   );
 };
-
-export default Users;

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addPosts, getStatus, updateStatus, savePhoto, saveProfile, actions } from "../../../../redux/profile-reduser";
+import { addPosts, getStatus, updateStatus, savePhoto, saveProfile } from "../../../../redux/profile-reduser";
 import { AppStateType } from "../../../../redux/redux-store";
 import ProfileInfo from "./ProfileInfo";
 

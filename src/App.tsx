@@ -5,7 +5,7 @@ import Setting from "./components/Setting/Setting";
 import DialodsConteiner from "./components/Dialods/DialodsConteiner";
 import ProfileConteiner from "./components/Profile/ProfileContainer";
 import HeaderConteiner from "./components/Header/HeaderConteiner";
-import Login from "./components/Login/Login";
+import {Login} from "./components/Login/Login";
 import Preloader from "./common/Preloader/Preloader";
 import store, { AppStateType } from "./redux/redux-store";
 import withSuspense from "./components/HOC/withSuspense";
@@ -16,7 +16,7 @@ import { compose } from "redux";
 import { Provider } from "react-redux";
 import "./App.css";
 import MyToDoList from "./components/MyToDoList/MyToDoList";
-import UsersConteiner from "./components/Users/UsersConteiner";
+import {UserPage} from "./components/Users/UsersConteiner";
 const News = React.lazy(() => import("./components/News/News"));
 const Music = React.lazy(() => import("./components/Music/Music"));
 
@@ -45,7 +45,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                 <Route path="/dialogs" render={() => <DialodsConteiner />} />
                 <Route path="/news" render={withSuspense(News)} />
                 <Route path="/music" render={withSuspense(Music)} />
-                <Route path="/users" render={()=> <UsersConteiner/> } />
+                <Route path="/users" render={()=> <UserPage/> } />
                 <Route path="/setting" render={() => <Setting />} />
                 <Route path="/todolist" render={() => <MyToDoList />} />
                 <Route path="/login" render={() => <Login />} />  
