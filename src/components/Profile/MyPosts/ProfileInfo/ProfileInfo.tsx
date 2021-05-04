@@ -11,13 +11,13 @@ import { profileType } from "../../../../types/types";
 type PropsType = {
   profile: profileType
   status: string
-  getStatus: () => void,
+  getStatus: (userId:number) => void,
   myId: number
   updateStatus: (status: string) => void
   addPosts: (message: string) => void
   isOwner: boolean
   savePhoto: (file: any) => void
-  saveProfile: (profile:profileType) => Promise<any>
+  saveProfile: (profile: profileType) => void
   }
 
 const ProfileInfo: React.FC<PropsType> = ({ profile, status, getStatus, myId, updateStatus, addPosts, isOwner, savePhoto, saveProfile }) => {

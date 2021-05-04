@@ -4,20 +4,13 @@ import withAuthRedirect from "../HOC/withSuspense";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
 import { compose } from "redux";
-import { getProfile, getUserId } from "../../redux/profile-selector";
-import { getUser, getStatus, actions } from "../../redux/profile-reduser";
+import {  getUserId } from "../../redux/profile-selector";
+import { getUser } from "../../redux/profile-reduser";
 import { AppStateType } from "../../redux/redux-store";
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
-export type DistatchType = {
-  setUserProfile:(userId: number)=> void
-  getUser:(userId: number)=> void
-  getStatus:()=> void
-  addPosts: ()=> void
-  saveProfile: ()=> Promise<any>
-  updateStatus: ()=> void
-  savePhoto: ()=> void
-  
+export type DistatchType = {  
+  getUser:(userId: number)=> void  
 }
 type PathParamsType = {
   userId: string,
@@ -43,14 +36,12 @@ class ProfileConteiner extends React.Component <PropsType>{
 
 let mapStateToProps = (state: AppStateType) => {
   return {   
-    profile: getProfile(state),
     userId: getUserId(state),
   };
 };
-const setUserProfile = actions.setUserProfile
 
 export default compose(
   withAuthRedirect,
   withRouter,
-  connect(mapStateToProps, { setUserProfile, getUser, getStatus })
+  connect(mapStateToProps, {  getUser })
 )(ProfileConteiner);

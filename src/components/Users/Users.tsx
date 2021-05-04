@@ -7,8 +7,7 @@ import { FilterType, getUsersAC } from "../../redux/users-reduser";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount, getUsers, getUsersFilter } from "./../../redux/users-selector";
 
-type PropsType = {};
-export const Users: FC<PropsType> = (props) => {
+export const Users: FC = (props) => {
   const totalUsersCount = useSelector(getTotalUsersCount);
   const currentPage = useSelector(getCurrentPage);
   const pageSize = useSelector(getPageSize);
