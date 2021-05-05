@@ -4,7 +4,7 @@ import withAuthRedirect from "../HOC/withSuspense";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
 import { compose } from "redux";
-import {  getUserId } from "../../redux/profile-selector";
+import { getUserId } from "../../redux/profile-selector";
 import { getUser } from "../../redux/profile-reduser";
 import { AppStateType } from "../../redux/redux-store";
 
@@ -17,7 +17,7 @@ type PathParamsType = {
 }
 type PropsType = MapPropsType & DistatchType & RouteComponentProps<PathParamsType>
 
-class ProfileConteiner extends React.Component <PropsType>{
+class ProfileConteiner extends React.Component<PropsType>{
   refreshProfile = () => {
     this.props.getUser(this.props.match.params.userId || this.props.userId);
   };

@@ -1,4 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectStatus } from "../../../../redux/profile-selector";
 import styles from "./ProfileInfo.module.css";
 
 type PropsType ={
@@ -7,16 +9,16 @@ type PropsType ={
   status: string
   updateStatus: (status:string)=> void
 }
-
-const ProfileStatusWithHooks:React.FC<PropsType> = ({getStatus,userId,updateStatus,...props}) => {
-  debugger
+const ProfileStatusWithHooks:React.FC<PropsType> = ({getStatus,userId,updateStatus}) => {
+  const status1 = useSelector(selectStatus)
+  console.log(status1)
   getStatus(userId);
   let [editMode, setEditMode] = useState(false);
-  let [status, setStatus] = useState(props.status);
-  useEffect(() => { setStatus(props.status) }, [props.status]);
+  let [status, setStatus] = useState(status1);
+  useEffect(() => { setStatus(status1) }, [status1]); 
   const activateMode = () => setEditMode(true);
   const deactivateMode = () => { setEditMode(false);
-    updateStatus(status);
+    updateStatus(status1);
   };
   const onStatusChenge = (e: ChangeEvent<HTMLInputElement> ) => setStatus(e.currentTarget.value);
   return (
@@ -24,7 +26,7 @@ const ProfileStatusWithHooks:React.FC<PropsType> = ({getStatus,userId,updateStat
       {!editMode && (
         <div className={styles.status}>
           <span className={styles.profile_span}>
-            Status: {status || "no status"}
+            Status: {status1 || "no status"}
           </span>
           <button onClick={activateMode} className={styles.button_status}>
             update status

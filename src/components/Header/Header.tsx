@@ -1,48 +1,63 @@
-import React from "react";
-import styles from "./Header.module.css";
-import logo from "./../../img/Go-Logo.png";
-import user from "./../../img/user-male.png";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Avatar, Button, Col, Image, Layout, Menu, Row } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectLogin,
+  selectAuth,
+  selectAvatar,
+} from "./../../redux/auth-selector";
+import { logout } from "../../redux/auth-reduser";
 
-export type MapPropsType = {
-  isAuth: boolean;
-  profilePhoto: string;
-  login: string | null
-} 
-export type DispatchPropsType = {
-  logout: () => void;
-};
+export type MapPropsType = {};
 
-const Header:React.FC<MapPropsType & DispatchPropsType> = ({ isAuth, profilePhoto, login, logout }) => {
+export const Header: React.FC<MapPropsType> = (props) => {
+  const isAuth = useSelector(selectAuth);
+  const login = useSelector(selectLogin);
+  let avatar = useSelector(selectAvatar);
+  const dispatch = useDispatch();
+  const logoutCallback = () => {
+    dispatch(logout());
+  };
+  const { Header } = Layout;
   return (
-    <div className={styles.header}>
-      <NavLink to={"/profile"} className={styles.img}>
-        <img src={logo} className={styles.img} alt={"logo"}/>
-      </NavLink>
-      <div className={styles.login_block}>
+    <Header className="header">
+      <Row>
+        <Col span={18}>
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
+            <Menu.Item key="1">
+              <Link to="/developers">Developers</Link>
+            </Menu.Item>
+          </Menu>
+        </Col>
         {isAuth ? (
-          <div className={styles.auth}>
-            <img
-              src={profilePhoto || user}
-              alt="profilePhoto"
-              className={styles.profilePhoto}
-            />
-            {login}
-            <button onClick={logout} className={styles.button}>
-              Log out
-            </button>
-          </div>
+          <>
+            <Col span={1} >
+              <img src={avatar || ""} width="32px" />            
+            </Col>
+            <Col span={5}>
+              <Button onClick={logoutCallback}>Log out</Button>
+            </Col>
+          </>
         ) : (
-          <div>
-            <NavLink to={"/login"}>Sing In</NavLink>
-            <button className={styles.button}>
-              <a href="https://social-network.samuraijs.com/signUp">Sing Up</a>
-            </button>
-          </div>
+          <Col span={6}>
+            <Button>
+              <Link to={"/login"}>Login</Link>
+            </Button>
+          </Col>
         )}
-      </div>
-    </div>
+      </Row>
+    </Header>
   );
-};
 
-export default Header;
+  /*  <header className={s.header}>
+          <img src='https://www.freelogodesign.org/Content/img/logo-ex-7.png' />
+
+          <div className={s.loginBlock}>
+              { props.isAuth
+                  ? <div>{props.login} - <button onClick={props.logout}>Log out</button> </div>
+                  : <NavLink to={'/login'}>Login</NavLink> }
+          </div>
+      </header>*/
+};
