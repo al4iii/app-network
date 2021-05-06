@@ -1,3 +1,4 @@
+import { AppStateType } from './redux-store';
 import usersReducer, { actions, initialStateType } from "./users-reduser";
 
 let state: initialStateType;
@@ -15,6 +16,10 @@ beforeEach(
       currentPage: 1 as number,
       isFetching: false,
       followingInProgress: [], //array of users ids
+      filter: {
+        term: "" as string,
+        friend: null as null | boolean,
+      },
     })
 );
 test("follow success", () => {

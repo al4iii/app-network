@@ -1,18 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Avatar, Button, Col, Image, Layout, Menu, Row } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Button, Col, Layout, Menu, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectLogin,
-  selectAuth,
-  selectAvatar,
-} from "./../../redux/auth-selector";
+import { selectLogin, selectAuth, selectAvatar,} from "./../../redux/auth-selector";
 import { logout } from "../../redux/auth-reduser";
+import Text from "antd/lib/typography/Text";
 
 export type MapPropsType = {};
 
-export const Header: React.FC<MapPropsType> = (props) => {
+export const Header: React.FC<MapPropsType> = () => {
   const isAuth = useSelector(selectAuth);
   const login = useSelector(selectLogin);
   let avatar = useSelector(selectAvatar);
@@ -24,7 +20,7 @@ export const Header: React.FC<MapPropsType> = (props) => {
   return (
     <Header className="header">
       <Row>
-        <Col span={18}>
+        <Col className="gutter-row" span={4} offset={1}>
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
             <Menu.Item key="1">
               <Link to="/developers">Developers</Link>
@@ -33,15 +29,18 @@ export const Header: React.FC<MapPropsType> = (props) => {
         </Col>
         {isAuth ? (
           <>
-            <Col span={1} >
-              <img src={avatar || ""} width="32px" />            
+            <Col className="gutter-row" span={1} offset={12}>
+              <img src={avatar || ""} width="32px" />              
             </Col>
-            <Col span={5}>
+            <Col className="gutter-row" span={1}>              
+              <Text type="warning" keyboard >{login} </Text>
+            </Col>
+            <Col className="gutter-row" span={2}>
               <Button onClick={logoutCallback}>Log out</Button>
             </Col>
           </>
         ) : (
-          <Col span={6}>
+          <Col className="gutter-row" span={6}>
             <Button>
               <Link to={"/login"}>Login</Link>
             </Button>

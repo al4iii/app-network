@@ -1,13 +1,17 @@
+import { Col, Row } from "antd";
+import Title from "antd/lib/typography/Title";
 import React from "react";
 
-type PropsType={}
+type PropsType = {};
 
-const Setting:React.FC<PropsType> = () => {
+const Setting: React.FC<PropsType> = () => {
   return (
-    <div>
-      <h3> Setting</h3>
-      <p>This section is under construction.</p>
-    </div>
+    <Row>
+      <Col span={23} >
+      <Title level={3}>Setting</Title>
+        <p>This section is under construction.</p>
+      </Col>
+    </Row>
   );
 };
 

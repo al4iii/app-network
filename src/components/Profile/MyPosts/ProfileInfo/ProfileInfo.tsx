@@ -7,6 +7,7 @@ import AddNewPostRedux, { AddNewPostFormType } from "./AddNewPost";
 import ProfileData from "./ProfileData";
 import ProfileDataFormReduxForm from "./ProfileDataForm";
 import { profileType } from "../../../../types/types";
+import { Observable } from "redux";
 
 type PropsType = {
   profile: profileType

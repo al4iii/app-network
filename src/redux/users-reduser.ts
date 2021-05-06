@@ -6,7 +6,7 @@ import { usersAPI } from "../API/UserAPI";
 let initialState = { 
   users: [] as Array<userType>,
   pageSize: 100 as number,
-  totalUsersCount: 0 as number,
+  totalUsersCount: 11910 as number,
   currentPage: 1 as number,
   isFetching: true as boolean,
   followingInProgress: [] as Array<number>, //array of users ids

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Button.module.css";
 
 type PropsType={
-  onClick: ()=> void
+  onClick?: ()=> void
   text: string
 }
 const Button:React.FC<PropsType> = (props) => {
