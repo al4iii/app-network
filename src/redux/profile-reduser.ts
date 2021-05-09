@@ -68,7 +68,7 @@ export const getStatus = (userId: number):ThunkType => async (dispatch) => {
   dispatch(actions.setStatus(response));
 };
 export const updateStatus = (status: string):ThunkType => async (dispatch) => {
-  // let response =  profileAPI.updateStatus(status);  
+    profileAPI.updateStatus(status);  
     dispatch(actions.setStatus(status));   
 };
 export const addPosts = (newPost: string):ThunkType => async (dispatch) => {

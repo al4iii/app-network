@@ -10,15 +10,14 @@ type PropsType ={
   updateStatus: (status:string)=> void
 }
 const ProfileStatusWithHooks:React.FC<PropsType> = ({getStatus,userId,updateStatus}) => {
-  const status1 = useSelector(selectStatus)
-  console.log(status1)
   getStatus(userId);
+  const statusToRedux = useSelector(selectStatus)    
   let [editMode, setEditMode] = useState(false);
-  let [status, setStatus] = useState(status1);
-  useEffect(() => { setStatus(status1) }, [status1]); 
+  let [status, setStatus] = useState(statusToRedux);
+  useEffect(() => { setStatus(statusToRedux) }, [statusToRedux]); 
   const activateMode = () => setEditMode(true);
   const deactivateMode = () => { setEditMode(false);
-    updateStatus(status1);
+    updateStatus(status);
   };
   const onStatusChenge = (e: ChangeEvent<HTMLInputElement> ) => setStatus(e.currentTarget.value);
   return (
@@ -26,7 +25,7 @@ const ProfileStatusWithHooks:React.FC<PropsType> = ({getStatus,userId,updateStat
       {!editMode && (
         <div className={styles.status}>
           <span className={styles.profile_span}>
-            Status: {status1 || "no status"}
+            Status: {status || "no status"}
           </span>
           <button onClick={activateMode} className={styles.button_status}>
             update status
