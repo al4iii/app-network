@@ -20,9 +20,7 @@ export type LoginFormType = {
 type LoginFormTypeKeys = GetStringKeys<LoginFormType>;
 
 const LoginForm: React.FC<
-  InjectedFormProps<LoginFormType, LoginFormOwnType> & LoginFormOwnType
-> = ({ handleSubmit, error, captchaUrl }) => {
-  const onClick = () => {};
+  InjectedFormProps<LoginFormType, LoginFormOwnType> & LoginFormOwnType> = ({ handleSubmit, error, captchaUrl }) => {  
   return (
     <form onSubmit={handleSubmit}>
       {createField<LoginFormTypeKeys>("login", "email", [reaquired], Input)}

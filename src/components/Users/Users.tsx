@@ -56,7 +56,7 @@ export const Users: FC = (props) => {
         actualFilter = { ...actualFilter, friend: false };
         break;
     }
-    dispatch(getUsersAC(actualPage, pageSize, actualFilter))}, []);
+    dispatch(getUsersAC(actualPage, pageSize, actualFilter))}, [history, pageSize]);
   useEffect(() => {
     const query: queryParams = {};
     if (!!filter.term) query.term = filter.term;
@@ -66,7 +66,7 @@ export const Users: FC = (props) => {
       pathname: "/developers",
       search: queryString.stringify(query),
     });
-  }, [filter, currentPage]);
+  }, [filter, currentPage, history]);
   return (
     <div>
       <UsersSearchForm onFilterChanged={onFilterChanged} />

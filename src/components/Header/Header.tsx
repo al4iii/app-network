@@ -30,7 +30,7 @@ export const Header: React.FC<MapPropsType> = () => {
         {isAuth ? (
           <>
             <Col className="gutter-row" span={1} offset={12}>
-              <img src={avatar || ""} width="32px" />              
+              <img src={avatar || ""} width="32px" alt={"avatar"}/>              
             </Col>
             <Col className="gutter-row" span={1}>              
               <Text type="warning" keyboard >{login} </Text>

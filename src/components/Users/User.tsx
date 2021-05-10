@@ -12,6 +12,7 @@ type PropsType = {
 };
 
 const User: FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) => {
+  let status = user.status;  
   return (
     <div className={styles.user}>
       <span>
@@ -36,7 +37,7 @@ const User: FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) =>
       </span>
       <span className={styles.user_info}>
         <div className={styles.item_info}>Name: {user.name}</div>
-        <div className={styles.item_info}>{user.status || "no status"}</div>
+        <div className={styles.item_info}>{!!status ? (status.length > 30 ? status.substr(0, 30) : status) : "no status"}</div>
         <div className={styles.item_info}> id : {user.id}</div>
       </span>
     </div>

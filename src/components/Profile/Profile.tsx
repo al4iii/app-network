@@ -3,15 +3,14 @@ import ProfileInfoConteiner from "./MyPosts/ProfileInfo/ProfileInfoConteiner";
 import MyPostsConteiner from "./MyPosts/MyPostsConteiner";
 import { profileType } from "../../types/types";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfile, getUserId } from "../../redux/profile-selector";
+import { getProfile } from "../../redux/profile-selector";
 
 type PropsType = {
   isOwner: boolean
 }
 
 const Profile:FC<PropsType> = ({ isOwner }) => {
-  const profile = useSelector(getProfile)
-  const userId =  useSelector(getUserId)
+  const profile = useSelector(getProfile)  
   const dispatch = useDispatch()
   const getStatus = (userId:number)=> {
     dispatch(getStatus(userId))
