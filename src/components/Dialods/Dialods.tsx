@@ -24,7 +24,11 @@ const Dialods: React.FC<OwnProps>  = ({ dialogs, messages, myProfilePhoto, newMe
       <div className={styles.items}>{DialogElemenst}</div>
       <div className={styles.messages}>{messagesElemenst}</div>
       <AddMessegeFormRedux
-        onSubmit={(values: {newMessageText: string}) => newMessages(values.newMessageText)}
+        onSubmit={(values: {newMessageText: string}) => {
+          newMessages(values.newMessageText)
+          values.newMessageText = ""
+        }
+        }
       />
     </div>
   );
