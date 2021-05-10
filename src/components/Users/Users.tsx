@@ -3,7 +3,7 @@ import Pagination from "../../common/Pagination/Pagination";
 import User from "./User";
 import UsersSearchForm from "./UsersSearchForm";
 import { FC, useEffect } from "react";
-import { FilterType, getUsersAC } from "../../redux/users-reduser";
+import { FilterType, follow, getUsersAC, unfollow } from "../../redux/users-reduser";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentPage, getFollowingInProgress, getPageSize,
   getTotalUsersCount, getUsers, getUsersFilter } from "./../../redux/users-selector";
@@ -28,10 +28,10 @@ export const Users: FC = (props) => {
   const onFilterChanged = (filter: FilterType) => {
     dispatch(getUsersAC(1, pageSize, filter));
   };
-  const follow = (id: number) => {
+  const onFollow = (id: number) => {
     dispatch(follow(id));
   };
-  const unfollow = (id: number) => {
+  const onUnfollow = (id: number) => {
     dispatch(unfollow(id));
   };
   const history = useHistory();
@@ -82,8 +82,8 @@ export const Users: FC = (props) => {
             key={u.id}
             user={u}
             followingInProgress={followingInProgress}
-            follow={follow}
-            unfollow={unfollow}
+            follow={onFollow}
+            unfollow={onUnfollow}
           />
         ))}
       </div>
