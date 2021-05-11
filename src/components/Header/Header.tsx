@@ -29,10 +29,10 @@ export const Header: React.FC<MapPropsType> = () => {
         </Col>
         {isAuth ? (
           <>
-            <Col className="gutter-row" span={1} offset={12}>
+            <Col className="gutter-row" span={1} offset={11}>
               <img src={avatar || ""} width="32px" alt={"avatar"}/>              
             </Col>
-            <Col className="gutter-row" span={1}>              
+            <Col className="gutter-row" span={2}>              
               <Text type="warning" keyboard >{login} </Text>
             </Col>
             <Col className="gutter-row" span={2}>

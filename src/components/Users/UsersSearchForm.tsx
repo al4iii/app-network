@@ -3,6 +3,7 @@ import { Field, Form, Formik } from "formik";
 import { FilterType } from "../../redux/users-reduser";
 import { useSelector } from "react-redux";
 import { getUsersFilter } from "../../redux/users-selector";
+import styles from "./Users.module.css";
 
 const userFormValitate = () => {
   const errors = {};
@@ -35,7 +36,7 @@ const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
       onSubmit={submit}
     >
       {({ isSubmitting }) => (
-        <Form>
+        <Form className={styles.form}>
           <Field type="text" name="term" />
           <Field name="friend" as="select">
             <option value="null">all </option>

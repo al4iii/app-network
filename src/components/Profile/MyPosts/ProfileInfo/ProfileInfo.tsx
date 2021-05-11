@@ -17,7 +17,7 @@ type PropsType = {
   addPosts: (message: string) => void
   isOwner: boolean
   savePhoto: (file: any) => void
-  saveProfile: (profile: profileType) => void
+  saveProfile: (profile: profileType) => Promise<any>
   }
 
 const ProfileInfo: React.FC<PropsType> = ({ profile, status, getStatus, myId, updateStatus, addPosts, isOwner, savePhoto, saveProfile }) => {
@@ -34,6 +34,7 @@ const ProfileInfo: React.FC<PropsType> = ({ profile, status, getStatus, myId, up
     //todo 
     saveProfile(formData).then(() => {setEditMode(false)});
   };
+  
   return (
     <div className={styles.myPosts}>
       <div className={styles.profile}>
