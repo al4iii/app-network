@@ -3,6 +3,7 @@ import Setting from "./components/Setting/Setting";
 import DialodsConteiner from "./components/Dialods/DialodsConteiner";
 import ProfileConteiner from "./components/Profile/ProfileContainer";
 import { Login } from "./components/Login/Login";
+import { ChatPage } from "./../src/Pages/Chat/ChatPage";
 import Preloader from "./common/Preloader/Preloader";
 import store, { AppStateType } from "./redux/redux-store";
 import withSuspense from "./components/HOC/withSuspense";
@@ -47,25 +48,29 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                   <Menu.Item key="1">
                     <Link to="/profile">Profile</Link>
                   </Menu.Item>
-                  <Menu.Item key="2">
-                    <Link to="/dialogs"> Massages </Link>
-                  </Menu.Item>
+                 
                 </SubMenu>
                 <SubMenu key="sub2" icon={<LaptopOutlined />} title="Developers" >
-                  <Menu.Item key="3">
+                  <Menu.Item key="2">
                     <Link to="/developers"> Developers </Link>
+                  </Menu.Item>
+                  <Menu.Item key="3">
+                    <Link to="/dialogs"> Massages </Link>
+                  </Menu.Item>
+                  <Menu.Item key="4">
+                    <Link to="/chat"> Chat</Link>
                   </Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub3" icon={<NotificationOutlined />}  title="Other" >
-                  <Menu.Item key="9">
+                  <Menu.Item key="5">
                     <Link to="/music">Music</Link>
                   </Menu.Item>
-                  <Menu.Item key="10">
+                  <Menu.Item key="6">
                     <Link to="/todolist"> My to do list</Link>
                   </Menu.Item>
-                  <Menu.Item key="11">
+                  <Menu.Item key="7">
                     <Link to="/setting"> Setting</Link>
-                  </Menu.Item>
+                  </Menu.Item>                  
                 </SubMenu>
                 <UsersStatistic />
               </Menu>
@@ -80,6 +85,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                 <Route path="/developers" render={() => <UserPage />} />
                 <Route path="/setting" render={() => <Setting />} />
                 <Route path="/todolist" render={() => <MyToDoList />} />
+                <Route path="/chat" render={() => <ChatPage />} />
                 <Route path="/login" render={() => <Login />} />
                 <Route path="/" render={() => <ProfileConteiner />} />
                 <Route path="*" render={() => <div> 404 NOT FOUND </div>} />

@@ -1,0 +1,13 @@
+.button {
+  margin: 5px;
+}
+
+.messeges {
+  height: 200px;
+  overflow-y: auto;
+}
+
+.textarea {
+  width: 300px;
+  margin: 5px;
+}
