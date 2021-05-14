@@ -3,14 +3,13 @@ import styles from "./../Chat/ChatPage.module.css";
 import React, { useEffect, useState } from "react";
 import Avatar from "antd/lib/avatar/avatar";
 import { NavLink } from "react-router-dom";
+import { MessageType } from "../../API/chat";
+import { useDispatch, useSelector } from "react-redux";
+import { sendMessages, startMessagesLintening, stopMessagesLintening } from "../../redux/chat-reduser";
+import { AppStateType } from "../../redux/redux-store";
 const { TextArea } = Input;
 
-type messageType = {
-  message: string;
-  photo: string;
-  userId: number;
-  userName: string;
-};
+
 export const ChatPage: React.FC = () => {
   return (
     <div>
@@ -19,49 +18,24 @@ export const ChatPage: React.FC = () => {
   );
 };
 
-const Chat: React.FC = () => {
-  let [wsChanal, setWsChanal] = useState<WebSocket | null>(null);
-  useEffect(() => {
-    let ws: WebSocket;
-    const closeHendler = () => {
-      console.log("====> close.WS");
-      setTimeout(creacteChanel, 3000);
-    };
-    function creacteChanel() {
-      ws?.removeEventListener("close", closeHendler);
-      ws?.close();
-      ws = new WebSocket(
-        "wss://social-network.samuraijs.com/handlers/ChatHandler.ashx"
-      );
-      ws.addEventListener("close", closeHendler);
-      setWsChanal(ws);
-    }
-    creacteChanel();
-    return () => {
-      ws.removeEventListener("close", closeHendler);
-      ws.close();
-    };
-  }, []);
-  return (
+const Chat: React.FC = () => {  
+    const dispatch = useDispatch()
+    useEffect(()=>{
+      dispatch(startMessagesLintening())
+      return()=> {
+        dispatch(stopMessagesLintening())
+      }
+    }, [])    
+ return (
     <div>
-      <Messages wsChanal={wsChanal} />
-      <AddMessageForm wsChanal={wsChanal} />
+      <Messages  />
+      <AddMessageForm />
     </div>
   );
 };
 
-const Messages: React.FC<{ wsChanal: WebSocket | null }> = ({ wsChanal }) => {
-  const [messages, setMessages] = useState<messageType[]>([]);
-  useEffect(() => {
-    const messageHendler = (e: MessageEvent) => {
-      let newMessages = JSON.parse(e.data);
-      setMessages((prevMessages) => [...prevMessages, ...newMessages]);
-    };
-    wsChanal?.addEventListener("message", messageHendler);
-    return () => {
-      wsChanal?.removeEventListener("message", messageHendler);
-    };
-  }, [wsChanal]);
+const Messages: React.FC<{}> = ({}) => {
+  const messages = useSelector((state: AppStateType) => state.chat.messages);
   return (
     <div className={styles.messeges}>
       {messages.map((m, index) => (
@@ -71,7 +45,7 @@ const Messages: React.FC<{ wsChanal: WebSocket | null }> = ({ wsChanal }) => {
   );
 };
 
-const Message: React.FC<{ message: messageType }> = ({ message }) => {
+const Message: React.FC<{ message: MessageType }> = ({ message }) => {
   return (
     <div>
       <div>
@@ -88,33 +62,20 @@ const Message: React.FC<{ message: messageType }> = ({ message }) => {
   );
 };
 
-const AddMessageForm: React.FC<{ wsChanal: WebSocket | null }> = ({
-  wsChanal,
-}) => {
+const AddMessageForm: React.FC<{  }> = ({ }) => {
   let [message, setMessage] = useState("");
   let [isReady, setIsReady] = useState<"pending" | "ready">("pending");
-
-  useEffect(() => {
-    const openHendler = () => {
-      setIsReady("ready");
-    };
-    wsChanal?.addEventListener("open", openHendler);
-    return () => {
-      wsChanal?.removeEventListener("open", openHendler);
-    };
-  }, [wsChanal]);
-
+  const dispatch = useDispatch()  
   const onChange = (e: any) => {
     setMessage(e.target.value);
   };
-  const sendMessage = () => {
+  const sendMessageHendler = () => {
     if (!message) {
       return;
     }
-    wsChanal?.send(message);
+    dispatch(sendMessages(message))
     setMessage("");
   };
-
   return (
     <div className={styles.textarea}>
       <TextArea
@@ -127,8 +88,8 @@ const AddMessageForm: React.FC<{ wsChanal: WebSocket | null }> = ({
         <Button
           type="primary"
           className={styles.button}
-          onClick={sendMessage}
-          disabled={wsChanal === null || isReady !== "ready"}
+          onClick={sendMessageHendler}
+          disabled={false}
         >
           Send
         </Button>

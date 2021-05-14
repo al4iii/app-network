@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import song from "./ACDC Recovered - Highway to Hell.mp3";
 import ControlPanel from "./components/controls/ControlPanel";
 import Slider from "./components/slider/Slider";
+import { Row, Col } from 'antd';
 
 import styles from "./Music.module.css";
 
@@ -36,7 +37,8 @@ const Music = () => {
     setCurrentTime(time.toFixed(2));
   };
   return (
-    <div className="app-container">
+    <Row>
+      <Col span={16}>
       <h1 className={styles.h1}>Audio Player</h1>
       <Slider percentage={percentage} onChange={onChange} />
       <audio
@@ -53,7 +55,9 @@ const Music = () => {
         duration={duration}
         currentTime={currentTime}
       />
-    </div>
+      </Col>
+      
+    </Row>
   );
 };
 
