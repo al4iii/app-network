@@ -1,9 +1,9 @@
 import { Button, Input } from "antd";
 import styles from "./../Chat/ChatPage.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Avatar from "antd/lib/avatar/avatar";
 import { NavLink } from "react-router-dom";
-import { MessageType } from "../../API/chat";
+import { MessageChatType } from "../../API/chatAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { sendMessages, startMessagesLintening, stopMessagesLintening } from "../../redux/chat-reduser";
 import { AppStateType } from "../../redux/redux-store";
@@ -18,7 +18,9 @@ export const ChatPage: React.FC = () => {
 };
 
 const Chat: React.FC = () => {
+  
   const dispatch = useDispatch();
+  const status = useSelector((state: AppStateType) => state.chat.status);
   useEffect(() => {
     dispatch(startMessagesLintening());
     return () => {
@@ -27,24 +29,30 @@ const Chat: React.FC = () => {
   }, []);
   return (
     <div>
+      {status === "error" && <div>Some error. Please restast page</div>}
       <Messages />
       <AddMessageForm />
     </div>
   );
 };
 
-const Messages: React.FC<{}> = ({}) => {
+const Messages: React.FC<{}> = ({}) => {  
+  const messagesAnchorRef = useRef<HTMLDivElement>(null)
   const messages = useSelector((state: AppStateType) => state.chat.messages);
+  useEffect(()=> {
+    messagesAnchorRef.current?.scrollIntoView({behavior:"smooth"})
+  }, [messages])
   return (
     <div className={styles.messeges}>
       {messages.map((m, index) => (
         <Message key={index} message={m} />
       ))}
+      <div ref={messagesAnchorRef}></div>
     </div>
   );
 };
 
-const Message: React.FC<{ message: MessageType }> = ({ message }) => {
+const Message: React.FC<{ message: MessageChatType }> = ({ message }) => {
   return (
     <div>
       <div>
@@ -62,6 +70,7 @@ const Message: React.FC<{ message: MessageType }> = ({ message }) => {
 const AddMessageForm: React.FC<{}> = ({}) => {
   let [message, setMessage] = useState("");
   const dispatch = useDispatch();
+  const status = useSelector((state: AppStateType) => state.chat.status)
   const onChange = (e: any) => {
     setMessage(e.target.value);
   };
@@ -85,7 +94,7 @@ const AddMessageForm: React.FC<{}> = ({}) => {
           type="primary"
           className={styles.button}
           onClick={sendMessageHendler}
-          disabled={false}
+          disabled={status !== "ready"}
         >
           Send
         </Button>
