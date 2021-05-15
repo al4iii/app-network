@@ -71,11 +71,11 @@ export const chatAPI = {
   },
 };
 
-type MessagesReceivedSubscriberType = (messages: MessageChatType[]) => void;
+type MessagesReceivedSubscriberType = (messages: MessageChatAPIType[]) => void;
 type StatusChengedSubscriberType = (status: StatusType) => void;
 
 export type StatusType = "panding" | "ready" | "error"
-export type MessageChatType = {
+export type MessageChatAPIType = {
   message: string;
   photo: string;
   userId: number;
